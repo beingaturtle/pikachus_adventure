@@ -1,20 +1,20 @@
-## BEST_TERM_PROJECT
+## Pikachu's Adventure
 
 ## Your name:
 
-- Ian Chan
-- Edro Gonzales
+-   Ian Chan
+-   Edro Gonzales
 
 ## Your student number:
 
-- A00910012
-- A01257468
+-   A00910012
+-   A01257468
 
 ## Your GitHub username:
 
-- beingaturtle
-- Nog-bs
+-   beingaturtle
+-   Nog-bs
 
 ## Any important comments you'd like to make about your work:
 
-None
+![Pikachu Suprise Face](./pikachu_face.png)
