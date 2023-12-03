@@ -2,53 +2,45 @@
 Ian Chan A00910012
 Edro Gonzales A01257468
 """
-import tkinter as tk
+import pygame
+
+pygame.init()
+
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 800
+
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+pygame.display.set_caption("Pikachu's Adventure!")
+
+PLAYER_WIDTH = 20
+PLAYER_HEIGHT = 20
+player = pygame.Rect((0, 0, PLAYER_WIDTH, PLAYER_HEIGHT))
+
+SPEED = 2
 
 
-def on_cell_click(each_row, each_column):
-    if (each_row, each_column) == (0, 0) or (each_row, each_column) == (6, 4):
-        output_text.set(f"You are at the Hospital! Pikachu feels better now.")
-    else:
-        output_text.set(f"Clicked on cell ({each_row}, {each_column})")
+run = True
+while run:
+    pygame.time.delay(5)
+    screen.fill((0, 0, 0))
 
+    pygame.draw.rect(screen, (255, 0, 0), player)
 
-# Create the main application window
-root = tk.Tk()
-root.title("Text-based Game")
+    key = pygame.key.get_pressed()
+    if (key[pygame.K_a] or key[pygame.K_LEFT]) and player[0] > SPEED:
+        player.move_ip(-SPEED, 0)
+    elif (key[pygame.K_d] or key[pygame.K_RIGHT]) and player[0] < SCREEN_WIDTH - PLAYER_WIDTH + SPEED:
+        player.move_ip(SPEED, 0)
+    elif (key[pygame.K_w] or key[pygame.K_UP]) and player[1] > SPEED:
+        player.move_ip(0, -SPEED)
+    elif (key[pygame.K_s] or key[pygame.K_DOWN]) and player[1] < SCREEN_HEIGHT - PLAYER_HEIGHT + SPEED:
+        player.move_ip(0, SPEED)
 
-# Create and configure widgets
-label = tk.Label(root, text="Welcome to Pikachu's Adventure!", font=("Helvetica", 16))
-label.grid(row=0, column=0, columnspan=11, pady=10)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
 
-output_text = tk.StringVar()
-output_label = tk.Label(root, textvariable=output_text)
-output_label.grid(row=1, column=0, columnspan=11, pady=10)
+    pygame.display.update()
 
-# Create a grid of labeled cells to represent cells
-for row in range(2, 13):
-    for column in range(11):
-        # Add a label inside each cell
-        if (row - 2, column) == (0, 0) or (row - 2, column) == (6, 4):
-            label_text = "Hospital"
-        else:
-            label_text = f"({row - 2}, {column})"
-
-        cell_label = tk.Label(root, text=label_text, width=10, height=2,
-                              relief="solid", padx=2, pady=2, fg="black")
-
-        # Color the Hospital cells blue
-        if (row - 2, column) == (0, 0) or (row - 2, column) == (6, 4):
-            cell_label.configure(bg="sky blue")
-        # Make entire row 5 dark grey
-        elif row == 7 or column == 5:
-            cell_label.configure(bg="dark grey")
-        else:
-            cell_label.configure(bg="light green")
-
-        cell_label.grid(row=row, column=column)
-
-        # Configure the label as a button
-        cell_label.bind("<Button-1>", lambda event, r=row - 2, c=column: on_cell_click(r, c))
-
-# Start the main event loop
-root.mainloop()
+pygame.quit()
