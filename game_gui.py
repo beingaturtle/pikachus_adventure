@@ -6,34 +6,48 @@ import pygame
 
 pygame.init()
 
-SCREEN_WIDTH = 400
-SCREEN_HEIGHT = 400
-
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
-pygame.display.set_caption("Pikachu's Adventure!")
-
-walkRight = [pygame.image.load('images/character/R1.png'), pygame.image.load('images/character/R2.png')]
-walkLeft = [pygame.image.load('images/character/L1.png'), pygame.image.load('images/character/L2.png')]
-walkUp = [pygame.image.load('images/character/U1.png'), pygame.image.load('images/character/U2.png')]
-walkDown = [pygame.image.load('images/character/D1.png'), pygame.image.load('images/character/D2.png')]
-
-charRight = pygame.image.load('images/character/Rstill.png')
-charLeft = pygame.image.load('images/character/Lstill.png')
-charUp = pygame.image.load('images/character/Ustill.png')
-charDown = pygame.image.load('images/character/Dstill.png')
-
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
 clock = pygame.time.Clock()
 player_width = 0
 player_column = 0
-PLAYER_WIDTH = 24
-PLAYER_HEIGHT = 24
-SPEED = 2
+PLAYER_WIDTH = 48
+PLAYER_HEIGHT = 48
+SPEED = 6
 left = False
 right = False
 up = False
 down = False
 walkCount = 0
+
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+pygame.display.set_caption("Pikachu's Adventure!")
+
+walkRight = [
+    pygame.transform.scale(pygame.image.load('images/character/R1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
+    pygame.transform.scale(pygame.image.load('images/character/R2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+]
+
+walkLeft = [
+    pygame.transform.scale(pygame.image.load('images/character/L1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
+    pygame.transform.scale(pygame.image.load('images/character/L2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+]
+
+walkUp = [
+    pygame.transform.scale(pygame.image.load('images/character/U1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
+    pygame.transform.scale(pygame.image.load('images/character/U2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+]
+
+walkDown = [
+    pygame.transform.scale(pygame.image.load('images/character/D1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
+    pygame.transform.scale(pygame.image.load('images/character/D2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+]
+
+charRight = pygame.transform.scale(pygame.image.load('images/character/Rstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+charLeft = pygame.transform.scale(pygame.image.load('images/character/Lstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+charUp = pygame.transform.scale(pygame.image.load('images/character/Ustill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+charDown = pygame.transform.scale(pygame.image.load('images/character/Dstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
 
 # Direction character is facing
 facing_left = False
@@ -89,15 +103,13 @@ def redraw_window():
 
     walkCount += 1
 
-    # pygame.draw.rect(screen, (255, 0, 0), player)
-
     pygame.display.update()
 
 
 # main_loop
 run = True
 while run:
-    clock.tick(50)
+    clock.tick(40)
 
     # quit
     for event in pygame.event.get():
