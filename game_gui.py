@@ -8,8 +8,10 @@ import sys
 pygame.init()
 
 # create constants and set up screen and movement
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 925
+SCREEN_HEIGHT = 925
+GRID_SIZE = 11
+CELL_SIZE = SCREEN_WIDTH // GRID_SIZE
 clock = pygame.time.Clock()
 player_width = 0
 player_column = 0
@@ -69,6 +71,12 @@ def redraw_window():
     # update background
     screen.fill((0, 0, 0))
 
+    # create grid (11 x 11)
+    for row in range(GRID_SIZE):
+        for height in range(GRID_SIZE):
+            pygame.draw.rect(screen, (255, 255, 255),
+                             (row * CELL_SIZE, height * CELL_SIZE, CELL_SIZE, CELL_SIZE), 1)
+
     # create character
     if walkCount >= 12:
         walkCount = 0
@@ -107,10 +115,10 @@ def redraw_window():
 
 
 def show_intro_screen():
-    intro_text_font = pygame.font.Font(None, 28)  # Adjust the font size if needed
+    intro_text_font = pygame.font.Font(None, 28)  # text font
     input_font = pygame.font.Font(None, 28)
 
-    input_box = pygame.Rect(275, 450, 140, 32)
+    input_box = pygame.Rect(346.875, 550, 140, 32)  # update input box in the welcome screen
     color_inactive = pygame.Color('lightskyblue3')
     color_active = pygame.Color('dodgerblue2')
     color = color_inactive
@@ -159,11 +167,11 @@ def show_intro_screen():
 
             for line_index, line in enumerate(welcome_lines):
                 welcome_text = intro_text_font.render(line, True, (255, 255, 255))
-                screen.blit(welcome_text, (50, 100 + line_index * 50))  # Adjust the margin between each line
+                screen.blit(welcome_text, (150, 100 + line_index * 50))  # Adjust the margin between each line
 
             instruction_text = intro_text_font.render("To read the rules, press your 'Enter' key and please input"
                                                       " your name.", True, (255, 255, 255))
-            screen.blit(instruction_text, (50, 350))  # Adjust the position of text
+            screen.blit(instruction_text, (150, 500))  # Adjust the position of text
 
             # Render the input box
             txt_surface = input_font.render(text, True, color)
