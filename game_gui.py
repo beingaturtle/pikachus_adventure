@@ -23,6 +23,7 @@ right = False
 up = False
 down = False
 walkCount = 0
+game_run = True
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
@@ -61,21 +62,12 @@ facing_down = False
 player = pygame.Rect((player_width, player_column, PLAYER_WIDTH, PLAYER_HEIGHT))
 
 
-def redraw_window():
+def draw_character():
     global walkCount
     global facing_left
     global facing_right
     global facing_up
     global facing_down
-
-    # update background
-    screen.fill((0, 0, 0))
-
-    # create grid (11 x 11)
-    for row in range(GRID_SIZE):
-        for height in range(GRID_SIZE):
-            pygame.draw.rect(screen, (255, 255, 255),
-                             (row * CELL_SIZE, height * CELL_SIZE, CELL_SIZE, CELL_SIZE), 1)
 
     # create character
     if walkCount >= 12:
@@ -110,6 +102,19 @@ def redraw_window():
             screen.blit(charRight, (player[0], player[1]))
 
     walkCount += 1
+
+    pygame.display.update()
+
+
+def redraw_window():
+    # update background and draw grid
+    screen.fill((0, 0, 0))
+    for row in range(GRID_SIZE):
+        for height in range(GRID_SIZE):
+            pygame.draw.rect(screen, (255, 255, 255),
+                             (row * CELL_SIZE, height * CELL_SIZE, CELL_SIZE, CELL_SIZE), 1)
+
+    draw_character()  # draw the character
 
     pygame.display.update()
 
@@ -202,44 +207,18 @@ def show_intro_screen():
         clock.tick(30)
 
 
-# main_loop
-
-show_intro_screen()
-
-run = True
-while run:
-    clock.tick(40)
-
-    # quit
+def game_quit():
+    global game_run
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            run = False
+            game_run = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                game_run = False
 
-        # handle key events
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_a or event.key == pygame.K_LEFT:
-                left = True
-                right = up = down = False
-            elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
-                right = True
-                left = up = down = False
-            elif event.key == pygame.K_w or event.key == pygame.K_UP:
-                up = True
-                left = right = down = False
-            elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
-                down = True
-                left = right = up = False
 
-        elif event.type == pygame.KEYUP:
-            # reset the flags when the key is released
-            if event.key == pygame.K_a or event.key == pygame.K_LEFT:
-                left = False
-            elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
-                right = False
-            elif event.key == pygame.K_w or event.key == pygame.K_UP:
-                up = False
-            elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
-                down = False
+def movement():
+    global left, right, up, down, player, walkCount
 
     # movement keys
     if left and player[0] > SPEED - SPEED * 2:
@@ -255,6 +234,43 @@ while run:
         player.move_ip(0, SPEED)
         walkCount += 1
 
-    redraw_window()
 
-pygame.quit()
+def key_handle():
+    global left, right, up, down
+
+    keys = pygame.key.get_pressed()
+
+    if keys[pygame.K_a] or keys[pygame.K_LEFT]:
+        left = True
+        right = up = down = False
+    elif keys[pygame.K_d] or keys[pygame.K_RIGHT]:
+        right = True
+        left = up = down = False
+    elif keys[pygame.K_w] or keys[pygame.K_UP]:
+        up = True
+        left = right = down = False
+    elif keys[pygame.K_s] or keys[pygame.K_DOWN]:
+        down = True
+        left = right = up = False
+    else:
+        # reset all flags if no movement keys are pressed
+        left = right = up = down = False
+
+
+def main():
+    show_intro_screen()
+
+    while game_run:
+        clock.tick(40)
+
+        game_quit()
+        key_handle()
+        movement()
+        redraw_window()
+
+    pygame.quit()
+
+
+if __name__ == '__main__':
+    pygame.init()
+    main()
