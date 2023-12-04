@@ -1,5 +1,5 @@
 """
-Pikaachu's Adventure
+Pikachu's Adventure
 Edro Gonzales A01257468
 Ian Chan A00910012
 """
@@ -65,6 +65,12 @@ def generate_character_info(name: str) -> dict:
     :postcondition: makes a dictionary containing information of character
     :postcondition: saves that dictionary into a JSON file for future use
     :return: dictionary of character information
+
+    >>> generate_character_info("test_user")
+    {'name': 'test_user', 'health': 100, 'coordinates': (2, 1), 'skill': 'tackle', 'attack_power': 10, 'defense': 10, 'keys': 0, 'total_experience': 0}
+
+    >>> generate_character_info("xxxxxxxxxx")
+    {'name': 'xxxxxxxxxx', 'health': 100, 'coordinates': (2, 1), 'skill': 'tackle', 'attack_power': 10, 'defense': 10, 'keys': 0, 'total_experience': 0}
     """
     character_info = {
         "name": name,
@@ -91,6 +97,12 @@ def user_has_file(name: str) -> bool:
     :precondition: name must be a string representing the username typed by the user
     :postcondition: looks into saved folder and determines if the relevant file exists or not
     :return: True if json file exists or False otherwise
+
+    >>> user_has_file("user_exist")
+    True
+
+    >>> user_has_file("user_does_not_exist")
+    False
     """
     file_path = os.path.join("saved", f"{name}_info.json")
     return os.path.exists(file_path)
@@ -99,7 +111,12 @@ def main():
     trainer_name = get_name()
 
     user_has_profile = user_has_file(trainer_name)
-    # character_info = generate_character_info(trainer_name)
+    character_info = {}
+    if not user_has_profile:
+        character_info = generate_character_info(trainer_name)
+    elif user_has_profile:
+        # add get character info
+        pass
 
 if __name__ == '__main__':
     main()
