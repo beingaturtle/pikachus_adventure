@@ -5,13 +5,17 @@ Ian Chan A00910012
 """
 import json
 import os
+import re
+import sys
 
 def get_name() -> str:
     """
     Gets name of user.
 
     :postcondition: user is prompted for username
+    :postcondition: checks if username has anything besides numbers, letters, hyphens and underscores
     :return: string representing the typed username of user
+    :raise ValueError: if username has anything besides numbers, letters, hyphens and underscores
     """
     print("""
     ⠈⣿⣷⣶⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -54,6 +58,10 @@ def get_name() -> str:
         "\033[94mAfter entering your username, press your 'Enter' key to continue and head over to the window "
         "screen.\033[0m")
     user_name = input("Please type in a name: ")
+    if not re.match(r'^[a-zA-Z\d_-]+$', user_name):
+        raise ValueError(
+            "Invalid name format. Name must contain only letters, numbers, underscores '_', or hyphens '-'.")
+
     return user_name
 
 def generate_character_info(name: str) -> dict:
@@ -109,15 +117,19 @@ def user_has_file(name: str) -> bool:
     return os.path.exists(file_path)
 
 def main():
-    trainer_name = get_name()
-
-    user_has_profile = user_has_file(trainer_name)
-    character_info = {}
-    if not user_has_profile:
-        character_info = generate_character_info(trainer_name)
-    elif user_has_profile:
-        # add get character info
-        pass
+    try:
+        trainer_name = get_name()
+    except ValueError as e:
+        print("{}".format(e), file=sys.stderr)
+        return None
+    else:
+        user_has_profile = user_has_file(trainer_name)
+        character_info = {}
+        if not user_has_profile:
+            character_info = generate_character_info(trainer_name)
+        elif user_has_profile:
+            # add get character info
+            pass
 
 if __name__ == '__main__':
     main()
