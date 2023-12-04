@@ -173,7 +173,7 @@ def show_intro_screen():
                                                       " your name.", True, (255, 255, 255))
             screen.blit(instruction_text, (150, 500))  # Adjust the position of text
 
-            # Render the input box
+            # create the input box
             txt_surface = input_font.render(text, True, color)
             width = max(200, txt_surface.get_width() + 10)
             input_box.w = width
@@ -181,7 +181,7 @@ def show_intro_screen():
             pygame.draw.rect(screen, color, input_box, 2)
 
         elif show_rules_screen:
-            # Rules screen
+            # rules screen
             rules_lines = [
                 "Here are some rules:",
                 "- You will see a hospital, where you can recover your HP and save your game.",
@@ -242,7 +242,7 @@ while run:
                 down = False
 
     # movement keys
-    if left and player[0] > SPEED - SPEED:
+    if left and player[0] > SPEED - SPEED * 2:
         player.move_ip(-SPEED, 0)
         walkCount += 1
     elif right and player[0] < SCREEN_WIDTH - PLAYER_WIDTH + SPEED:
@@ -251,7 +251,7 @@ while run:
     elif up and player[1] > SPEED - SPEED:
         player.move_ip(0, -SPEED)
         walkCount += 1
-    elif down and player[1] < SCREEN_HEIGHT - PLAYER_HEIGHT + SPEED:
+    elif down and player[1] < SCREEN_HEIGHT - PLAYER_HEIGHT:
         player.move_ip(0, SPEED)
         walkCount += 1
 
