@@ -52,15 +52,15 @@ def get_name() -> str:
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠶⣖⣢⡾⠾⠴⠚⢳⣦⣠⣤⡶⠶⠛⠀⠀⠀⠘⠲⡤⣄⣀⣀⡞⠳⢤⣶⡏⣀⣠⡷⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
         """)
     print("Welcome to Pikachu's Adventure!")
-    print("Enter your username. If you've played before, use the same name to access your previous data.")
-    print("\033[92mNew users: please remember your chosen username for future sessions.\033[0m")
+    print("Enter your username. If you've played before, use the same name to access your previous data")
     print(
         "\033[94mAfter entering your username, press your 'Enter' key to continue and head over to the window "
-        "screen.\033[0m")
+        "screen\033[0m")
+    print("\033[92mNew users: please remember your chosen username for future sessions\033[0m")
     user_name = input("Please type in a name: ")
     if not re.match(r'^[a-zA-Z\d_-]+$', user_name):
         raise ValueError(
-            "Invalid name format. Name must contain only letters, numbers, underscores '_', or hyphens '-'.")
+            "Name must not have any spaces and contain only letters, numbers, underscores '_', or hyphens '-'")
 
     return user_name
 
@@ -120,7 +120,7 @@ def main():
     try:
         trainer_name = get_name()
     except ValueError as e:
-        print("{}".format(e), file=sys.stderr)
+        print("Invalid Input: {}\nExiting by returning None".format(e), file=sys.stderr)
         return None
     else:
         user_has_profile = user_has_file(trainer_name)
