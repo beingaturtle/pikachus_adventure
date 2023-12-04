@@ -1,5 +1,4 @@
 from unittest import TestCase
-import os
 from game import user_has_file
 
 class TestUserHasFile(TestCase):
