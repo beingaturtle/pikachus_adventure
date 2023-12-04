@@ -53,7 +53,7 @@ def get_name():
     print(
         "\033[94mAfter entering your username, press your 'Enter' key to continue and head over to the window "
         "screen.\033[0m")
-    user_name = input("Please select a name young trainer: ")
+    user_name = input("Please type in a name: ")
     return user_name
 
 def generate_character_info(name):
