@@ -123,8 +123,8 @@ def redraw_window():
     pygame.display.update()
 
 
-def show_intro_screen():
-    global character_info  # Add this line to use the global variable
+def show_intro_screen(character_info):
+    # global character_info  # Add this line to use the global variable
 
     intro_text_font = pygame.font.Font(None, 28)
 
@@ -145,7 +145,7 @@ def show_intro_screen():
         if show_rules_screen:
             # rules screen
             welcome_text = intro_text_font.render("Welcome, ", True, (255, 255, 255))
-            name_text = intro_text_font.render(character_info['name'], True, (255, 0, 0))
+            name_text = intro_text_font.render(character_info.get('name'), True, (255, 0, 0))
             rules_lines = [
                 "Here are some rules:",
                 "- You may use WASD keys or arrow keys for movement.",
@@ -226,17 +226,13 @@ def key_handle():
         left = right = up = down = False
 
 
-def main():
+def main(trainer_name):
     global game_run
-    global character_info
 
-    # get the user's name using the function from game.py
-    trainer_name = get_name()
-
-    # generate character information using the function from game.py
+    # # generate character information using the function from game.py
     character_info = generate_character_info(trainer_name)
 
-    show_intro_screen()  # Remove the argument here
+    show_intro_screen(character_info)
 
     while game_run:
         clock.tick(40)
@@ -251,5 +247,4 @@ def main():
 
 
 if __name__ == '__main__':
-    pygame.init()
     main()
