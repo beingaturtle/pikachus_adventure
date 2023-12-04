@@ -128,7 +128,7 @@ def show_intro_screen():
             if input_prompt and game_start.type == pygame.KEYDOWN:
                 if active:
                     if game_start.key == pygame.K_RETURN:
-                        # Once the player presses Enter, transition to the main game loop
+                        # once the player presses 'Enter' key, transition to the main game loop
                         input_prompt = False
                         show_rules_screen = True
                     elif game_start.key == pygame.K_BACKSPACE:
@@ -137,18 +137,18 @@ def show_intro_screen():
                         text += game_start.unicode
 
                 elif game_start.key == pygame.K_RETURN:
-                    # Activate input box
+                    # activate input box by pressing "Enter" key
                     active = not active
                     color = color_active if active else color_inactive
 
             elif show_rules_screen and game_start.type == pygame.KEYDOWN:
-                # Once the player presses any key on the rules screen, proceed to the main game loop
+                # once the player presses any key on the rules screen, proceed to the main game loop
                 show_rules_screen = False
 
         screen.fill((0, 0, 0))
 
         if input_prompt:
-            # Multiline welcome text
+            # welcome text
             welcome_lines = [
                 "Welcome to Pikachu's Adventure!",
                 "You will start at the beginning where you will need to find keys to",
@@ -157,19 +157,19 @@ def show_intro_screen():
                 "entire map to fight the Pokemon Champion!"
             ]
 
-            for i, line in enumerate(welcome_lines):
+            for line_index, line in enumerate(welcome_lines):
                 welcome_text = intro_text_font.render(line, True, (255, 255, 255))
-                screen.blit(welcome_text, (50, 100 + i * 30))  # Adjust the y-coordinate as needed
+                screen.blit(welcome_text, (50, 100 + line_index * 30))  # Adjust the margin between each line
 
-            instruction_text = intro_text_font.render("To read the rules, press your 'Enter' key and please input your "
-                                                      "name.", True, (255, 255, 255))
-            screen.blit(instruction_text, (50, 260))  # Adjust the position as needed
+            instruction_text = intro_text_font.render("To read the rules, press your 'Enter' key and please input"
+                                                      " your name.", True, (255, 255, 255))
+            screen.blit(instruction_text, (50, 260))  # Adjust the position of text
 
             # Render the input box
             txt_surface = input_font.render(text, True, color)
-            width = max(200, txt_surface.get_width()+10)
+            width = max(200, txt_surface.get_width() + 10)
             input_box.w = width
-            screen.blit(txt_surface, (input_box.x+5, input_box.y+5))
+            screen.blit(txt_surface, (input_box.x + 5, input_box.y + 5))
             pygame.draw.rect(screen, color, input_box, 2)
 
         elif show_rules_screen:
@@ -177,16 +177,18 @@ def show_intro_screen():
             rules_lines = [
                 "Here are some rules:",
                 "- You will see a hospital, where you can recover your HP and save your game.",
-                "- To move onto the next area, you will need to collect keys by beating wild pokemon. When you win a"
-                "a battle, you will get a chance of receiving a key.",
-                "- Beat all the trainers by collecting keys and leveling up your Pikachu and attempt to beat the "
-                "champion!",
+                "- To move onto the next area, you will need to collect keys by beating",
+                " wild pokemon. When you win a battle, you will get a chance of receiving a key.",
+                "- Beat all the trainers by collecting keys and leveling up your Pikachu and",
+                "attempt to beat the champion!",
+                "",
+                "",
                 "Press any key to continue..."
             ]
 
-            for i, line in enumerate(rules_lines):
+            for line_index, line in enumerate(rules_lines):
                 rules_text = intro_text_font.render(line, True, (255, 255, 255))
-                screen.blit(rules_text, (50, 100 + i * 30))  # Adjust the y-coordinate as needed
+                screen.blit(rules_text, (50, 50 + line_index * 50))  # Adjust the margin between each line
 
         pygame.display.flip()
         clock.tick(30)
