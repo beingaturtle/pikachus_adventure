@@ -3,9 +3,11 @@ Ian Chan A00910012
 Edro Gonzales A01257468
 """
 import pygame
+import sys
 
 pygame.init()
 
+# create constants and set up screen and movement
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 clock = pygame.time.Clock()
@@ -104,7 +106,96 @@ def redraw_window():
     pygame.display.update()
 
 
+def show_intro_screen():
+    intro_text_font = pygame.font.Font(None, 28)  # Adjust the font size if needed
+    input_font = pygame.font.Font(None, 28)
+
+    input_box = pygame.Rect(250, 300, 140, 32)
+    color_inactive = pygame.Color('lightskyblue3')
+    color_active = pygame.Color('dodgerblue2')
+    color = color_inactive
+    active = False
+    text = ''
+    input_prompt = True
+    show_rules_screen = False
+
+    while input_prompt or show_rules_screen:
+        for game_start in pygame.event.get():
+            if game_start.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+            if input_prompt and game_start.type == pygame.KEYDOWN:
+                if active:
+                    if game_start.key == pygame.K_RETURN:
+                        # Once the player presses Enter, transition to the main game loop
+                        input_prompt = False
+                        show_rules_screen = True
+                    elif game_start.key == pygame.K_BACKSPACE:
+                        text = text[:-1]
+                    else:
+                        text += game_start.unicode
+
+                elif game_start.key == pygame.K_RETURN:
+                    # Activate input box
+                    active = not active
+                    color = color_active if active else color_inactive
+
+            elif show_rules_screen and game_start.type == pygame.KEYDOWN:
+                # Once the player presses any key on the rules screen, proceed to the main game loop
+                show_rules_screen = False
+
+        screen.fill((0, 0, 0))
+
+        if input_prompt:
+            # Multiline welcome text
+            welcome_lines = [
+                "Welcome to Pikachu's Adventure!",
+                "You will start at the beginning where you will need to find keys to",
+                "fight gym trainers. To find keys, you will encounter pokemon and must",
+                "beat them to get a chance of getting an item. Progress through the",
+                "entire map to fight the Pokemon Champion!"
+            ]
+
+            for i, line in enumerate(welcome_lines):
+                welcome_text = intro_text_font.render(line, True, (255, 255, 255))
+                screen.blit(welcome_text, (50, 100 + i * 30))  # Adjust the y-coordinate as needed
+
+            instruction_text = intro_text_font.render("To read the rules, press your 'Enter' key and please input your "
+                                                      "name.", True, (255, 255, 255))
+            screen.blit(instruction_text, (50, 260))  # Adjust the position as needed
+
+            # Render the input box
+            txt_surface = input_font.render(text, True, color)
+            width = max(200, txt_surface.get_width()+10)
+            input_box.w = width
+            screen.blit(txt_surface, (input_box.x+5, input_box.y+5))
+            pygame.draw.rect(screen, color, input_box, 2)
+
+        elif show_rules_screen:
+            # Rules screen
+            rules_lines = [
+                "Here are some rules:",
+                "- You will see a hospital, where you can recover your HP and save your game.",
+                "- To move onto the next area, you will need to collect keys by beating wild pokemon. When you win a"
+                "a battle, you will get a chance of receiving a key.",
+                "- Beat all the trainers by collecting keys and leveling up your Pikachu and attempt to beat the "
+                "champion!",
+                "Press any key to continue..."
+            ]
+
+            for i, line in enumerate(rules_lines):
+                rules_text = intro_text_font.render(line, True, (255, 255, 255))
+                screen.blit(rules_text, (50, 100 + i * 30))  # Adjust the y-coordinate as needed
+
+        pygame.display.flip()
+        clock.tick(30)
+
+
 # main_loop
+
+show_intro_screen()
+
 run = True
 while run:
     clock.tick(40)
