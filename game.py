@@ -39,10 +39,7 @@ def generate_character_info(name):
         "total_experience": 0
     }
 
-    folder_name = "saved"
-    os.makedirs(folder_name, exist_ok=True)  # Create the folder if it doesn't exist
-
-    file_name = os.path.join(folder_name, f"{name}_info.json")
+    file_name = os.path.join("saved", f"{name}_info.json")
     with open(file_name, "w") as file:
         json.dump(character_info, file, indent=4)
 
