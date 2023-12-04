@@ -62,6 +62,9 @@ facing_down = False
 # character
 player = pygame.Rect((player_width, player_column, PLAYER_WIDTH, PLAYER_HEIGHT))
 
+# character_info
+character_info = ""
+
 
 def draw_character():
     global walkCount
@@ -121,6 +124,8 @@ def redraw_window():
 
 
 def show_intro_screen():
+    global character_info  # Add this line to use the global variable
+
     intro_text_font = pygame.font.Font(None, 28)
 
     show_rules_screen = True
@@ -139,12 +144,14 @@ def show_intro_screen():
 
         if show_rules_screen:
             # rules screen
+            welcome_text = intro_text_font.render("Welcome, ", True, (255, 255, 255))
+            name_text = intro_text_font.render(character_info['name'], True, (255, 0, 0))
             rules_lines = [
                 "Here are some rules:",
-                "- You may use WASD keys or arrow keys for movement."
+                "- You may use WASD keys or arrow keys for movement.",
                 "- You will see a hospital, where you can recover your HP and save your game.",
                 "- To move onto the next area, you will need to collect keys by beating",
-                " wild pokemon. When you win a battle, you will get a chance of receiving a key.",
+                " wild Pokemon. When you win a battle, you will get a chance of receiving a key.",
                 "- Beat all the trainers by collecting keys and leveling up your Pikachu and",
                 "attempt to beat the champion!",
                 "",
@@ -152,14 +159,17 @@ def show_intro_screen():
                 "Press any key to continue..."
             ]
 
+            # Display "Welcome, " and the user's name
+            screen.blit(welcome_text, (50, 80))
+            screen.blit(name_text, (50 + welcome_text.get_width(), 80))
+
             for line_index, line in enumerate(rules_lines):
-                # light blue color only for the specified line
                 if "Press any key to continue..." in line:
                     rules_text = intro_text_font.render(line, True, (28, 10, 194))
                 else:
                     rules_text = intro_text_font.render(line, True, (255, 255, 255))
 
-                screen.blit(rules_text, (50, 50 + line_index * 50))  # Adjust the margin between each line
+                screen.blit(rules_text, (50, 50 + (line_index + 2) * 50))  # Adjust the margin between each line
 
         pygame.display.flip()
         pygame.display.update()
@@ -217,14 +227,16 @@ def key_handle():
 
 
 def main():
+    global game_run
+    global character_info
 
-    # Get the user's name using the function from game.py
+    # get the user's name using the function from game.py
     trainer_name = get_name()
 
-    # Generate character information using the function from game.py
+    # generate character information using the function from game.py
     character_info = generate_character_info(trainer_name)
 
-    show_intro_screen()
+    show_intro_screen()  # Remove the argument here
 
     while game_run:
         clock.tick(40)
