@@ -6,7 +6,7 @@ Ian Chan A00910012
 import json
 import os
 
-def get_name():
+def get_name() -> str:
     """
     Gets name of user.
 
@@ -56,7 +56,7 @@ def get_name():
     user_name = input("Please type in a name: ")
     return user_name
 
-def generate_character_info(name):
+def generate_character_info(name: str) -> dict:
     """
     Generates character information.
 
@@ -83,12 +83,23 @@ def generate_character_info(name):
 
     return character_info
 
+def user_has_file(name: str) -> bool:
+    """
+    Determines if user has a saved file or not.
+
+    :param name: string representing the username
+    :precondition: name must be a string representing the username typed by the user
+    :postcondition: looks into saved folder and determines if the relevant file exists or not
+    :return: True if json file exists or False otherwise
+    """
+    file_path = os.path.join("saved", f"{name}_info.json")
+    return os.path.exists(file_path)
+
 def main():
     trainer_name = get_name()
 
-    character_info = generate_character_info(trainer_name)
-
-    print(character_info)
+    user_has_profile = user_has_file(trainer_name)
+    # character_info = generate_character_info(trainer_name)
 
 if __name__ == '__main__':
     main()
