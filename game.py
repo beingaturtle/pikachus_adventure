@@ -131,7 +131,7 @@ def main():
         elif user_has_profile:
             # add get character info
             pass
-        game_gui.main(trainer_name)
+        game_gui.main(character_info)
 
 
 if __name__ == '__main__':
