@@ -110,7 +110,7 @@ def show_intro_screen():
     intro_text_font = pygame.font.Font(None, 28)  # Adjust the font size if needed
     input_font = pygame.font.Font(None, 28)
 
-    input_box = pygame.Rect(250, 300, 140, 32)
+    input_box = pygame.Rect(275, 450, 140, 32)
     color_inactive = pygame.Color('lightskyblue3')
     color_active = pygame.Color('dodgerblue2')
     color = color_inactive
@@ -159,11 +159,11 @@ def show_intro_screen():
 
             for line_index, line in enumerate(welcome_lines):
                 welcome_text = intro_text_font.render(line, True, (255, 255, 255))
-                screen.blit(welcome_text, (50, 100 + line_index * 30))  # Adjust the margin between each line
+                screen.blit(welcome_text, (50, 100 + line_index * 50))  # Adjust the margin between each line
 
             instruction_text = intro_text_font.render("To read the rules, press your 'Enter' key and please input"
                                                       " your name.", True, (255, 255, 255))
-            screen.blit(instruction_text, (50, 260))  # Adjust the position of text
+            screen.blit(instruction_text, (50, 350))  # Adjust the position of text
 
             # Render the input box
             txt_surface = input_font.render(text, True, color)
