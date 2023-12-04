@@ -50,6 +50,9 @@ def get_name():
     print("Welcome to Pikachu's Adventure!")
     print("Enter your username. If you've played before, use the same name to access your previous data.")
     print("\033[92mNew users: please remember your chosen username for future sessions\033[0m")
+    print(
+        "\033[94mAfter entering your username, press your 'Enter' key to continue and head over to the window "
+        "screen.\033[0m")
     user_name = input("Please select a name young trainer: ")
     return user_name
 
