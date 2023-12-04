@@ -7,6 +7,7 @@ import json
 import os
 import re
 import sys
+import game_gui
 
 def get_name() -> str:
     """
@@ -130,6 +131,8 @@ def main():
         elif user_has_profile:
             # add get character info
             pass
+        game_gui.main(trainer_name)
+
 
 if __name__ == '__main__':
     main()
