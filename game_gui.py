@@ -4,6 +4,7 @@ Edro Gonzales A01257468
 """
 import pygame
 import sys
+from game import get_name, generate_character_info
 
 pygame.init()
 
@@ -120,75 +121,27 @@ def redraw_window():
 
 
 def show_intro_screen():
-    intro_text_font = pygame.font.Font(None, 28)  # text font
-    input_font = pygame.font.Font(None, 28)
+    intro_text_font = pygame.font.Font(None, 28)
 
-    input_box = pygame.Rect(346.875, 550, 140, 32)  # update input box in the welcome screen
-    color_inactive = pygame.Color('lightskyblue3')
-    color_active = pygame.Color('dodgerblue2')
-    color = color_inactive
-    active = False
-    text = ''
-    input_prompt = True
-    show_rules_screen = False
+    show_rules_screen = True
 
-    while input_prompt or show_rules_screen:
-        for game_start in pygame.event.get():
-            if game_start.type == pygame.QUIT:
+    while show_rules_screen:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
 
-            if input_prompt and game_start.type == pygame.KEYDOWN:
-                if active:
-                    if game_start.key == pygame.K_RETURN:
-                        # once the player presses 'Enter' key, transition to the main game loop
-                        input_prompt = False
-                        show_rules_screen = True
-                    elif game_start.key == pygame.K_BACKSPACE:
-                        text = text[:-1]
-                    else:
-                        text += game_start.unicode
-
-                elif game_start.key == pygame.K_RETURN:
-                    # activate input box by pressing "Enter" key
-                    active = not active
-                    color = color_active if active else color_inactive
-
-            elif show_rules_screen and game_start.type == pygame.KEYDOWN:
-                # once the player presses any key on the rules screen, proceed to the main game loop
+            if event.type == pygame.KEYDOWN:
+                # transition to the main game loop when any key is pressed
                 show_rules_screen = False
 
         screen.fill((0, 0, 0))
 
-        if input_prompt:
-            # welcome text
-            welcome_lines = [
-                "Welcome to Pikachu's Adventure!",
-                "You will start at the beginning where you will need to find keys to",
-                "fight gym trainers. To find keys, you will encounter pokemon and must",
-                "beat them to get a chance of getting an item. Progress through the",
-                "entire map to fight the Pokemon Champion!"
-            ]
-
-            for line_index, line in enumerate(welcome_lines):
-                welcome_text = intro_text_font.render(line, True, (255, 255, 255))
-                screen.blit(welcome_text, (150, 100 + line_index * 50))  # Adjust the margin between each line
-
-            instruction_text = intro_text_font.render("To read the rules, press your 'Enter' key and please input"
-                                                      " your name.", True, (255, 255, 255))
-            screen.blit(instruction_text, (150, 500))  # Adjust the position of text
-
-            # create the input box
-            txt_surface = input_font.render(text, True, color)
-            width = max(200, txt_surface.get_width() + 10)
-            input_box.w = width
-            screen.blit(txt_surface, (input_box.x + 5, input_box.y + 5))
-            pygame.draw.rect(screen, color, input_box, 2)
-
-        elif show_rules_screen:
+        if show_rules_screen:
             # rules screen
             rules_lines = [
                 "Here are some rules:",
+                "- You may use WASD keys or arrow keys for movement."
                 "- You will see a hospital, where you can recover your HP and save your game.",
                 "- To move onto the next area, you will need to collect keys by beating",
                 " wild pokemon. When you win a battle, you will get a chance of receiving a key.",
@@ -200,10 +153,16 @@ def show_intro_screen():
             ]
 
             for line_index, line in enumerate(rules_lines):
-                rules_text = intro_text_font.render(line, True, (255, 255, 255))
+                # light blue color only for the specified line
+                if "Press any key to continue..." in line:
+                    rules_text = intro_text_font.render(line, True, (28, 10, 194))
+                else:
+                    rules_text = intro_text_font.render(line, True, (255, 255, 255))
+
                 screen.blit(rules_text, (50, 50 + line_index * 50))  # Adjust the margin between each line
 
         pygame.display.flip()
+        pygame.display.update()
         clock.tick(30)
 
 
@@ -258,6 +217,13 @@ def key_handle():
 
 
 def main():
+
+    # Get the user's name using the function from game.py
+    trainer_name = get_name()
+
+    # Generate character information using the function from game.py
+    character_info = generate_character_info(trainer_name)
+
     show_intro_screen()
 
     while game_run:
@@ -266,6 +232,7 @@ def main():
         game_quit()
         key_handle()
         movement()
+
         redraw_window()
 
     pygame.quit()
