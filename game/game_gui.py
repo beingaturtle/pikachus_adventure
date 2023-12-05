@@ -4,7 +4,6 @@ Edro Gonzales A01257468
 """
 import pygame
 import sys
-from utils.generate_character_info import generate_character_info
 
 pygame.init()
 
@@ -269,20 +268,17 @@ def key_handle() -> None:
         left = right = up = down = False
 
 
-def main(trainer_name: dict) -> None:
+def game_gui(trainer_info: dict) -> None:
     """
     Run the game gui for the player to control the gameplay.
 
-    :param trainer_name: a string
-    :precondition: trainer_name must be a string representing the user's name
+    :param trainer_info: a non-empty dictionary representing character information
+    :precondition: trainer_info must be a string representing the user's name
     :postcondition: run the game gui for the player to control the gameplay
     """
     global game_run
 
-    # # generate character information using the function from game.py
-    character_name = generate_character_info(trainer_name)
-
-    show_intro_screen(character_name)
+    show_intro_screen(trainer_info.name)
 
     while game_run:
         clock.tick(40)
@@ -294,7 +290,3 @@ def main(trainer_name: dict) -> None:
         redraw_window()
 
     pygame.quit()
-
-
-if __name__ == '__main__':
-    main()
