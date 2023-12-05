@@ -4,7 +4,7 @@ Edro Gonzales A01257468
 """
 import pygame
 import sys
-from game import get_name, generate_character_info
+from game import generate_character_info
 
 pygame.init()
 
@@ -135,17 +135,15 @@ def redraw_window() -> None:
     pygame.display.update()
 
 
-def show_intro_screen(character_info: dict) -> None:
+def show_intro_screen(trainer_name: dict) -> None:
     """
     Display the introductory screen with a welcome message, game rules, and informs user to proceed with the game.
 
-    :param character_info: a non-empty dictionary
+    :param trainer_name: a non-empty dictionary
     :precondition: character_info is a non-empty dictionary containing the user character information
     :precondition: character_info dictionary must contain a name key
     :postcondition: display a welcome message, game rules, and informs user to proceed with the game
     """
-    # global character_info  # Add this line to use the global variable
-
     intro_text_font = pygame.font.Font(None, 28)
 
     show_rules_screen = True
@@ -165,7 +163,7 @@ def show_intro_screen(character_info: dict) -> None:
         if show_rules_screen:
             # rules screen
             welcome_text = intro_text_font.render("Welcome, ", True, (255, 255, 255))
-            name_text = intro_text_font.render(character_info.get('name'), True, (255, 0, 0))
+            name_text = intro_text_font.render(trainer_name.get('name'), True, (255, 0, 0))
             rules_lines = [
                 "Here are some rules:",
                 "- You may use WASD keys or arrow keys for movement.",
@@ -282,9 +280,9 @@ def main(trainer_name: str) -> None:
     global game_run
 
     # # generate character information using the function from game.py
-    character_info = generate_character_info(trainer_name)
+    character_name = generate_character_info(trainer_name)
 
-    show_intro_screen(character_info)
+    show_intro_screen(character_name)
 
     while game_run:
         clock.tick(40)
