@@ -28,9 +28,10 @@ game_run = True
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+# window title
 pygame.display.set_caption("Pikachu's Adventure!")
 
-# character size control
+# character image and size control
 walkRight = [
     pygame.transform.scale(pygame.image.load('images/character/R1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
     pygame.transform.scale(pygame.image.load('images/character/R2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
