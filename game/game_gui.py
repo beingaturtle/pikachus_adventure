@@ -232,7 +232,7 @@ def key_handle() -> None:
     Receive keyboard input based on the pressed key to update movement for the character.
 
 
-       Handle keyboard input to update movement flags for the game character.
+   Handle keyboard input to update movement flags for the game character.
 
     This function checks for pressed keys using `pygame.key.get_pressed()` and updates
     global movement flags (`left`, `right`, `up`, `down`) accordingly. If keys
@@ -263,16 +263,50 @@ def key_handle() -> None:
         # reset all flags if no movement keys are pressed
         left = right = up = down = False
 
+TARGET_ROW = 5
+TARGET_COLUMN = 5
+
+def is_player_on_target_square() -> bool:
+    """
+    Check if the player is on the target square.
+
+    :return: True if the player is on the target square, False otherwise.
+    """
+    target_x = TARGET_ROW * CELL_SIZE
+    target_y = TARGET_COLUMN * CELL_SIZE
+    return player.colliderect(pygame.Rect(target_x, target_y, CELL_SIZE, CELL_SIZE))
+
+def display_prompt(screen) -> str:
+    """
+    Display a prompt with choices and return the user's selection.
+
+    :param screen: The Pygame screen object.
+    :return: The user's selection as a string.
+    """
+    font = pygame.font.Font(None, 36)
+    choices = "Press 1 for Option A, 2 for Option B"
+    text = font.render(choices, True, (255, 255, 255))
+    screen.blit(text, (100, 100))
+    pygame.display.update()
+
+    choice = None
+    while choice not in ['1', '2']:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_1:
+                    choice = '1'
+                elif event.key == pygame.K_2:
+                    choice = '2'
+    return choice
 
 def game_gui(trainer_info: dict) -> None:
     """
-    Run the game gui for the player to control the gameplay.
+    The main game loop.
 
-    :param trainer_info: a non-empty dictionary representing character information
-    :precondition: trainer_info must be a string representing the user's name
-    :postcondition: run the game gui for the player to control the gameplay
+    :param trainer_info: A dictionary containing trainer information.
     """
     global game_run
+    prompt_shown = False
 
     show_intro_screen(trainer_info.get('name'))
 
@@ -284,5 +318,13 @@ def game_gui(trainer_info: dict) -> None:
         movement()
 
         redraw_window()
+
+        if is_player_on_target_square() and not prompt_shown:
+            user_choice = display_prompt(screen)
+            # Process user choice here
+            prompt_shown = True  # Prevent the prompt from showing again
+
+        elif not is_player_on_target_square():
+            prompt_shown = False  # Reset so the prompt can show again if the player returns to the square
 
     pygame.quit()
