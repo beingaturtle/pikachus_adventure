@@ -264,7 +264,7 @@ def key_handle() -> None:
         left = right = up = down = False
 
 
-def game_gui(trainer_info: str) -> None:
+def game_gui(trainer_info: dict) -> None:
     """
     Run the game gui for the player to control the gameplay.
 
