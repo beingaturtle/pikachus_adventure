@@ -274,7 +274,7 @@ def game_gui(trainer_info: str) -> None:
     """
     global game_run
 
-    show_intro_screen(trainer_info)
+    show_intro_screen(trainer_info.name)
 
     while game_run:
         clock.tick(40)
