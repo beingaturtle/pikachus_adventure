@@ -130,7 +130,7 @@ def redraw_window() -> None:
     pygame.display.update()
 
 
-def show_intro_screen(trainer_name: dict) -> None:
+def show_intro_screen(trainer_name: str) -> None:
     """
     Display the introductory screen with a welcome message, game rules, and informs user to proceed with the game.
 
@@ -264,7 +264,7 @@ def key_handle() -> None:
         left = right = up = down = False
 
 
-def game_gui(trainer_info: dict) -> None:
+def game_gui(trainer_info: str) -> None:
     """
     Run the game gui for the player to control the gameplay.
 
