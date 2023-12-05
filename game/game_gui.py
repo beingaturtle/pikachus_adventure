@@ -158,7 +158,7 @@ def show_intro_screen(trainer_name: dict) -> None:
         if show_rules_screen:
             # rules screen
             welcome_text = intro_text_font.render("Welcome, ", True, (255, 255, 255))
-            name_text = intro_text_font.render(trainer_name.get('name'), True, (255, 0, 0))
+            name_text = intro_text_font.render(trainer_name, True, (255, 0, 0))
             rules_lines = [
                 "Here are some rules:",
                 "- You may use WASD keys or arrow keys for movement.",
@@ -274,7 +274,7 @@ def game_gui(trainer_info: dict) -> None:
     """
     global game_run
 
-    show_intro_screen(trainer_info.name)
+    show_intro_screen(trainer_info)
 
     while game_run:
         clock.tick(40)

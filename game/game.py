@@ -4,7 +4,7 @@ Edro Gonzales A01257468
 Ian Chan A00910012
 """
 import sys
-from game.game_gui import game_gui
+from game_gui import game_gui
 from utils.get_name import get_name
 from utils.user_has_file import user_has_file
 from utils.generate_character_info import generate_character_info
@@ -23,7 +23,7 @@ def main():
         elif user_has_profile:
             # add get character info
             pass
-        game_gui(character_info)
+        game_gui(trainer_name)
 
 
 if __name__ == '__main__':
