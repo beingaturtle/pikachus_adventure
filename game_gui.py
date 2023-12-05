@@ -67,7 +67,13 @@ player = pygame.Rect((player_width, player_column, PLAYER_WIDTH, PLAYER_HEIGHT))
 character_info = ""
 
 
-def draw_character():
+def draw_character() -> None:
+    """
+    Draw the character on the screen based on the current state and direction it is facing.
+
+    postcondition: character is drawn on the screen facing north, south, east, or west
+
+    """
     global walkCount
     global facing_left
     global facing_right
@@ -111,7 +117,12 @@ def draw_character():
     pygame.display.update()
 
 
-def redraw_window():
+def redraw_window() -> None:
+    """
+    Create a 11x11 game board and refresh the display with an updated background
+
+    :postcondition: create a 11x11 game board and refresh the display with an updated background
+    """
     # update background and draw grid
     screen.fill((0, 0, 0))
     for row in range(GRID_SIZE):
@@ -124,7 +135,15 @@ def redraw_window():
     pygame.display.update()
 
 
-def show_intro_screen(character_info):
+def show_intro_screen(character_info: dict) -> None:
+    """
+    Display the introductory screen with a welcome message, game rules, and informs user to proceed with the game.
+
+    :param character_info: a non-empty dictionary
+    :precondition: character_info is a non-empty dictionary containing the user character information
+    :precondition: character_info dictionary must contain a name key
+    :postcondition: display a welcome message, game rules, and informs user to proceed with the game
+    """
     # global character_info  # Add this line to use the global variable
 
     intro_text_font = pygame.font.Font(None, 28)
@@ -177,7 +196,12 @@ def show_intro_screen(character_info):
         clock.tick(30)
 
 
-def game_quit():
+def game_quit() -> None:
+    """
+    Exit the game by closing the window or pressing the Escape key.
+
+    :postcondition: exits the game after closing the window or pressing the Escape key
+    """
     global game_run
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -187,7 +211,12 @@ def game_quit():
                 game_run = False
 
 
-def movement():
+def movement() -> None:
+    """
+    Update the character position based on movement keys.
+
+    :postcondition: update character position based on movement keys
+    """
     global left, right, up, down, player, walkCount
 
     # movement keys
@@ -205,7 +234,22 @@ def movement():
         walkCount += 1
 
 
-def key_handle():
+def key_handle() -> None:
+    """
+    Receive keyboard input based on the pressed key to update movement for the character.
+
+
+       Handle keyboard input to update movement flags for the game character.
+
+    This function checks for pressed keys using `pygame.key.get_pressed()` and updates
+    global movement flags (`left`, `right`, `up`, `down`) accordingly. If keys
+    corresponding to left, right, up, or down movement are pressed, the respective flag
+    is set to True, and all other movement flags are set to False. If no movement keys
+    are pressed, all movement flags are reset to False.
+
+    :postcondition: receive keyboard input and update the movement of the character based on the pressed key
+    :return:
+    """
     global left, right, up, down
 
     keys = pygame.key.get_pressed()
@@ -227,7 +271,14 @@ def key_handle():
         left = right = up = down = False
 
 
-def main(trainer_name):
+def main(trainer_name: str) -> None:
+    """
+    Run the game gui for the player to control the character.
+
+    :param trainer_name: a string
+    :precondition: trainer_name must be a string representing the user's name
+    :postcondition: run the game gui for the player to control the character
+    """
     global game_run
 
     # # generate character information using the function from game.py
