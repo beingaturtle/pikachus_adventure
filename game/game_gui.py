@@ -4,7 +4,7 @@ Edro Gonzales A01257468
 """
 import pygame
 import sys
-from game import generate_character_info
+from utils.generate_character_info import generate_character_info
 
 pygame.init()
 
@@ -33,26 +33,26 @@ pygame.display.set_caption("Pikachu's Adventure!")
 
 # character image and size control
 walkRight = [
-    pygame.transform.scale(pygame.image.load('images/character/R1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
-    pygame.transform.scale(pygame.image.load('images/character/R2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+    pygame.transform.scale(pygame.image.load('../images/character/R1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
+    pygame.transform.scale(pygame.image.load('../images/character/R2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
 ]
 walkLeft = [
-    pygame.transform.scale(pygame.image.load('images/character/L1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
-    pygame.transform.scale(pygame.image.load('images/character/L2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+    pygame.transform.scale(pygame.image.load('../images/character/L1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
+    pygame.transform.scale(pygame.image.load('../images/character/L2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
 ]
 walkUp = [
-    pygame.transform.scale(pygame.image.load('images/character/U1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
-    pygame.transform.scale(pygame.image.load('images/character/U2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+    pygame.transform.scale(pygame.image.load('../images/character/U1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
+    pygame.transform.scale(pygame.image.load('../images/character/U2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
 ]
 walkDown = [
-    pygame.transform.scale(pygame.image.load('images/character/D1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
-    pygame.transform.scale(pygame.image.load('images/character/D2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+    pygame.transform.scale(pygame.image.load('../images/character/D1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
+    pygame.transform.scale(pygame.image.load('../images/character/D2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
 ]
 
-charRight = pygame.transform.scale(pygame.image.load('images/character/Rstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
-charLeft = pygame.transform.scale(pygame.image.load('images/character/Lstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
-charUp = pygame.transform.scale(pygame.image.load('images/character/Ustill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
-charDown = pygame.transform.scale(pygame.image.load('images/character/Dstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+charRight = pygame.transform.scale(pygame.image.load('../images/character/Rstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+charLeft = pygame.transform.scale(pygame.image.load('../images/character/Lstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+charUp = pygame.transform.scale(pygame.image.load('../images/character/Ustill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+charDown = pygame.transform.scale(pygame.image.load('../images/character/Dstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
 
 # direction character is facing
 facing_left = False
@@ -269,7 +269,7 @@ def key_handle() -> None:
         left = right = up = down = False
 
 
-def main(trainer_name: str) -> None:
+def main(trainer_name: dict) -> None:
     """
     Run the game gui for the player to control the gameplay.
 
