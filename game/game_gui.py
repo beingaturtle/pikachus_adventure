@@ -1,7 +1,3 @@
-"""
-Ian Chan A00910012
-Edro Gonzales A01257468
-"""
 import pygame
 import sys
 

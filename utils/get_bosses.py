@@ -1,8 +1,3 @@
-"""
-Pikaachu's Adventure
-Edro Gonzales A01257468
-Ian Chan A00910012
-"""
 character_info = {
     "name": "hi",
     "health": 100,
