@@ -273,11 +273,11 @@ def key_handle() -> None:
 
 def main(trainer_name: str) -> None:
     """
-    Run the game gui for the player to control the character.
+    Run the game gui for the player to control the gameplay.
 
     :param trainer_name: a string
     :precondition: trainer_name must be a string representing the user's name
-    :postcondition: run the game gui for the player to control the character
+    :postcondition: run the game gui for the player to control the gameplay
     """
     global game_run
 
