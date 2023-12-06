@@ -20,7 +20,7 @@ def generate_character_info(name: str) -> dict:
     character_info = {
         "name": name,
         "health": 100,
-        "coordinates": (2, 1),
+        "coordinates": [2, 1],
         "skill": "tackle",
         "attack_power": 10,
         "defense": 10,

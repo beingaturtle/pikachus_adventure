@@ -12,7 +12,6 @@ def get_name(screen) -> str:
     :return: string representing the typed username of user.
     :raise ValueError: if username has anything besides numbers, letters, hyphens, and underscores.
     """
-
     pygame.init()
     font = pygame.font.Font(None, 24)
     clock = pygame.time.Clock()

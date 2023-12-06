@@ -7,7 +7,6 @@ character_info = {
     "defense": 10,
     "keys": 13,
     "total_experience": 0,
-    # "bosses": [1, 2, 3, 4]
     "current_boss": 0
 }
 
