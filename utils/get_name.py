@@ -13,10 +13,10 @@ def get_name(screen) -> str:
     """
 
     pygame.init()
-    font = pygame.font.Font(None, 36)
+    font = pygame.font.Font(None, 24)
     clock = pygame.time.Clock()
-    input_box = pygame.Rect(100, 150, 140, 32)
-    color_inactive = pygame.Color('lightskyblue3')
+    input_box = pygame.Rect(50, 295, 140, 32)
+    color_inactive = pygame.Color((255, 255, 255))
     color_active = pygame.Color('dodgerblue2')
     color = color_inactive
     active = False
@@ -47,21 +47,19 @@ def get_name(screen) -> str:
 
         screen.fill((0, 0, 0))
 
-        welcome = "Welcome to Pikachu's Adventure!"
-        msg_surface = font.render(welcome, True, pygame.Color('white'))
-        screen.blit(msg_surface, (100, 100))
+        message_lines = [
+            "Welcome to Pikachu's Adventure!",
+            "Enter your username",
+            "If you've played before use the same name to access your previous data.",
+            "",
+            "After entering your username, press 'Enter' to continue and head over to the window screen.",
+            "New users: please remember your chosen username for future sessions."
+        ]
 
-        message = "Enter your username. If you've played before, use the same name to access your previous data."
-        msg_surface = font.render(message, True, pygame.Color('white'))
-        screen.blit(msg_surface, (50, 200))
+        for line_index, line in enumerate(message_lines):
+            message_text = font.render(line, True, (255, 255, 255))
+            screen.blit(message_text, (50, 50 + (line_index + 2) * 50))
 
-        additional_msg = "After entering your username, press 'Enter' to continue and head over to the window screen."
-        msg_surface = font.render(additional_msg, True, pygame.Color('white'))
-        screen.blit(msg_surface, (50, 250))
-
-        new_user_msg = "New users: please remember your chosen username for future sessions."
-        msg_surface = font.render(new_user_msg, True, pygame.Color('white'))
-        screen.blit(msg_surface, (50, 300))
 
         txt_surface = font.render(text, True, color)
         width = max(200, txt_surface.get_width() + 10)
