@@ -12,9 +12,10 @@ def get_name(screen) -> str:
     :raise ValueError: if username has anything besides numbers, letters, hyphens, and underscores.
     """
 
+    pygame.init()
     font = pygame.font.Font(None, 36)
     clock = pygame.time.Clock()
-    input_box = pygame.Rect(100, 100, 140, 32)
+    input_box = pygame.Rect(100, 150, 140, 32)
     color_inactive = pygame.Color('lightskyblue3')
     color_active = pygame.Color('dodgerblue2')
     color = color_inactive
@@ -44,11 +45,28 @@ def get_name(screen) -> str:
                     else:
                         text += event.unicode
 
-        screen.fill((255, 255, 255))
+        screen.fill((0, 0, 0))
+
+        welcome = "Welcome to Pikachu's Adventure!"
+        msg_surface = font.render(welcome, True, pygame.Color('white'))
+        screen.blit(msg_surface, (100, 100))
+
+        message = "Enter your username. If you've played before, use the same name to access your previous data."
+        msg_surface = font.render(message, True, pygame.Color('white'))
+        screen.blit(msg_surface, (50, 200))
+
+        additional_msg = "After entering your username, press 'Enter' to continue and head over to the window screen."
+        msg_surface = font.render(additional_msg, True, pygame.Color('white'))
+        screen.blit(msg_surface, (50, 250))
+
+        new_user_msg = "New users: please remember your chosen username for future sessions."
+        msg_surface = font.render(new_user_msg, True, pygame.Color('white'))
+        screen.blit(msg_surface, (50, 300))
+
         txt_surface = font.render(text, True, color)
-        width = max(200, txt_surface.get_width()+10)
+        width = max(200, txt_surface.get_width() + 10)
         input_box.w = width
-        screen.blit(txt_surface, (input_box.x+5, input_box.y+5))
+        screen.blit(txt_surface, (input_box.x + 5, input_box.y + 5))
         pygame.draw.rect(screen, color, input_box, 2)
 
         pygame.display.flip()

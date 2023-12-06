@@ -125,7 +125,6 @@ def redraw_window() -> None:
 
     :postcondition: create a 11x11 game board and refresh the display with an updated background
     """
-    # update background and draw grid
     screen.fill((0, 0, 0))
     for row in range(GRID_SIZE):
         for height in range(GRID_SIZE):
@@ -307,6 +306,7 @@ def display_prompt(pygame_screen) -> str:
     return choice
 
 def main():
+    """Drives the program"""
     global game_run
     prompt_shown = False
 
