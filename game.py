@@ -313,8 +313,6 @@ def information_box(character_status):
     pygame.draw.rect(screen, (255, 255, 204), (0, 925, SCREEN_WIDTH, SCREEN_HEIGHT - 925))
     display_pikachu_stats(screen, player, character_status)
 
-
-
     pygame.display.update()
 
 
