@@ -16,7 +16,7 @@ class TestPikachuStats(TestCase):
             "defense": 10,
             "keys": 0,
             "total_experience": 0,
-            "bossesKilled": 0
+            "bosses_beaten": 0
         }
         display_pikachu_stats(new_character)
         result = mock_output.getvalue()
@@ -41,7 +41,7 @@ class TestPikachuStats(TestCase):
             "defense": 30,
             "keys": 6,
             "total_experience": 29,
-            "bossesKilled": 2
+            "bosses_beaten": 2
         }
         display_pikachu_stats(played_character)
         result = mock_output.getvalue()

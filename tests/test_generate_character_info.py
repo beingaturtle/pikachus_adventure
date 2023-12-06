@@ -16,7 +16,7 @@ class TestGenerateCharacterInfo(TestCase):
             "defense": 10,
             "keys": 0,
             "total_experience": 0,
-            "bossesKilled": 0
+            "bosses_beaten": 0
         }
         result = generate_character_info(name)
         self.assertEqual(result, expected_output)

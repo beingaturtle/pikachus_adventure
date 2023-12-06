@@ -13,7 +13,7 @@ class TestGetSaveFile(TestCase):
             "defense": 10,
             "keys": 0,
             "total_experience": 0,
-            "bossesKilled": 0
+            "bosses_beaten": 0
         }
         result = get_save_file(trainer_name)
 
