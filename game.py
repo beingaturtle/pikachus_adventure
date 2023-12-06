@@ -63,7 +63,7 @@ facing_up = False
 facing_down = False
 
 # establish character
-player = None
+player = pygame.Rect(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT)
 
 def draw_character() -> None:
     """
