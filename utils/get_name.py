@@ -1,6 +1,7 @@
 import pygame
 import re
 
+
 def get_name(screen) -> str:
     """
     Gets the name of the user within a Pygame window.
@@ -38,7 +39,8 @@ def get_name(screen) -> str:
                 if active:
                     if event.key == pygame.K_RETURN:
                         if not re.match(r'^[a-zA-Z\d_-]+$', text):
-                            raise ValueError("Name must not have any spaces and contain only letters, numbers, underscores '_', or hyphens '-'")
+                            raise ValueError(
+                                "Name must not have any spaces and contain only letters, numbers, underscores '_', or hyphens '-'")
                         done = True
                     elif event.key == pygame.K_BACKSPACE:
                         text = text[:-1]
@@ -50,16 +52,15 @@ def get_name(screen) -> str:
         message_lines = [
             "Welcome to Pikachu's Adventure!",
             "Enter your username",
-            "If you've played before use the same name to access your previous data.",
+            "If you've played before, use the same name to access your previous data.",
             "",
-            "After entering your username, press 'Enter' to continue and head over to the window screen.",
+            "After entering your username, press 'Enter' to continue.",
             "New users: please remember your chosen username for future sessions."
         ]
 
         for line_index, line in enumerate(message_lines):
             message_text = font.render(line, True, (255, 255, 255))
             screen.blit(message_text, (50, 50 + (line_index + 2) * 50))
-
 
         txt_surface = font.render(text, True, color)
         width = max(200, txt_surface.get_width() + 10)
