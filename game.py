@@ -283,17 +283,17 @@ def is_player_on_target_square() -> bool:
     target_y = TARGET_COLUMN * CELL_SIZE
     return player.colliderect(pygame.Rect(target_x, target_y, CELL_SIZE, CELL_SIZE))
 
-def display_prompt(screen) -> str:
+def display_prompt(pygame_screen) -> str:
     """
     Display a prompt with choices and return the user's selection.
 
-    :param screen: The Pygame screen object.
+    :param pygame_screen: The Pygame screen object.
     :return: The user's selection as a string.
     """
     font = pygame.font.Font(None, 36)
     choices = "Press 1 for Option A, 2 for Option B"
     text = font.render(choices, True, (255, 255, 255))
-    screen.blit(text, (100, 100))
+    pygame_screen.blit(text, (100, 100))
     pygame.display.update()
 
     choice = None
@@ -306,16 +306,25 @@ def display_prompt(screen) -> str:
                     choice = '2'
     return choice
 
-def game_gui(trainer_info: dict) -> None:
-    """
-    The main game loop.
-
-    :param trainer_info: A dictionary containing trainer information.
-    """
+def main():
     global game_run
     prompt_shown = False
 
-    show_intro_screen(trainer_info.get('name'))
+    try:
+        trainer_name = get_name(screen)
+    except ValueError as e:
+        print("Invalid Input: {}\nExiting by returning None".format(e), file=sys.stderr)
+        return None
+
+    user_has_profile = user_has_file(trainer_name)
+    character_info = {}
+    if not user_has_profile:
+        character_info = generate_character_info(trainer_name)
+    elif user_has_profile:
+        pass
+
+
+    show_intro_screen(character_info['name'])
 
     while game_run:
         clock.tick(40)
@@ -328,31 +337,13 @@ def game_gui(trainer_info: dict) -> None:
 
         if is_player_on_target_square() and not prompt_shown:
             user_choice = display_prompt(screen)
-            # Process user choice here
-            prompt_shown = True  # Prevent the prompt from showing again
+            prompt_shown = True
 
         elif not is_player_on_target_square():
-            prompt_shown = False  # Reset so the prompt can show again if the player returns to the square
-
+            prompt_shown = False
     pygame.quit()
 
-def main():
-    try:
-        trainer_name = get_name()
-    except ValueError as e:
-        print("Invalid Input: {}\nExiting by returning None".format(e), file=sys.stderr)
-        return None
-    else:
-        user_has_profile = user_has_file(trainer_name)
-        character_info = {}
-        if not user_has_profile:
-            character_info = generate_character_info(trainer_name)
-        elif user_has_profile:
-            # add get character info
-            pass
-        game_gui(character_info)
-
 if __name__ == '__main__':
-    pygame.init()  # Initialize pygame before calling main()
+    pygame.init()
     main()
-    pygame.quit()  # Quit pygame after main() completes
+    pygame.quit()

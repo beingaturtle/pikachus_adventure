@@ -25,7 +25,7 @@ def generate_character_info(name: str) -> dict:
         "defense": 10,
         "keys": 0,
         "total_experience": 0,
-        "bosses": [1, 2, 3, 4]
+        "bossesKilled": 0
     }
 
     file_name = os.path.join("./saved", f"{name}_info.json")
