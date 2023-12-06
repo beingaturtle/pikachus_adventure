@@ -117,7 +117,7 @@ def draw_character() -> None:
     pygame.display.update()
 
 
-def redraw_window() -> None:
+def redraw_window(character_info) -> None:
     """
     Create a 11x11 game board and refresh the display with an updated background
 
@@ -342,7 +342,7 @@ def main():
         movement()
         information_box(character_info)
 
-        redraw_window()
+        redraw_window(character_info)
 
         if is_player_on_target_square() and not prompt_shown:
             user_choice = display_prompt(screen)
