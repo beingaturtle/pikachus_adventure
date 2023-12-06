@@ -117,7 +117,6 @@ def draw_character() -> None:
 
     pygame.display.update()
 
-
 def redraw_window(character_info) -> None:
     """
     Create a 11x11 game board and refresh the display with an updated background
@@ -134,7 +133,6 @@ def redraw_window(character_info) -> None:
     information_box(character_info)  # draw a rectangle to give more information like status, health, etc.
 
     pygame.display.update()
-
 
 def show_intro_screen(trainer_name: str) -> None:
     """
@@ -194,7 +192,6 @@ def show_intro_screen(trainer_name: str) -> None:
         pygame.display.update()
         clock.tick(30)
 
-
 def game_quit() -> None:
     """
     Exit the game by closing the window or pressing the Escape key.
@@ -208,7 +205,6 @@ def game_quit() -> None:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 game_run = False
-
 
 def movement() -> None:
     """
@@ -231,7 +227,6 @@ def movement() -> None:
     elif down and player[1] < 925 - PLAYER_HEIGHT:
         player.move_ip(0, SPEED)
         walkCount += 1
-
 
 def key_handle() -> None:
     """
@@ -273,7 +268,6 @@ def key_handle() -> None:
 TARGET_ROW = 5
 TARGET_COLUMN = 5
 
-
 def is_player_on_target_square() -> bool:
     """
     Check if the player is on the target square.
@@ -283,7 +277,6 @@ def is_player_on_target_square() -> bool:
     target_x = TARGET_ROW * CELL_SIZE
     target_y = TARGET_COLUMN * CELL_SIZE
     return player.colliderect(pygame.Rect(target_x, target_y, CELL_SIZE, CELL_SIZE))
-
 
 def display_prompt(pygame_screen) -> str:
     """
@@ -328,9 +321,10 @@ def main():
         return None
 
     user_has_profile = user_has_file(trainer_name)
+
     if not user_has_profile:
         character_info = generate_character_info(trainer_name)
-    else:
+    elif user_has_profile:
         character_info = get_save_file(trainer_name)
 
     show_intro_screen(character_info['name'])
