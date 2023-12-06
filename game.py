@@ -5,6 +5,8 @@ Ian Chan A00910012
 """
 import sys
 import pygame
+
+from utils.display_pikachu_stats import display_pikachu_stats
 from utils.get_name import get_name
 from utils.user_has_file import user_has_file
 from utils.generate_character_info import generate_character_info
@@ -131,7 +133,7 @@ def redraw_window() -> None:
                              (row * CELL_SIZE, height * CELL_SIZE, CELL_SIZE, CELL_SIZE), 1)
 
     draw_character()  # draw the character
-    information_box() #draw a rectangle to give more information like status, health, etc.
+    information_box(character_info) #draw a rectangle to give more information like status, health, etc.
 
     pygame.display.update()
 
@@ -309,8 +311,10 @@ def display_prompt(pygame_screen) -> str:
     return choice
 
 
-def information_box():
+def information_box(character_status):
     pygame.draw.rect(screen, (255, 255, 204), (0, 925, SCREEN_WIDTH, SCREEN_HEIGHT - 925))
+    display_pikachu_stats(character_status)
+
     pygame.display.update()
 
 
@@ -340,7 +344,7 @@ def main():
         game_quit()
         key_handle()
         movement()
-        information_box()
+        information_box(character_info)
 
         redraw_window()
 
