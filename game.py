@@ -9,10 +9,9 @@ from utils.get_name import get_name
 from utils.user_has_file import user_has_file
 from utils.generate_character_info import generate_character_info
 
-
 # create constants and set up screen and movement
 SCREEN_WIDTH = 925
-SCREEN_HEIGHT = 925
+SCREEN_HEIGHT = 1050
 GRID_SIZE = 11
 CELL_SIZE = SCREEN_WIDTH // GRID_SIZE
 clock = pygame.time.Clock()
@@ -132,6 +131,7 @@ def redraw_window() -> None:
                              (row * CELL_SIZE, height * CELL_SIZE, CELL_SIZE, CELL_SIZE), 1)
 
     draw_character()  # draw the character
+    information_box() #draw a rectangle to give more information like status, health, etc.
 
     pygame.display.update()
 
@@ -228,7 +228,7 @@ def movement() -> None:
     elif up and player[1] > SPEED - SPEED:
         player.move_ip(0, -SPEED)
         walkCount += 1
-    elif down and player[1] < SCREEN_HEIGHT - PLAYER_HEIGHT:
+    elif down and player[1] < 925 - PLAYER_HEIGHT:
         player.move_ip(0, SPEED)
         walkCount += 1
 
@@ -269,8 +269,10 @@ def key_handle() -> None:
         # reset all flags if no movement keys are pressed
         left = right = up = down = False
 
+
 TARGET_ROW = 5
 TARGET_COLUMN = 5
+
 
 def is_player_on_target_square() -> bool:
     """
@@ -281,6 +283,7 @@ def is_player_on_target_square() -> bool:
     target_x = TARGET_ROW * CELL_SIZE
     target_y = TARGET_COLUMN * CELL_SIZE
     return player.colliderect(pygame.Rect(target_x, target_y, CELL_SIZE, CELL_SIZE))
+
 
 def display_prompt(pygame_screen) -> str:
     """
@@ -305,6 +308,12 @@ def display_prompt(pygame_screen) -> str:
                     choice = '2'
     return choice
 
+
+def information_box():
+    pygame.draw.rect(screen, (255, 255, 204), (0, 925, SCREEN_WIDTH, SCREEN_HEIGHT - 925))
+    pygame.display.update()
+
+
 def main():
     """Drives the program"""
     global game_run
@@ -323,7 +332,6 @@ def main():
     elif user_has_profile:
         pass
 
-
     show_intro_screen(character_info['name'])
 
     while game_run:
@@ -332,6 +340,7 @@ def main():
         game_quit()
         key_handle()
         movement()
+        information_box()
 
         redraw_window()
 
@@ -342,6 +351,7 @@ def main():
         elif not is_player_on_target_square():
             prompt_shown = False
     pygame.quit()
+
 
 if __name__ == '__main__':
     pygame.init()
