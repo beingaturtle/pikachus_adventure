@@ -18,8 +18,6 @@ SCREEN_HEIGHT = 1050
 GRID_SIZE = 11
 CELL_SIZE = SCREEN_WIDTH // GRID_SIZE
 clock = pygame.time.Clock()
-player_width = 0
-player_column = 0
 PLAYER_WIDTH = 48
 PLAYER_HEIGHT = 48
 SPEED = 6
@@ -64,9 +62,8 @@ facing_right = False
 facing_up = False
 facing_down = False
 
-# character
-player = pygame.Rect((player_width, player_column, PLAYER_WIDTH, PLAYER_HEIGHT))
-
+# establish character
+player = None
 
 def draw_character() -> None:
     """
@@ -312,6 +309,7 @@ def information_box(character_status):
 def main():
     """Drives the program"""
     global game_run
+    global player
     prompt_shown = False
 
     try:
@@ -327,6 +325,9 @@ def main():
         character_info = generate_character_info(trainer_name)
     elif user_has_profile:
         character_info = get_save_file(trainer_name)
+
+    player = pygame.Rect(
+        (character_info['coordinates'][0], character_info['coordinates'][1], PLAYER_WIDTH, PLAYER_HEIGHT))
 
     show_intro_screen(character_info['name'])
 
