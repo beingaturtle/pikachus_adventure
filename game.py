@@ -258,18 +258,14 @@ def key_handle() -> None:
         left = right = up = down = False
 
 
-TARGET_ROW = 5
-TARGET_COLUMN = 5
-
-
-def is_player_on_target_square() -> bool:
+def is_player_on_target_square(target_row, target_column) -> bool:
     """
     Check if the player is on the target square.
 
     :return: True if the player is on the target square, otherwise, False
     """
-    target_x = TARGET_ROW * CELL_SIZE
-    target_y = TARGET_COLUMN * CELL_SIZE
+    target_x = target_row * CELL_SIZE
+    target_y = target_column * CELL_SIZE
     return player.colliderect(pygame.Rect(target_x, target_y, CELL_SIZE, CELL_SIZE))
 
 def information_box(character_status: dict) -> None:
@@ -290,6 +286,8 @@ def main():
     """Drives the program"""
     global game_run
     global player
+    target_row = 5
+    target_column = 5
     prompt_shown = False
 
     try:
@@ -321,11 +319,11 @@ def main():
 
         redraw_window(character_info)
 
-        if is_player_on_target_square() and not prompt_shown:
+        if is_player_on_target_square(target_row, target_column) and not prompt_shown:
             user_choice = display_prompt(screen)
             prompt_shown = True
 
-        elif not is_player_on_target_square():
+        elif not is_player_on_target_square(target_row, target_column):
             prompt_shown = False
     pygame.quit()
 
