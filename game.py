@@ -296,7 +296,14 @@ def display_prompt(pygame_screen) -> str:
     return choice
 
 
-def information_box(character_status):
+def information_box(character_status: dict) -> None:
+    """
+    Displays an informative box at the bottom of the screen to show Pikachu's status.
+
+    :param character_status: a non-empty dictionary
+    :precondition: character_status must be a non-empty dictionary that represents Pikachu's status
+    :postcondition: display an informative box at the bottom of the screen to show Pikachu's status
+    """
     pygame.draw.rect(screen, (255, 255, 204), (0, 925, SCREEN_WIDTH, SCREEN_HEIGHT - 925))
     display_pikachu_stats(screen, player, character_status)
 
