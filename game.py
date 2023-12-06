@@ -70,8 +70,7 @@ def draw_character() -> None:
     """
     Draw the character on the screen based on the current state and direction it is facing.
 
-    postcondition: character is drawn on the screen facing north, south, east, or west
-
+    :postcondition: character is drawn on the screen facing north, south, east, or west
     """
     global walkCount
     global facing_left
@@ -138,9 +137,8 @@ def show_intro_screen(trainer_name: str) -> None:
     """
     Display the introductory screen with a welcome message, game rules, and informs user to proceed with the game.
 
-    :param trainer_name: a non-empty dictionary
-    :precondition: character_info is a non-empty dictionary containing the user character information
-    :precondition: character_info dictionary must contain a name key
+    :param trainer_name: a string
+    :precondition: trainer_name a non-empty string containing the user's name
     :postcondition: display a welcome message, game rules, and informs user to proceed with the game
     """
     intro_text_font = pygame.font.Font(None, 28)
@@ -197,7 +195,7 @@ def game_quit() -> None:
     """
     Exit the game by closing the window or pressing the Escape key.
 
-    :postcondition: exits the game after closing the window or pressing the Escape key
+    :postcondition: exit the game after closing the window or pressing the Escape key
     """
     global game_run
     for event in pygame.event.get():
@@ -236,16 +234,7 @@ def key_handle() -> None:
     Receive keyboard input based on the pressed key to update movement for the character.
 
 
-   Handle keyboard input to update movement flags for the game character.
-
-    This function checks for pressed keys using `pygame.key.get_pressed()` and updates
-    global movement flags (`left`, `right`, `up`, `down`) accordingly. If keys
-    corresponding to left, right, up, or down movement are pressed, the respective flag
-    is set to True, and all other movement flags are set to False. If no movement keys
-    are pressed, all movement flags are reset to False.
-
     :postcondition: receive keyboard input and update the movement of the character based on the pressed key
-    :return:
     """
     global left, right, up, down
 
@@ -276,7 +265,7 @@ def is_player_on_target_square() -> bool:
     """
     Check if the player is on the target square.
 
-    :return: True if the player is on the target square, False otherwise.
+    :return: True if the player is on the target square, otherwise, False
     """
     target_x = TARGET_ROW * CELL_SIZE
     target_y = TARGET_COLUMN * CELL_SIZE
@@ -287,8 +276,8 @@ def display_prompt(pygame_screen) -> str:
     """
     Display a prompt with choices and return the user's selection.
 
-    :param pygame_screen: The Pygame screen object.
-    :return: The user's selection as a string.
+    :param pygame_screen: The pygame screen object
+    :return: The user's selection as a string
     """
     font = pygame.font.Font(None, 36)
     choices = "Press 1 for Option A, 2 for Option B"
