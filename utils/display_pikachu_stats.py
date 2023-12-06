@@ -3,13 +3,13 @@ import pygame
 
 def display_pikachu_stats(pygame_screen, player, character_info: dict) -> None:
     """
-    Display Pikachu's coordinate and current stats.
+    Display Pikachu's current stats.
 
     :param pygame_screen: pygame screen object where the name will be inputted and displayed
     :param player: pygame rect object where the object represents Pikachu's coordinates and size
     :param character_info: a non-empty dictionary
     :precondition: character_info must be a non-empty dictionary containing the user character information
-    :postcondition: display Pikachu's coordinate current stats
+    :postcondition: display Pikachu's current stats
     """
     font = pygame.font.Font(None, 25)
     text = font.render(f"Pikachu's stats:", True, (0, 0, 0))
