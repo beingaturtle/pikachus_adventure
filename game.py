@@ -329,7 +329,7 @@ def main():
     character_info = {}
     if not user_has_profile:
         character_info = generate_character_info(trainer_name)
-    elif user_has_profile:
+    else:
         pass
 
     show_intro_screen(character_info['name'])

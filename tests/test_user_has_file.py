@@ -1,5 +1,5 @@
 from unittest import TestCase
-from game import user_has_file
+from utils.user_has_file import user_has_file
 
 class TestUserHasFile(TestCase):
     def test_user_file_exists(self):
