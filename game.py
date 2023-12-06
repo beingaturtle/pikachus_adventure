@@ -10,6 +10,7 @@ from utils.display_pikachu_stats import display_pikachu_stats
 from utils.get_name import get_name
 from utils.user_has_file import user_has_file
 from utils.generate_character_info import generate_character_info
+from utils.get_save_file import get_save_file
 
 # create constants and set up screen and movement
 SCREEN_WIDTH = 925
@@ -65,10 +66,6 @@ facing_down = False
 
 # character
 player = pygame.Rect((player_width, player_column, PLAYER_WIDTH, PLAYER_HEIGHT))
-
-# character_info
-character_info = ""
-
 
 def draw_character() -> None:
     """
@@ -330,11 +327,10 @@ def main():
         return None
 
     user_has_profile = user_has_file(trainer_name)
-    character_info = {}
     if not user_has_profile:
         character_info = generate_character_info(trainer_name)
     else:
-        pass
+        character_info = get_save_file(trainer_name)
 
     show_intro_screen(character_info['name'])
 

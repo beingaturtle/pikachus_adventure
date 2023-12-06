@@ -1,10 +1,7 @@
 {
-    "name": "user_exist",
+    "name": "test_character-8517",
     "health": 100,
-    "coordinates": [
-        2,
-        1
-    ],
+    "coordinates": [ 2, 1 ],
     "skill": "tackle",
     "attack_power": 10,
     "defense": 10,
