@@ -6,11 +6,11 @@ def get_name(screen) -> str:
     """
     Gets the name of the user within a Pygame window.
 
-    :param screen: Pygame screen object where the name will be inputted and displayed.
-    :postcondition: user is prompted for username in the Pygame window.
-    :postcondition: checks if username has anything besides numbers, letters, hyphens, and underscores.
-    :return: string representing the typed username of user.
-    :raise ValueError: if username has anything besides numbers, letters, hyphens, and underscores.
+    :param screen: Pygame screen object where the name will be inputted and displayed
+    :postcondition: user is prompted for username in the Pygame window
+    :postcondition: checks if username has anything besides numbers, letters, hyphens, and underscores
+    :return: string representing the typed username of user
+    :raise ValueError: if username has anything besides numbers, letters, hyphens, and underscores
     """
     pygame.init()
     font = pygame.font.Font(None, 24)
