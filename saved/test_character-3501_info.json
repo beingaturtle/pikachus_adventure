@@ -1,5 +1,5 @@
 {
-    "name": "edro",
+    "name": "test_character-3501",
     "health": 100,
     "coordinates": [
         2,
@@ -10,5 +10,5 @@
     "defense": 10,
     "keys": 0,
     "total_experience": 0,
-    "bossesKilled": 2
+    "bossesKilled": 0
 }

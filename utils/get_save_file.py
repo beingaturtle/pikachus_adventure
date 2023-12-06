@@ -11,8 +11,8 @@ def get_save_file(trainer_name: str) -> dict:
     :postcondition: converts the json data into a dictionary
     :return: dictionary containing game character information
     """
-    file_name = os.path.join("../saved", f"{trainer_name}_info.json")
-
+    saved_directory_path = os.path.join(os.path.dirname(__file__), '..', 'saved')
+    file_name = os.path.join(saved_directory_path, f"{trainer_name}_info.json")
     with open(file_name) as file_object:
         character_info = json.load(file_object)
 

@@ -15,6 +15,7 @@ def user_has_file(name: str) -> bool:
     >>> user_has_file("user_does_not_exist")
     False
     """
-    file_path = os.path.join("../saved", f"{name}_info.json")
+    saved_directory_path = os.path.join(os.path.dirname(__file__), '..', 'saved')
+    file_path = os.path.join(saved_directory_path, f"{name}_info.json")
     return os.path.exists(file_path)
 

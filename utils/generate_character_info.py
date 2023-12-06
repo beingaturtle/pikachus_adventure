@@ -29,7 +29,8 @@ def generate_character_info(name: str) -> dict:
         "bossesKilled": 0
     }
 
-    file_name = os.path.join("./saved", f"{name}_info.json")
+    saved_directory_path = os.path.join(os.path.dirname(__file__), '..', 'saved')
+    file_name = os.path.join(saved_directory_path, f"{name}_info.json")
     with open(file_name, "w") as file:
         json.dump(character_info, file, indent=4)
 

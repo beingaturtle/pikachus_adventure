@@ -2,6 +2,10 @@ from unittest import TestCase
 from utils.user_has_file import user_has_file
 
 class TestUserHasFile(TestCase):
+    def test_user_file_edro_exists(self):
+        test_username = "edro"
+        self.assertTrue(user_has_file(test_username))
+
     def test_user_file_exists(self):
         test_username = "test_character"
         self.assertTrue(user_has_file(test_username))
