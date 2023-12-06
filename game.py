@@ -11,6 +11,7 @@ from utils.get_name import get_name
 from utils.user_has_file import user_has_file
 from utils.generate_character_info import generate_character_info
 from utils.get_save_file import get_save_file
+from game_gui.display_prompt import display_prompt
 
 # create constants and set up screen and movement
 SCREEN_WIDTH = 925
@@ -271,31 +272,6 @@ def is_player_on_target_square() -> bool:
     target_y = TARGET_COLUMN * CELL_SIZE
     return player.colliderect(pygame.Rect(target_x, target_y, CELL_SIZE, CELL_SIZE))
 
-
-def display_prompt(pygame_screen) -> str:
-    """
-    Display a prompt with choices and return the user's selection.
-
-    :param pygame_screen: The pygame screen object
-    :return: The user's selection as a string
-    """
-    font = pygame.font.Font(None, 36)
-    choices = "Press 1 for Option A, 2 for Option B"
-    text = font.render(choices, True, (255, 255, 255))
-    pygame_screen.blit(text, (100, 100))
-    pygame.display.update()
-
-    choice = None
-    while choice not in ['1', '2']:
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_1:
-                    choice = '1'
-                elif event.key == pygame.K_2:
-                    choice = '2'
-    return choice
-
-
 def information_box(character_status: dict) -> None:
     """
     Displays an informative box at the bottom of the screen to show Pikachu's status.
@@ -325,8 +301,6 @@ def main():
     user_has_profile = user_has_file(trainer_name)
 
     character_info = {}
-    print("trainer_name", trainer_name)
-    print("user_has_profile", user_has_profile)
     if not user_has_profile:
         character_info = generate_character_info(trainer_name)
     elif user_has_profile:
