@@ -67,6 +67,7 @@ facing_down = False
 # character
 player = pygame.Rect((player_width, player_column, PLAYER_WIDTH, PLAYER_HEIGHT))
 
+
 def draw_character() -> None:
     """
     Draw the character on the screen based on the current state and direction it is facing.
@@ -130,7 +131,7 @@ def redraw_window(character_info) -> None:
                              (row * CELL_SIZE, height * CELL_SIZE, CELL_SIZE, CELL_SIZE), 1)
 
     draw_character()  # draw the character
-    information_box(character_info) #draw a rectangle to give more information like status, health, etc.
+    information_box(character_info)  # draw a rectangle to give more information like status, health, etc.
 
     pygame.display.update()
 
@@ -310,7 +311,7 @@ def display_prompt(pygame_screen) -> str:
 
 def information_box(character_status):
     pygame.draw.rect(screen, (255, 255, 204), (0, 925, SCREEN_WIDTH, SCREEN_HEIGHT - 925))
-    display_pikachu_stats(character_status)
+    display_pikachu_stats(screen, character_status)
 
     pygame.display.update()
 
