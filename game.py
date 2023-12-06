@@ -322,6 +322,7 @@ def main():
 
     user_has_profile = user_has_file(trainer_name)
 
+    character_info = {}
     if not user_has_profile:
         character_info = generate_character_info(trainer_name)
     elif user_has_profile:
