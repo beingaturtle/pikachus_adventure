@@ -9,7 +9,7 @@ def get_save_file(trainer_name: str) -> dict:
     :precondition: trainer_name must be a string representing the username typed by the user
     :postcondition: pulls the json data from the saved folder
     :postcondition: converts the json data into a dictionary
-    :return: dictionary containing game character information
+    :return: a dictionary containing game character information
     """
     saved_directory_path = os.path.join(os.path.dirname(__file__), '..', 'saved')
     file_name = os.path.join(saved_directory_path, f"{trainer_name}_info.json")

@@ -7,9 +7,9 @@ from game_gui.information_box import information_box
 
 def redraw_window(character_info: dict, screen: Surface, player: Rect, *args):
     """
-    Create a 11x11 game board and refresh the display with an updated background
+    Create a 11x11 game board and refresh the display with an updated background during gameplay.
 
-    :postcondition: create a 11x11 game board and refresh the display with an updated background
+    :postcondition: create a 11x11 game board and refresh the display with an updated background during gameplay
     """
     screen.fill((0, 0, 0))
     for row in range(GRID_SIZE):
@@ -22,6 +22,7 @@ def redraw_window(character_info: dict, screen: Surface, player: Rect, *args):
 
     pygame.display.update()
     return updated_args
+
 
 def draw_character(screen, player, *args):
     """
