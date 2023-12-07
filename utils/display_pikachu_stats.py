@@ -12,8 +12,8 @@ def display_pikachu_stats(pygame_screen, player, character_info: dict) -> None:
     :postcondition: display Pikachu's current stats
     """
     font = pygame.font.Font(None, 25)
-    text = font.render(f"Pikachu's stats:", True, (0, 0, 0))
-    pygame_screen.blit(text, (10, 935))
+    # text = font.render(f"Pikachu's stats:", True, (0, 0, 0))
+    # pygame_screen.blit(text, (10, 935))
 
     stats = [
         f"Coordinates: {player.x, player.y}",
@@ -26,6 +26,6 @@ def display_pikachu_stats(pygame_screen, player, character_info: dict) -> None:
 
     for index, stat in enumerate(stats):
         stat_text = font.render(stat, True, (0, 0, 0))
-        pygame_screen.blit(stat_text, (10, 965 + index * 14))
+        pygame_screen.blit(stat_text, (10, 935 + index * 14))
 
     pygame.display.update()
