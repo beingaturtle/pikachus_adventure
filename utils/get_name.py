@@ -1,8 +1,9 @@
-import pygame
 import re
+import pygame
+from pygame import Surface
 
 
-def get_name(screen) -> str:
+def get_name(screen: Surface) -> str:
     """
     Gets the name of the user within a Pygame window.
 

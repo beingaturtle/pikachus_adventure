@@ -6,7 +6,6 @@ Ian Chan A00910012
 import sys
 import pygame
 
-from utils.display_pikachu_stats import display_pikachu_stats
 from utils.get_name import get_name
 from utils.user_has_file import user_has_file
 from utils.generate_character_info import generate_character_info
@@ -14,27 +13,29 @@ from utils.get_save_file import get_save_file
 from utils.initialize_bosses import initialize_bosses
 from game_gui.display_prompt import display_prompt
 from game_gui.show_intro_screen import show_intro_screen
+from game_gui.information_box import information_box
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, GRID_SIZE, CELL_SIZE, PLAYER_WIDTH, PLAYER_HEIGHT, SPEED
 
-SCREEN_WIDTH = 925
-SCREEN_HEIGHT = 1050
-GRID_SIZE = 11
-CELL_SIZE = SCREEN_WIDTH // GRID_SIZE
-clock = pygame.time.Clock()
-PLAYER_WIDTH = 48
-PLAYER_HEIGHT = 48
-SPEED = 6
+walkCount = 0
+
 left = False
 right = False
 up = False
 down = False
-walkCount = 0
+
 game_run = True
 
+facing_left = False
+facing_right = False
+facing_up = False
+facing_down = False
+
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+player = pygame.Rect(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT)
+clock = pygame.time.Clock()
 
 pygame.display.set_caption("Pikachu's Adventure!")
 
-# character image and size control
 walkRight = [
     pygame.transform.scale(pygame.image.load('./images/character/R1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
     pygame.transform.scale(pygame.image.load('./images/character/R2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
@@ -56,16 +57,6 @@ charRight = pygame.transform.scale(pygame.image.load('./images/character/Rstill.
 charLeft = pygame.transform.scale(pygame.image.load('./images/character/Lstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
 charUp = pygame.transform.scale(pygame.image.load('./images/character/Ustill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
 charDown = pygame.transform.scale(pygame.image.load('./images/character/Dstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
-
-# direction character is facing
-facing_left = False
-facing_right = False
-facing_up = False
-facing_down = False
-
-# establish character
-player = pygame.Rect(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT)
-
 
 def draw_character() -> None:
     """
@@ -129,7 +120,7 @@ def redraw_window(character_info) -> None:
                              (row * CELL_SIZE, height * CELL_SIZE, CELL_SIZE, CELL_SIZE), 1)
 
     draw_character()  # draw the character
-    information_box(character_info)  # draw a rectangle to give more information like status, health, etc.
+    information_box(character_info, screen, player)
 
     pygame.display.update()
 
@@ -209,20 +200,6 @@ def is_player_on_target_square(target_row, target_column) -> bool:
     target_y = target_column * CELL_SIZE
     return player.colliderect(pygame.Rect(target_x, target_y, CELL_SIZE, CELL_SIZE))
 
-def information_box(character_status: dict) -> None:
-    """
-    Displays an informative box at the bottom of the screen to show Pikachu's status.
-
-    :param character_status: a non-empty dictionary
-    :precondition: character_status must be a non-empty dictionary that represents Pikachu's status
-    :postcondition: display an informative box at the bottom of the screen to show Pikachu's status
-    """
-    pygame.draw.rect(screen, (255, 255, 204), (0, 925, SCREEN_WIDTH, SCREEN_HEIGHT - 925))
-    display_pikachu_stats(screen, player, character_status)
-
-    pygame.display.update()
-
-
 def main():
     """Drives the program"""
     global game_run
@@ -260,7 +237,7 @@ def main():
         game_quit()
         key_handle()
         movement()
-        information_box(character_info)
+        information_box(character_info, screen, player)
 
         redraw_window(character_info)
 
