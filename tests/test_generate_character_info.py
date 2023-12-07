@@ -13,7 +13,7 @@ class TestGenerateCharacterInfo(TestCase):
             "coordinates": (2, 1),
             "skill": "tackle",
             "attack_power": 10,
-            "defense": 10,
+            "agility": 10,
             "keys": 0,
             "total_experience": 0,
             "bosses_beaten": 0

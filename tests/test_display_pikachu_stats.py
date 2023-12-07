@@ -13,7 +13,7 @@ class TestPikachuStats(TestCase):
             "coordinates": (0, 0),
             "skill": "tackle",
             "attack_power": 10,
-            "defense": 10,
+            "agility": 10,
             "keys": 0,
             "total_experience": 0,
             "bosses_beaten": 0
@@ -38,7 +38,7 @@ class TestPikachuStats(TestCase):
             "coordinates": (4, 8),
             "skill": "iron tail",
             "attack_power": 30,
-            "defense": 30,
+            "agility": 30,
             "keys": 6,
             "total_experience": 29,
             "bosses_beaten": 2
