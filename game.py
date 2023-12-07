@@ -132,7 +132,7 @@ def main():
         user_has_profile = user_has_file(trainer_name)
         character_info = generate_character_info(trainer_name) if not user_has_profile else get_save_file(trainer_name)
     except ValueError as e:
-        print("Invalid Input: {}\nExiting by returning None", file=sys.stderr)
+        print("Invalid Input: {}\nExiting by returning None".format(e), file=sys.stderr)
         return None
 
     player = pygame.Rect(character_info['coordinates'][0], character_info['coordinates'][1], PLAYER_WIDTH, PLAYER_HEIGHT)
