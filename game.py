@@ -11,6 +11,7 @@ from utils.get_name import get_name
 from utils.user_has_file import user_has_file
 from utils.generate_character_info import generate_character_info
 from utils.get_save_file import get_save_file
+from utils.initialize_bosses import initialize_bosses
 from game_gui.display_prompt import display_prompt
 
 # create constants and set up screen and movement
@@ -303,6 +304,10 @@ def main():
         character_info = generate_character_info(trainer_name)
     elif user_has_profile:
         character_info = get_save_file(trainer_name)
+
+    bosses = initialize_bosses()
+    current_boss = bosses[character_info["bosses_beaten"]]
+    boss_fight = False
 
     player = pygame.Rect(
         (character_info['coordinates'][0], character_info['coordinates'][1], PLAYER_WIDTH, PLAYER_HEIGHT))
