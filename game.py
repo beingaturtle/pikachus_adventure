@@ -12,7 +12,6 @@ from utils.get_name import get_name
 from utils.user_has_file import user_has_file
 from utils.generate_character_info import generate_character_info
 from utils.get_save_file import get_save_file
-from utils.initialize_bosses import initialize_bosses
 from game_gui.show_intro_screen import show_intro_screen
 from game_gui.drawing import redraw_window
 from game_gui.game_quit import game_quit
@@ -45,11 +44,13 @@ def state_machine(player: Rect, character_info: dict) -> str:
     :postcondition: if player is on a boss location then return boss state
     :postcondition: if player is on a hospital tile then return save state
     :postcondition: if player is on in a wild encounter then return wild encounter
+    :postcondition: if player has beaten all the bosses then return end game victory
+    :postcondition: if player has lost all health then return end game loss
     :return: string representing state of user
     """
     areas = {
-        "save_state": [(410,25)],
-        "boss_state": [(435, 194), (680, 425), (435, 633), (38, 829)],
+        "save_state": [(410, 25)],
+        "boss_state": [(441, 188), (668, 422), (442, 633), (38, 829)],
     }
 
     for state, area_list in areas.items():
@@ -62,13 +63,12 @@ def state_machine(player: Rect, character_info: dict) -> str:
 
     elif character_info["bosses_beaten"] == 4:
         return "end_game_victory"
-
     elif character_info["health"] <= 0:
         return "end_game_loss"
 
     return "live_game"
 
-def handle_boss_status(screen):
+def handle_boss_state(screen):
     # TODO: boss_fight logic
     display_prompt(screen, "boss_status")
 
@@ -76,15 +76,15 @@ def handle_save_state(screen):
     # TODO: hospital + save logic
     display_prompt(screen, "save_state")
 
-def handle_encounter_status(screen):
+def handle_encounter_state(screen):
     # TODO: encounter logic
     display_prompt(screen, "encounter_status")
 
-def handle_end_game_loss():
+def handle_end_game_loss_state(_):
     # TODO: end game loss logic
     return
 
-def handle_end_game_victory():
+def handle_end_game_victory_state(_):
     # TODO: end game victory logic
     return
 
@@ -129,17 +129,17 @@ def main():
             check_and_adjust_collision(player, boundary_rect, left, right, up, down)
 
         state_actions = {
-            "boss_status": lambda: handle_boss_status(screen),
-            "save_state": lambda: handle_save_state(screen),
-            "encounter_status": lambda: handle_encounter_status(screen),
-            "end_game_loss": handle_end_game_loss,
-            "end_game_victory": handle_end_game_victory
+            "boss_state": handle_boss_state,
+            "save_state": handle_save_state,
+            "encounter_state": handle_encounter_state,
+            "end_game_loss_state": handle_end_game_loss_state,
+            "end_game_victory_state": handle_end_game_victory_state
         }
 
-        state_status = state_machine(player)
+        state_status = state_machine(player, character_info)
 
         if state_status in state_actions:
-            state_actions[state_status]()
+            state_actions[state_status](screen)
 
     pygame.quit()
 
