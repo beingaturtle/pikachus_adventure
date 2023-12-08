@@ -19,11 +19,18 @@ from game_gui.movement import movement
 from game_gui.load_character_images import load_character_images
 from game_gui.is_player_on_target_square import is_player_on_target_square
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT
+from game_gui.boundaries import (check_and_adjust_collision, boundary_top, boundary_middle, boundary_bottom,
+                                 boundary_left, boundary_right)
+
 
 def main():
     """Drive the program"""
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    boundaries = [boundary_top(screen), boundary_middle(screen), boundary_bottom(screen), boundary_left(screen),
+                  boundary_right(screen)]  #
+    # Create a list of
+    # boundaries
     pygame.display.set_caption("Pikachu's Adventure!")
     clock = pygame.time.Clock()
 
@@ -55,6 +62,9 @@ def main():
 
         character_args = (walk_count, facing_left, facing_right, facing_up, facing_down, left, right, up, down, walk_left, walk_right, walk_up, walk_down, char_right, char_left, char_up, char_down)
         walk_count, facing_left, facing_right, facing_up, facing_down = redraw_window(character_info, screen, player, *character_args)
+
+        for boundary_rect in boundaries:
+            check_and_adjust_collision(player, boundary_rect, left, right, up, down)
 
         # state_status = state_machine(player, target_row, target_column)
 
