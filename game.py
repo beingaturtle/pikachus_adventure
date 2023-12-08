@@ -4,24 +4,89 @@ Edro Gonzales A01257468
 Ian Chan A00910012
 """
 import sys
+import random
 import pygame
 
+from pygame import Rect
 from utils.get_name import get_name
 from utils.user_has_file import user_has_file
 from utils.generate_character_info import generate_character_info
 from utils.get_save_file import get_save_file
-from game_gui.display_prompt import display_prompt
+from utils.initialize_bosses import initialize_bosses
 from game_gui.show_intro_screen import show_intro_screen
 from game_gui.drawing import redraw_window
 from game_gui.game_quit import game_quit
 from game_gui.key_handle import key_handle
 from game_gui.movement import movement
 from game_gui.load_character_images import load_character_images
-from game_gui.is_player_on_target_square import is_player_on_target_square
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT
 from game_gui.boundaries import (check_and_adjust_collision, boundary_top, boundary_middle, boundary_bottom,
                                  boundary_left, boundary_right)
+from game_gui.display_prompt import display_prompt
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT, CELL_SIZE
 
+def is_collision(player, area):
+    """
+    Decides during gameplay if the user is a experiencing a collision.
+
+    :param player: player is a pygame.Rect object and provides information on character in game
+    :param area:
+    :return:
+    """
+    return player.colliderect(pygame.Rect(area[0], area[1], CELL_SIZE, CELL_SIZE))
+
+def state_machine(player: Rect, character_info: dict) -> str:
+    """
+    Determines the state of the game.
+
+    :param player: pygame.Rect object
+    :param character_info: dictionary object containing character information
+    :precondition: player must be a pygame.Rect object that represents the info of the current character
+    :postcondition: if player is moving around and not in any state return live_play
+    :postcondition: if player is on a boss location then return boss state
+    :postcondition: if player is on a hospital tile then return save state
+    :postcondition: if player is on in a wild encounter then return wild encounter
+    :return: string representing state of user
+    """
+    areas = {
+        "save_state": [(410,25)],
+        "boss_state": [(435, 194), (680, 425), (435, 633), (38, 829)],
+    }
+
+    for state, area_list in areas.items():
+        for area in area_list:
+            if is_collision(player, area):
+                return state
+
+    if random.random() < 0.01:
+        return "encounter_status"
+
+    elif character_info["bosses_beaten"] == 4:
+        return "end_game_victory"
+
+    elif character_info["health"] <= 0:
+        return "end_game_loss"
+
+    return "live_game"
+
+def handle_boss_status(screen):
+    # TODO: boss_fight logic
+    display_prompt(screen, "boss_status")
+
+def handle_save_state(screen):
+    # TODO: hospital + save logic
+    display_prompt(screen, "save_state")
+
+def handle_encounter_status(screen):
+    # TODO: encounter logic
+    display_prompt(screen, "encounter_status")
+
+def handle_end_game_loss():
+    # TODO: end game loss logic
+    return
+
+def handle_end_game_victory():
+    # TODO: end game victory logic
+    return
 
 def main():
     """Drive the program"""
@@ -50,8 +115,6 @@ def main():
     player = pygame.Rect(character_info['coordinates'][0], character_info['coordinates'][1], PLAYER_WIDTH, PLAYER_HEIGHT)
     show_intro_screen(character_info['name'], screen, clock)
 
-    target_row, target_column, prompt_shown = 5, 5, False
-
     while game_run:
         clock.tick(40)
 
@@ -65,13 +128,18 @@ def main():
         for boundary_rect in boundaries:
             check_and_adjust_collision(player, boundary_rect, left, right, up, down)
 
-        # state_status = state_machine(player, target_row, target_column)
+        state_actions = {
+            "boss_status": lambda: handle_boss_status(screen),
+            "save_state": lambda: handle_save_state(screen),
+            "encounter_status": lambda: handle_encounter_status(screen),
+            "end_game_loss": handle_end_game_loss,
+            "end_game_victory": handle_end_game_victory
+        }
 
-        if is_player_on_target_square(player, target_row, target_column) and not prompt_shown:
-            display_prompt(screen)
-            prompt_shown = True
-        elif not is_player_on_target_square(player, target_row, target_column):
-            prompt_shown = False
+        state_status = state_machine(player)
+
+        if state_status in state_actions:
+            state_actions[state_status]()
 
     pygame.quit()
 
