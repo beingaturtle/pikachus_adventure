@@ -1,10 +1,11 @@
 from constants import SPEED, SCREEN_WIDTH, PLAYER_WIDTH, PLAYER_HEIGHT
 
+
 def movement(player, left, right, up, down):
     """
     Update the character position based on movement keys.
 
-    :param player: a pygame.Rect object representing the player
+    :param player: a pygame object representing the player
     :param left: boolean indicating movement to the left
     :param right: boolean indicating movement to the right
     :param up: boolean indicating movement upwards
@@ -27,4 +28,3 @@ def movement(player, left, right, up, down):
         player.move_ip(0, SPEED)
         walk_count += 1
     return walk_count
-
