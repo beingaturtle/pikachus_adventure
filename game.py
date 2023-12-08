@@ -17,6 +17,7 @@ from game_gui.game_quit import game_quit
 from game_gui.key_handle import key_handle
 from game_gui.movement import movement
 from game_gui.load_character_images import load_character_images
+from game_gui.handle_save_state import handle_save_state
 from game_gui.boundaries import (check_and_adjust_collision, boundary_top, boundary_middle, boundary_bottom,
                                  boundary_left, boundary_right)
 from game_gui.display_prompt import display_prompt
@@ -25,10 +26,6 @@ from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT, 
 def handle_boss_state(screen):
     # TODO: boss_fight logic
     display_prompt(screen, "boss_status")
-
-def handle_save_state(screen):
-    # TODO: hospital + save logic
-    display_prompt(screen, "save_state")
 
 def handle_encounter_state(screen):
     # TODO: encounter logic
@@ -45,10 +42,9 @@ def handle_end_game_victory_state(_):
 def main():
     """Drive the program"""
     pygame.init()
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.DOUBLEBUF)
     boundaries = [boundary_top(screen), boundary_middle(screen), boundary_bottom(screen), boundary_left(screen),
                   boundary_right(screen)]
-    # boundaries
     pygame.display.set_caption("Pikachu's Adventure!")
     clock = pygame.time.Clock()
 
@@ -67,6 +63,7 @@ def main():
         return None
 
     player = pygame.Rect(character_info['coordinates'][0], character_info['coordinates'][1], PLAYER_WIDTH, PLAYER_HEIGHT)
+
     show_intro_screen(character_info['name'], screen, clock)
 
     while game_run:
@@ -94,6 +91,8 @@ def main():
             handle_end_game_victory_state(screen)
         elif state_status == "end_game_victory":
             handle_end_game_victory_state(screen)
+
+        pygame.display.flip()
 
     pygame.quit()
 

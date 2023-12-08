@@ -21,19 +21,18 @@ def redraw_window(character_info: dict, screen: Surface, player: Rect, *args):
     :postcondition: create a game board and refresh the display with an updated background during gameplay
     """
     screen.fill((0, 0, 0))
-    for row in range(GRID_SIZE):
-        for height in range(GRID_SIZE):
-            pygame.draw.rect(screen, (255, 255, 255),
-                             (row * CELL_SIZE, height * CELL_SIZE, CELL_SIZE, CELL_SIZE), 1)
 
     updated_args = draw_character(screen, player, *args)
+
+    font = pygame.font.SysFont("", 100)
+    hospital_text = font.render('H', True, (255, 255, 255))
+    screen.blit(hospital_text, (410, 25))
 
     (boundary_left(screen), boundary_right(screen), boundary_top(screen), boundary_middle(screen),
      boundary_bottom(screen))
 
     information_box(character_info, screen, player)
 
-    pygame.display.update()
     return updated_args
 
 
@@ -85,5 +84,4 @@ def draw_character(screen, player, *args):
 
     walk_count += 1
 
-    pygame.display.update()
     return walk_count, facing_left, facing_right, facing_up, facing_down
