@@ -82,18 +82,18 @@ def main():
         for boundary_rect in boundaries:
             check_and_adjust_collision(player, boundary_rect, left, right, up, down)
 
-        state_actions = {
-            "boss_state": handle_boss_state,
-            "save_state": handle_save_state,
-            "encounter_state": handle_encounter_state,
-            "end_game_loss_state": handle_end_game_loss_state,
-            "end_game_victory_state": handle_end_game_victory_state
-        }
-
         state_status = state_machine(player, character_info)
 
-        if state_status in state_actions:
-            state_actions[state_status](screen)
+        if state_status == "boss_state":
+            handle_boss_state(screen)
+        elif state_status == "save_state":
+            handle_save_state(screen)
+        elif state_status == "encounter_state":
+            handle_encounter_state(screen)
+        elif state_status == "end_game_loss":
+            handle_end_game_victory_state(screen)
+        elif state_status == "end_game_victory":
+            handle_end_game_victory_state(screen)
 
     pygame.quit()
 
