@@ -8,9 +8,17 @@ from game_gui.boundaries import boundary_top, boundary_middle, boundary_bottom, 
 
 def redraw_window(character_info: dict, screen: Surface, player: Rect, *args):
     """
-    Create a 11x11 game board and refresh the display with an updated background during gameplay.
+    Create a game board and refresh the display with an updated background during gameplay.
 
-    :postcondition: create a 11x11 game board and refresh the display with an updated background during gameplay
+    :param character_info: a dictionary
+    :param screen: a pygame.Surface object representing the game window
+    :param player: a pygame.Rect object representing the player
+    :param args: positional arguments related to drawing objects on the screen
+    :precondition: character_info must be a non-empty dictionary representing the character's information
+    :precondition: screen must be a pygame object representing the game window
+    :precondition: player must be a pygame object representing the player
+    :precondition: args must be a series of arguments related to drawing objects on the screen
+    :postcondition: create a game board and refresh the display with an updated background during gameplay
     """
     screen.fill((0, 0, 0))
     for row in range(GRID_SIZE):
@@ -19,7 +27,10 @@ def redraw_window(character_info: dict, screen: Surface, player: Rect, *args):
                              (row * CELL_SIZE, height * CELL_SIZE, CELL_SIZE, CELL_SIZE), 1)
 
     updated_args = draw_character(screen, player, *args)
-    boundary_left(screen), boundary_right(screen), boundary_top(screen), boundary_middle(screen), boundary_bottom(screen)
+
+    (boundary_left(screen), boundary_right(screen), boundary_top(screen), boundary_middle(screen),
+     boundary_bottom(screen))
+
     information_box(character_info, screen, player)
 
     pygame.display.update()
@@ -30,9 +41,17 @@ def draw_character(screen, player, *args):
     """
     Draw the character on the screen based on the current state and direction it is facing.
 
+    :param screen: a pygame object representing the game window
+    :param player: a pygame object representing the player
+    :param args: positional arguments related to drawing objects on the screen
+    :precondition: screen must be a pygame object representing the game window
+    :precondition: player must be a pygame object representing the player
+    :precondition: args must be a series of arguments related to drawing character objects on the screen
     :postcondition: character is drawn on the screen facing north, south, east, or west
     """
-    walk_count, facing_left, facing_right, facing_up, facing_down, left, right, up, down, walk_left, walk_right, walk_up, walk_down, char_right, char_left, char_up, char_down = args
+    (walk_count, facing_left, facing_right, facing_up, facing_down, left, right, up, down, walk_left, walk_right,
+     walk_up, walk_down, char_right, char_left, char_up, char_down) = args
+
     if walk_count >= 12:
         walk_count = 0
 
