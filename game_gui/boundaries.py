@@ -10,9 +10,10 @@ def boundary_top(screen):
     border = pygame.Rect(boundary_x, boundary_y, boundary_length, boundary_height)  # Set the width to 1 for a vertical
     # line
 
-    pygame.draw.rect(screen, (0, 0, 0), border)
+    pygame.draw.rect(screen, (144, 238, 144), border)
 
     return border
+
 
 def boundary_middle(screen):
     boundary_x = 465
@@ -20,47 +21,53 @@ def boundary_middle(screen):
     boundary_height = 380
     boundary_length = 1
 
-    border = pygame.Rect(boundary_x, boundary_y, boundary_length, boundary_height)  # Set the width to 1 for a vertical line
+    border = pygame.Rect(boundary_x, boundary_y, boundary_length,
+                         boundary_height)  # Set the width to 1 for a vertical line
 
-    pygame.draw.rect(screen, (0, 0, 0), border)
+    pygame.draw.rect(screen, (144, 238, 144), border)
 
     return border
+
 
 def boundary_bottom(screen):
     boundary_x = 465
     boundary_y = 693  # Set the top of the boundary
-    boundary_height = 186
+    boundary_height = 234
     boundary_length = 1
 
-    border = pygame.Rect(boundary_x, boundary_y, boundary_length, boundary_height)  # Set the width to 1 for a vertical line
+    border = pygame.Rect(boundary_x, boundary_y, boundary_length,
+                         boundary_height)  # Set the width to 1 for a vertical line
 
-    pygame.draw.rect(screen, (0, 0, 0), border)
+    pygame.draw.rect(screen, (144, 238, 144), border)
 
     return border
 
+
 def boundary_left(screen):
     boundary_x = -8
-    boundary_y = 448
+    boundary_y = 460
     boundary_length = 676
     boundary_height = 1
 
     border = pygame.Rect(boundary_x, boundary_y, boundary_length, boundary_height)
 
-    pygame.draw.rect(screen, (0, 0, 0), border)
+    pygame.draw.rect(screen, (144, 238, 144), border)
 
     return border
 
+
 def boundary_right(screen):
     boundary_x = 728
-    boundary_y = 448
+    boundary_y = 460
     boundary_length = 616
     boundary_height = 1
 
     border = pygame.Rect(boundary_x, boundary_y, boundary_length, boundary_height)
 
-    pygame.draw.rect(screen, (0, 0, 0), border)
+    pygame.draw.rect(screen, (144, 238, 144), border)
 
     return border
+
 
 def check_and_adjust_collision(player, boundary_rect, left, right, up, down):
     if player.colliderect(boundary_rect):
@@ -73,7 +80,6 @@ def check_and_adjust_collision(player, boundary_rect, left, right, up, down):
             player.top = boundary_rect.bottom
         elif down:
             player.bottom = boundary_rect.top
-
 
 # def main():
 #     pass

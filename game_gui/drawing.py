@@ -3,6 +3,7 @@ from pygame import Surface, Rect
 
 from constants import GRID_SIZE, CELL_SIZE
 from game_gui.information_box import information_box
+from game_gui.boundaries import boundary_top, boundary_middle, boundary_bottom, boundary_left, boundary_right
 
 
 def redraw_window(character_info: dict, screen: Surface, player: Rect, *args):
@@ -18,6 +19,7 @@ def redraw_window(character_info: dict, screen: Surface, player: Rect, *args):
                              (row * CELL_SIZE, height * CELL_SIZE, CELL_SIZE, CELL_SIZE), 1)
 
     updated_args = draw_character(screen, player, *args)
+    boundary_left(screen), boundary_right(screen), boundary_top(screen), boundary_middle(screen), boundary_bottom(screen)
     information_box(character_info, screen, player)
 
     pygame.display.update()

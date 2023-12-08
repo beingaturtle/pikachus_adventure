@@ -28,8 +28,7 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     boundaries = [boundary_top(screen), boundary_middle(screen), boundary_bottom(screen), boundary_left(screen),
-                  boundary_right(screen)]  #
-    # Create a list of
+                  boundary_right(screen)]
     # boundaries
     pygame.display.set_caption("Pikachu's Adventure!")
     clock = pygame.time.Clock()
