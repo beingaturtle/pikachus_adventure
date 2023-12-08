@@ -1,5 +1,6 @@
 import pygame
 
+
 def display_prompt(pygame_screen, state_status) -> str:
     """
     Display a prompt with choices and return the user's selection.
@@ -15,6 +16,7 @@ def display_prompt(pygame_screen, state_status) -> str:
     pygame.display.update()
 
     choice = None
+
     while choice not in ['1', '2']:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
@@ -22,4 +24,19 @@ def display_prompt(pygame_screen, state_status) -> str:
                     choice = '1'
                 elif event.key == pygame.K_2:
                     choice = '2'
+
+    pygame_screen.fill((0, 0, 0))
+    pygame.display.flip()
     return choice
+
+
+def flee(screen, choice, player):
+    if choice == '2':
+        font = pygame.font.Font(None, 36)
+        text = font.render("You ran away safely!", True, (255, 255, 255))
+        screen.blit(text, (100, 100))
+        pygame.display.update()
+        pygame.time.delay(2000)
+        player.left -= 10
+
+
