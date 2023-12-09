@@ -28,12 +28,15 @@ from game_gui.handle_encounter_state import handle_encounter_state
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT
 
 
+
 def handle_boss_state(screen, player, character_info, facing_left, facing_right, facing_up, facing_down):
     # TODO: boss_fight logic
     choice = display_boss_prompt(screen)
     enemy = {
         "health": 100,
-        "attack_power": 110
+        "attack_power": 5,
+        "skill": "Edro's nuts <3",
+        "experience_award": 10
     }
 
     directions = {
