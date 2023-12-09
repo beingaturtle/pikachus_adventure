@@ -38,17 +38,16 @@ def display_stats(screen, character, enemy):
     ]
 
     y_position = 500
+    x_position_player = 200
+    x_position_enemy = 500
 
-    for line in player_stats_lines:
-        text_line = font.render(line, True, (255, 255, 255))
-        screen.blit(text_line, (50, y_position))
-        y_position += 25
+    for player_line, enemy_line in zip(player_stats_lines, enemy_stats_lines):
+        text_player = font.render(player_line, True, (255, 255, 255))
+        screen.blit(text_player, (x_position_player, y_position))
 
-    y_position += 25
+        text_enemy = font.render(enemy_line, True, (255, 255, 255))
+        screen.blit(text_enemy, (x_position_enemy, y_position))
 
-    for line in enemy_stats_lines:
-        text_line = font.render(line, True, (255, 255, 255))
-        screen.blit(text_line, (50, y_position))
         y_position += 25
 
     pygame.display.update()
@@ -65,7 +64,6 @@ def battle(screen, character, enemy):
     while True:
         display_fight_or_flee(screen, f"Choose 1 to use {player_skill} or 2 to flee")
         display_stats(screen, character, enemy)
-
 
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
@@ -110,6 +108,7 @@ def battle(screen, character, enemy):
                         sys.exit()
 
                     character["health"] = player_hp
+                    character["total_experience"] = player_experience
 
                 elif event.key == pygame.K_2:
                     screen.fill((0, 0, 0))
