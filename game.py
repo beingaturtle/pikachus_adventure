@@ -20,13 +20,22 @@ from game_gui.load_character_images import load_character_images
 from game_gui.handle_save_state import handle_save_state
 from game_gui.boundaries import (check_and_adjust_collision, boundary_top, boundary_middle, boundary_bottom,
                                  boundary_left, boundary_right)
-from game_gui.display_prompt import display_prompt, flee
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT
+from game_gui.display_prompt import display_prompt
+from game_gui.flee import flee
+from game_gui.battle import battle
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT, CELL_SIZE
 
-def handle_boss_state(screen, player):
+def handle_boss_state(screen, player, character_info):
     # TODO: boss_fight logic
     choice = display_prompt(screen, "boss_status")
-    flee(screen, choice, player)
+    enemy = {
+        "health": 100,
+        "attack_power": 110
+    }
+    if choice == '1':
+        battle(screen, character_info, player, enemy)
+    else:
+        flee(screen, player)
 
 def handle_encounter_state(screen):
     # TODO: encounter logic
@@ -83,7 +92,7 @@ def main():
         state_status = state_machine(player, character_info)
 
         if state_status == "boss_state":
-            handle_boss_state(screen, player)
+            handle_boss_state(screen, player, character_info)
         elif state_status == "save_state":
             handle_save_state(screen, player, character_info)
         elif state_status == "encounter_state":
