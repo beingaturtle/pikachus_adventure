@@ -1,7 +1,7 @@
 import pygame
+import os
 from pygame import Surface, Rect
-
-from constants import GRID_SIZE, CELL_SIZE
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from game_gui.information_box import information_box
 from game_gui.boundaries import boundary_top, boundary_middle, boundary_bottom, boundary_left, boundary_right
 
@@ -20,7 +20,11 @@ def redraw_window(character_info: dict, screen: Surface, player: Rect, *args):
     :precondition: args must be a series of arguments related to drawing objects on the screen
     :postcondition: create a game board and refresh the display with an updated background during gameplay
     """
-    screen.fill((0, 0, 0))
+    background_image_path = os.path.join(os.path.dirname(__file__), '..', 'images', 'background', 'background.jpg')
+    background_image = pygame.image.load(background_image_path).convert()
+    background_image = pygame.transform.scale(background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
+
+    screen.blit(background_image, (0, 0))
 
     updated_args = draw_character(screen, player, *args)
 

@@ -13,7 +13,7 @@ def boundary_top(screen):
     boundary_x = 465
     boundary_y = -5
     boundary_height = 193
-    boundary_length = 1
+    boundary_length = 5
 
     border = pygame.Rect(boundary_x, boundary_y, boundary_length, boundary_height)
 
@@ -34,7 +34,7 @@ def boundary_middle(screen):
     boundary_x = 465
     boundary_y = 253
     boundary_height = 380
-    boundary_length = 1
+    boundary_length = 5
 
     border = pygame.Rect(boundary_x, boundary_y, boundary_length, boundary_height)
 
@@ -55,7 +55,7 @@ def boundary_bottom(screen):
     boundary_x = 465
     boundary_y = 693
     boundary_height = 234
-    boundary_length = 1
+    boundary_length = 5
 
     border = pygame.Rect(boundary_x, boundary_y, boundary_length, boundary_height)
 
@@ -76,7 +76,7 @@ def boundary_left(screen):
     boundary_x = -8
     boundary_y = 460
     boundary_length = 676
-    boundary_height = 1
+    boundary_height = 5
 
     border = pygame.Rect(boundary_x, boundary_y, boundary_length, boundary_height)
 
@@ -97,7 +97,7 @@ def boundary_right(screen):
     boundary_x = 728
     boundary_y = 460
     boundary_length = 616
-    boundary_height = 1
+    boundary_height = 5
 
     border = pygame.Rect(boundary_x, boundary_y, boundary_length, boundary_height)
 
