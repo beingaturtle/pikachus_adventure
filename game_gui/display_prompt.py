@@ -9,7 +9,11 @@ def display_prompt(pygame_screen: Surface, message: str) -> str:
 
     :param pygame_screen: The pygame screen object
     :param message: string message to display
-    :return: The user's selection as a string
+    :precondition: pygame_screen must be a pygame.Surface object provided during gameplay
+    :precondition: message is a string to be displayed for the user
+    :postcondition: grabs the choice from a user in the form of a key action event
+    :postcondition: allows users to be able to quit from the game window
+    :return: the user's selection as a string
     """
     font = pygame.font.Font(None, 36)
     text = font.render(message,
@@ -23,8 +27,6 @@ def display_prompt(pygame_screen: Surface, message: str) -> str:
                 if event.key == pygame.K_1:
                     return "1"
                 elif event.key == pygame.K_2:
-                    pygame_screen.fill((0, 0, 0))
-                    pygame.display.flip()
                     return '2'
 
             if event.type == pygame.QUIT:
