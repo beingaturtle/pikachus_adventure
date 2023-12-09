@@ -114,12 +114,13 @@ def main():
             check_and_adjust_collision(player, boundary_rect, left, right, up, down)
 
         state_status = state_machine(player, character_info)
+        print("state_status: ", state_status)
 
         if state_status == "boss_state":
             handle_boss_state(screen, player, character_info, facing_left, facing_right, facing_up, facing_down)
         elif state_status == "save_state":
             handle_save_state(screen, player, character_info)
-        elif state_status == "encounter_state":
+        elif state_status == "encounter_status":
             handle_encounter_state(screen)
         elif state_status == "end_game_loss":
             handle_end_game_victory_state(screen)

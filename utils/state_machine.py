@@ -44,7 +44,7 @@ def state_machine(player: Rect, character_info: dict) -> str:
             if is_collision(player, area):
                 return state
 
-    if random.random() < 0.01:
+    if random.random() < 0.005:
         return "encounter_status"
 
     elif character_info["bosses_beaten"] == 4:
