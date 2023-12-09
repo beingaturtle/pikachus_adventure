@@ -21,7 +21,7 @@ from game_gui.handle_save_state import handle_save_state
 from game_gui.boundaries import (check_and_adjust_collision, boundary_top, boundary_middle, boundary_bottom,
                                  boundary_left, boundary_right)
 from game_gui.display_prompt import display_prompt, flee
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT, CELL_SIZE
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT
 
 def handle_boss_state(screen, player):
     # TODO: boss_fight logic
