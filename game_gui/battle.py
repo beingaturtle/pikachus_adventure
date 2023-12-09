@@ -90,6 +90,7 @@ def battle(screen, character, enemy):
                         text = font.render(win_message, True, (255, 255, 255))
                         screen.blit(text, (10, 50))
                         character["total_experience"] = player_experience
+                        character["bosses_beaten"] += 1
                         if enemy_type == "wild":
                             has_key = random.random() < 0.9
                             key_increment = 1 if has_key else 0
