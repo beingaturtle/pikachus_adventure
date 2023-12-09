@@ -1,5 +1,4 @@
 import sys
-
 import pygame
 
 
@@ -17,20 +16,13 @@ def display_prompt(pygame_screen, state_status) -> str:
     pygame_screen.blit(text, (100, 100))
     pygame.display.update()
 
-    choice = None
-
-    while choice not in ['1', '2']:
+    while True:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1:
-                    choice = '1'
+                    return '1'
                 elif event.key == pygame.K_2:
-                    choice = '2'
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
-    pygame_screen.fill((0, 0, 0))
-    pygame.display.flip()
-    return choice
+                    pygame_screen.fill((0, 0, 0))
+                    pygame.display.flip()
+                    return '2'
 
