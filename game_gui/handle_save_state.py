@@ -46,6 +46,6 @@ def handle_save_state(screen: Surface, player: Rect, character_info: dict) -> No
         text = font.render("Information saved.", True, (255, 255, 255))
         screen.blit(text, (100, 100))
         pygame.display.update()
-        pygame.time.delay(2000)
+        pygame.time.delay(500)
 
     player.left -= 10

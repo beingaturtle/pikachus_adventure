@@ -36,7 +36,7 @@ def flee(screen, choice, player):
         text = font.render("You ran away safely!", True, (255, 255, 255))
         screen.blit(text, (100, 100))
         pygame.display.update()
-        pygame.time.delay(2000)
+        pygame.time.delay(500)
         player.left -= 10
 
 
