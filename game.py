@@ -36,9 +36,8 @@ def handle_boss_state(screen, player, character_info, facing_left, facing_right,
         "health": 10,
         "attack_power": 5,
         "skill": "Edro's nuts <3",
-        "experience_award": 10
+        "experience_award": 100
     }
-
     directions = {
         'left': facing_left,
         'right': facing_right,
