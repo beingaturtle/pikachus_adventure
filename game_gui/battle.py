@@ -4,9 +4,6 @@ ADD A DOCSTRING
 import sys
 import pygame
 
-from game_gui.direction_subtract_coordinate import character_direction_facing
-from game_gui.drawing import draw_character
-
 
 def display_fight_or_flee(screen, message):
     pygame.font.init()
@@ -16,12 +13,11 @@ def display_fight_or_flee(screen, message):
     pygame.display.update()
 
 
-def battle(screen, character, enemy, facing_left, facing_right, facing_up, facing_down):
+def battle(screen, character, enemy):
     player_hp = character["health"]
     enemy_hp = enemy["health"]
     font = pygame.font.Font(None, 36)
     player_skill = character["skill"]
-    args = ()
 
     while True:
         screen.fill((0, 0, 0))
@@ -47,7 +43,6 @@ def battle(screen, character, enemy, facing_left, facing_right, facing_up, facin
                         text = font.render(win_message, True, (255, 255, 255))
                         screen.blit(text, (10, 50))
                         pygame.display.update()
-                        character_direction_facing(character, facing_left, facing_right, facing_up, facing_down)
                         return
 
                     enemy_damage = enemy["attack_power"]
@@ -77,7 +72,6 @@ def battle(screen, character, enemy, facing_left, facing_right, facing_up, facin
                     screen.blit(text, (10, 50))
                     pygame.display.update()
                     pygame.time.delay(1000)
-                    character_direction_facing(character, facing_left, facing_right, facing_up, facing_down)
                     return
 
 
