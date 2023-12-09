@@ -32,3 +32,16 @@ def display_prompt(pygame_screen: Surface, message: str) -> str:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+
+
+def display_only_message(pygame_screen: Surface, message: str):
+    font = pygame.font.Font(None, 22)
+    text = font.render(message,
+                       True, (255, 255, 255))
+    pygame_screen.blit(text, (100, 100))
+    pygame.display.update()
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+                return
