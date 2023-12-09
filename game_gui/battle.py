@@ -1,6 +1,7 @@
 """
 ADD A DOCSTRING
 """
+import random
 import sys
 import pygame
 
@@ -57,6 +58,7 @@ def battle(screen, character, enemy):
     player_hp = character["health"]
     player_experience = character["total_experience"]
     enemy_hp = enemy["health"]
+    enemy_type = enemy["enemy_type"]
     enemy_experience_award = enemy["experience_award"]
     font = pygame.font.Font(None, 36)
     player_skill = character["skill"]
@@ -81,12 +83,18 @@ def battle(screen, character, enemy):
                     pygame.time.delay(1000)
 
                     if enemy_hp <= 0:
-                        player_experience += enemy_experience_award
                         win_message = f"You won the battle and gained {enemy_experience_award} experience points!"
                         text = font.render(win_message, True, (255, 255, 255))
                         screen.blit(text, (10, 50))
-                        pygame.display.update()
                         character["total_experience"] = player_experience
+                        if enemy_type == "wild":
+                            has_key = random.random() < 0.9
+                            key_increment = 1 if has_key else 0
+                            character["keys"] += key_increment
+                            key_message = "You have earned a key" if has_key else "You were not able to find a key"
+                            text = font.render(key_message, True, (255, 255, 255))
+                            screen.blit(text, (10, 80))
+                        pygame.display.update()
                         pygame.time.delay(3000)
                         return
 

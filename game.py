@@ -34,6 +34,7 @@ def handle_boss_state(screen, player, character_info, facing_left, facing_right,
     choice = display_boss_prompt(screen)
     enemy = {
         "health": 10,
+        "enemy_type": "boss",
         "attack_power": 5,
         "skill": "Edro's nuts <3",
         "experience_award": 100
