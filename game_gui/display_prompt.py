@@ -1,3 +1,5 @@
+import sys
+
 import pygame
 
 
@@ -24,6 +26,9 @@ def display_prompt(pygame_screen, state_status) -> str:
                     choice = '1'
                 elif event.key == pygame.K_2:
                     choice = '2'
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 
     pygame_screen.fill((0, 0, 0))
     pygame.display.flip()
