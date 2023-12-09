@@ -37,6 +37,7 @@ def handle_save_state(screen: Surface, player: Rect, character_info: dict) -> No
     :postcondition: character_info is snapshotted and stored into the relevant json file
     """
     if display_save_prompt(screen) == "1":
+        character_info["health"] = 100
         saved_directory_path = os.path.join(os.path.dirname(__file__), '..', 'saved')
         file_name = os.path.join(saved_directory_path, f"{character_info['name']}_info.json")
         with open(file_name, "w") as file_object:

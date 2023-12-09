@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from utils.create_encounter_enemy import create_encounter
+from utils.create_encounter_enemy import create_encounter_enemy
 
 class TestCreateEncounter(TestCase):
 
@@ -8,7 +8,7 @@ class TestCreateEncounter(TestCase):
     def test_create_encounter(self, mock_choice):
         mock_choice.return_value = ("Weak", 5)
 
-        encounter = create_encounter()
+        encounter = create_encounter_enemy()
 
         self.assertIsInstance(encounter, dict)
 
