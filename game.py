@@ -85,7 +85,7 @@ def main():
         if state_status == "boss_state":
             handle_boss_state(screen, player)
         elif state_status == "save_state":
-            handle_save_state(screen)
+            handle_save_state(screen, player, character_info)
         elif state_status == "encounter_state":
             handle_encounter_state(screen)
         elif state_status == "end_game_loss":

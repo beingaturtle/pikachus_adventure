@@ -1,4 +1,51 @@
-from game_gui.display_prompt import display_prompt
+from pygame import Surface, Rect
+import pygame
+import os
+import json
 
-def handle_save_state(screen):
-    display_prompt(screen, "save_state")
+
+def display_save_prompt(pygame_screen: Surface) -> str:
+    """
+    Display a prompt for saving the current state of character.
+
+    :param pygame_screen: The pygame screen object
+    :return: The user's selection as a string
+    """
+    font = pygame.font.Font(None, 36)
+    text = font.render("Save game? Press 1 for Yes, 2 for No", True, (255, 255, 255))
+    pygame_screen.blit(text, (100, 100))
+    pygame.display.update()
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_1:
+                    return "1"
+                elif event.key == pygame.K_2:
+                    return "2"
+
+
+def handle_save_state(screen: Surface, player: Rect, character_info: dict) -> None:
+    """
+    Save the state of the character.
+
+    :param screen: pygame.Surface object containing information regarding the gameplayer
+    :param player: pygame.Rect object representing the character within the pygame model
+    :param character_info: character_info object containing information about the character
+    :precondition: screen is provided during the gameplay
+    :precondition: character_info is a dictionary containing information about character
+    :postcondition: character_info is snapshotted and stored into the relevant json file
+    """
+    if display_save_prompt(screen) == "1":
+        saved_directory_path = os.path.join(os.path.dirname(__file__), '..', 'saved')
+        file_name = os.path.join(saved_directory_path, f"{character_info.name}_info.json")
+        with open(file_name) as file_object:
+            json.dump(character_info, file_object)
+        screen.fill((0, 0, 0))
+        font = pygame.font.Font(None, 36)
+        text = font.render("Information saved.", True, (255, 255, 255))
+        screen.blit(text, (100, 100))
+        pygame.display.update()
+        pygame.time.delay(2000)
+
+    player.left -= 10
