@@ -18,6 +18,7 @@ def display_stats(screen, character, enemy):
     player_health = character["health"]
     player_attack_power = character["attack_power"]
     player_skill = character["skill"]
+    player_experience = character["total_experience"]
     enemy_health = enemy["health"]
     enemy_attack_power = enemy["attack_power"]
     enemy_skill = enemy["skill"]
@@ -27,7 +28,7 @@ def display_stats(screen, character, enemy):
         f"Health: {player_health}",
         f"Attack Power: {player_attack_power}",
         f"Skill: {player_skill}",
-        f"Experience: {character['total_experience']}"
+        f"Experience: {player_experience}"
     ]
 
     enemy_stats_lines = [
@@ -75,6 +76,7 @@ def battle(screen, character, enemy):
                     text = font.render(attack_message, True, (255, 255, 255))
                     screen.blit(text, (10, 10))
                     pygame.display.update()
+                    screen.fill((0, 0, 0))
 
                     pygame.time.delay(1000)
 
@@ -84,6 +86,8 @@ def battle(screen, character, enemy):
                         text = font.render(win_message, True, (255, 255, 255))
                         screen.blit(text, (10, 50))
                         pygame.display.update()
+                        character["total_experience"] = player_experience
+                        pygame.time.delay(3000)
                         return
 
                     enemy_damage = enemy["attack_power"]
@@ -108,7 +112,6 @@ def battle(screen, character, enemy):
                         sys.exit()
 
                     character["health"] = player_hp
-                    character["total_experience"] = player_experience
 
                 elif event.key == pygame.K_2:
                     screen.fill((0, 0, 0))
