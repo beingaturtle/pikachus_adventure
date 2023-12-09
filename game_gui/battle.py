@@ -20,12 +20,14 @@ def display_stats(screen, character, enemy):
     player_attack_power = character["attack_power"]
     player_skill = character["skill"]
     player_experience = character["total_experience"]
+    enemy_name = enemy["name"]
+    enemy_pokemon = enemy["pokemon_name"]
     enemy_health = enemy["health"]
     enemy_attack_power = enemy["attack_power"]
     enemy_skill = enemy["skill"]
 
     player_stats_lines = [
-        "Player Stats:",
+        "Pikachu Stats:",
         f"Health: {player_health}",
         f"Attack Power: {player_attack_power}",
         f"Skill: {player_skill}",
@@ -33,7 +35,8 @@ def display_stats(screen, character, enemy):
     ]
 
     enemy_stats_lines = [
-        "Enemy Stats:",
+        f"{enemy_name} Stats:",
+        f"Pokemon: {enemy_pokemon}",
         f"Health: {enemy_health}",
         f"Attack Power: {enemy_attack_power}",
         f"Skill: {enemy_skill}"

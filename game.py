@@ -6,8 +6,8 @@ Ian Chan A00910012
 import sys
 import pygame
 
-from game_gui.display_boss_prompt import display_boss_prompt
 from utils.get_name import get_name
+from utils.initialize_bosses import has_enough_keys, initialize_bosses
 from utils.user_has_file import user_has_file
 from utils.generate_character_info import generate_character_info
 from utils.state_machine import state_machine
@@ -25,20 +25,16 @@ from game_gui.flee import flee
 from game_gui.battle import battle
 from game_gui.direction_subtract_coordinate import direction_subtract_coordinate
 from game_gui.handle_encounter_state import handle_encounter_state
+from game_gui.display_boss_prompt import display_boss_prompt
+from game_gui.display_prompt import display_only_message
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT
 
 
-
-def handle_boss_state(screen, player, character_info, facing_left, facing_right, facing_up, facing_down):
+def handle_boss_state(screen, player, character_info, boss_info, facing_left, facing_right, facing_up, facing_down):
     # TODO: boss_fight logic
-    choice = display_boss_prompt(screen)
-    enemy = {
-        "health": 10,
-        "enemy_type": "boss",
-        "attack_power": 5,
-        "skill": "Edro's nuts <3",
-        "experience_award": 100
-    }
+
+    current_boss = boss_info[character_info["bosses_beaten"]]
+
     directions = {
         'left': facing_left,
         'right': facing_right,
@@ -47,14 +43,21 @@ def handle_boss_state(screen, player, character_info, facing_left, facing_right,
     }
     direction = next((key for key, value in directions.items() if value), '')
 
-    if choice == '1':
+    if has_enough_keys(character_info, current_boss):
+        choice = display_boss_prompt(screen)
 
-        battle(screen, character_info, enemy)
+        if choice == '1':
 
-        direction_subtract_coordinate(player, direction)
+            battle(screen, character_info, current_boss)
+
+            direction_subtract_coordinate(player, direction)
+        else:
+            flee(screen)
+
+            direction_subtract_coordinate(player, direction)
     else:
-        flee(screen)
-
+        boss_speech = f"{current_boss['name']}: You do not have enough keys to fight me. Press Enter to continue."
+        display_only_message(screen, boss_speech)
         direction_subtract_coordinate(player, direction)
 
 def handle_end_game_loss_state(_):
@@ -81,6 +84,7 @@ def main():
     walk_count = 0
     facing_left = facing_right = facing_up = facing_down = False
     game_run = True
+    boss_info = initialize_bosses()
 
     try:
         trainer_name = get_name(screen)
@@ -105,6 +109,7 @@ def main():
         character_args = (
             walk_count, facing_left, facing_right, facing_up, facing_down, left, right, up, down, walk_left, walk_right,
             walk_up, walk_down, char_right, char_left, char_up, char_down)
+
         walk_count, facing_left, facing_right, facing_up, facing_down = redraw_window(character_info, screen, player,
                                                                                       *character_args)
 
@@ -114,7 +119,8 @@ def main():
         state_status = state_machine(player, character_info)
 
         if state_status == "boss_state":
-            handle_boss_state(screen, player, character_info, facing_left, facing_right, facing_up, facing_down)
+            handle_boss_state(screen, player, character_info, boss_info, facing_left, facing_right, facing_up,
+                              facing_down)
         elif state_status == "save_state":
             handle_save_state(screen, player, character_info)
         elif state_status == "encounter_status":

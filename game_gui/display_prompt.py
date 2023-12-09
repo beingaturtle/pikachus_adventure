@@ -38,8 +38,8 @@ def display_prompt(pygame_screen: Surface, message: str, size: int = 32) -> str:
 def display_only_message(pygame_screen: Surface, message: str):
     font = pygame.font.Font(None, 22)
     text = font.render(message,
-                       True, (255, 255, 255))
-    pygame_screen.blit(text, (100, 100))
+                       True, (0, 0, 0))
+    pygame_screen.blit(text, (250, 950))
     pygame.display.update()
 
     while True:
