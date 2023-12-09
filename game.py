@@ -6,6 +6,7 @@ Ian Chan A00910012
 import sys
 import pygame
 
+from game_gui.display_boss_prompt import display_boss_prompt
 from utils.get_name import get_name
 from utils.user_has_file import user_has_file
 from utils.generate_character_info import generate_character_info
@@ -20,16 +21,16 @@ from game_gui.load_character_images import load_character_images
 from game_gui.handle_save_state import handle_save_state
 from game_gui.boundaries import (check_and_adjust_collision, boundary_top, boundary_middle, boundary_bottom,
                                  boundary_left, boundary_right)
-from game_gui.display_prompt import display_prompt
 from game_gui.flee import flee
 from game_gui.battle import battle
 from game_gui.direction_subtract_coordinate import direction_subtract_coordinate
+from game_gui.handle_encounter_state import handle_encounter_state
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT
 
 
 def handle_boss_state(screen, player, character_info, facing_left, facing_right, facing_up, facing_down):
     # TODO: boss_fight logic
-    choice = display_prompt(screen, "boss_status")
+    choice = display_boss_prompt(screen)
     enemy = {
         "health": 100,
         "attack_power": 110
@@ -52,12 +53,6 @@ def handle_boss_state(screen, player, character_info, facing_left, facing_right,
         flee(screen)
 
         direction_subtract_coordinate(player, direction)
-
-
-def handle_encounter_state(screen):
-    # TODO: encounter logic
-    display_prompt(screen, "encounter_status")
-
 
 def handle_end_game_loss_state(_):
     # TODO: end game loss logic
@@ -121,7 +116,7 @@ def main():
         elif state_status == "save_state":
             handle_save_state(screen, player, character_info)
         elif state_status == "encounter_status":
-            handle_encounter_state(screen)
+            handle_encounter_state(screen, character_info)
         elif state_status == "end_game_loss":
             handle_end_game_victory_state(screen)
         elif state_status == "end_game_victory":
