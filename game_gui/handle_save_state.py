@@ -38,8 +38,8 @@ def handle_save_state(screen: Surface, player: Rect, character_info: dict) -> No
     """
     if display_save_prompt(screen) == "1":
         saved_directory_path = os.path.join(os.path.dirname(__file__), '..', 'saved')
-        file_name = os.path.join(saved_directory_path, f"{character_info.name}_info.json")
-        with open(file_name) as file_object:
+        file_name = os.path.join(saved_directory_path, f"{character_info['name']}_info.json")
+        with open(file_name, "w") as file_object:
             json.dump(character_info, file_object)
         screen.fill((0, 0, 0))
         font = pygame.font.Font(None, 36)
