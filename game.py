@@ -12,7 +12,7 @@ from utils.generate_character_info import generate_character_info
 from utils.state_machine import state_machine
 from utils.get_save_file import get_save_file
 from game_gui.show_intro_screen import show_intro_screen
-from game_gui.drawing import redraw_window, draw_character
+from game_gui.drawing import redraw_window
 from game_gui.game_quit import game_quit
 from game_gui.key_handle import key_handle
 from game_gui.movement import movement
@@ -24,7 +24,7 @@ from game_gui.display_prompt import display_prompt
 from game_gui.flee import flee
 from game_gui.battle import battle
 from game_gui.direction_subtract_coordinate import direction_subtract_coordinate
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT, CELL_SIZE
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT
 
 
 def handle_boss_state(screen, player, character_info, facing_left, facing_right, facing_up, facing_down):
