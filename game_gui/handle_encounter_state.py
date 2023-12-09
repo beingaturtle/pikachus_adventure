@@ -17,5 +17,5 @@ def handle_encounter_state(screen: Surface, character_info: dict):
     :postcondition: character may be able to pick up a key after victory
     :postcondition: if character is below 0 hp in the fight, then the game will exit
     """
-    choice = display_prompt(screen, "You are being challenged by a wild Magikarp. Please choose between fighting or fleeing")
+    choice = display_prompt(screen, "A magikarp is challenging you to a duel. You can choose to fight for flee? Press 1 for fight, 2 for flee")
 

@@ -15,7 +15,7 @@ def display_prompt(pygame_screen: Surface, message: str) -> str:
     :postcondition: allows users to be able to quit from the game window
     :return: the user's selection as a string
     """
-    font = pygame.font.Font(None, 36)
+    font = pygame.font.Font(None, 22)
     text = font.render(message,
                        True, (255, 255, 255))
     pygame_screen.blit(text, (100, 100))
