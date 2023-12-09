@@ -1,5 +1,5 @@
 from pygame import Surface
-from display_prompt import display_prompt
+from game_gui.display_prompt import display_prompt
 
 
 def handle_encounter_state(screen: Surface, character_info: dict):
@@ -17,5 +17,5 @@ def handle_encounter_state(screen: Surface, character_info: dict):
     :postcondition: character may be able to pick up a key after victory
     :postcondition: if character is below 0 hp in the fight, then the game will exit
     """
-    choice = display_prompt(screen, "You are being challenged by a wild magikarp. Please choose between fighting or fleeing")
+    choice = display_prompt(screen, "You are being challenged by a wild Magikarp. Please choose between fighting or fleeing")
 
