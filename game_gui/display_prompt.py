@@ -29,14 +29,3 @@ def display_prompt(pygame_screen, state_status) -> str:
     pygame.display.flip()
     return choice
 
-
-def flee(screen, choice, player):
-    if choice == '2':
-        font = pygame.font.Font(None, 36)
-        text = font.render("You ran away safely!", True, (255, 255, 255))
-        screen.blit(text, (100, 100))
-        pygame.display.update()
-        pygame.time.delay(500)
-        player.left -= 10
-
-
