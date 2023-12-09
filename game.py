@@ -12,7 +12,7 @@ from utils.generate_character_info import generate_character_info
 from utils.state_machine import state_machine
 from utils.get_save_file import get_save_file
 from game_gui.show_intro_screen import show_intro_screen
-from game_gui.drawing import redraw_window
+from game_gui.drawing import redraw_window, draw_character
 from game_gui.game_quit import game_quit
 from game_gui.key_handle import key_handle
 from game_gui.movement import movement
@@ -23,9 +23,11 @@ from game_gui.boundaries import (check_and_adjust_collision, boundary_top, bound
 from game_gui.display_prompt import display_prompt
 from game_gui.flee import flee
 from game_gui.battle import battle
+from game_gui.direction_subtract_coordinate import character_direction_facing
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT, CELL_SIZE
 
-def handle_boss_state(screen, player, character_info):
+
+def handle_boss_state(screen, player, character_info, facing_left, facing_right, facing_up, facing_down):
     # TODO: boss_fight logic
     choice = display_prompt(screen, "boss_status")
     enemy = {
@@ -33,21 +35,27 @@ def handle_boss_state(screen, player, character_info):
         "attack_power": 110
     }
     if choice == '1':
-        battle(screen, character_info, player, enemy)
+
+        battle(screen, character_info, enemy, facing_left, facing_right, facing_up, facing_down)
+        character_direction_facing(player, facing_left, facing_right, facing_up, facing_down)
     else:
         flee(screen, player)
+
 
 def handle_encounter_state(screen):
     # TODO: encounter logic
     display_prompt(screen, "encounter_status")
 
+
 def handle_end_game_loss_state(_):
     # TODO: end game loss logic
     return
 
+
 def handle_end_game_victory_state(_):
     # TODO: end game victory logic
     return
+
 
 def main():
     """Drive the program"""
@@ -72,7 +80,8 @@ def main():
         print("Invalid Input: {}\nExiting by returning None".format(e), file=sys.stderr)
         return None
 
-    player = pygame.Rect(character_info['coordinates'][0], character_info['coordinates'][1], PLAYER_WIDTH, PLAYER_HEIGHT)
+    player = pygame.Rect(character_info['coordinates'][0], character_info['coordinates'][1], PLAYER_WIDTH,
+                         PLAYER_HEIGHT)
 
     show_intro_screen(character_info['name'], screen, clock)
 
@@ -83,8 +92,11 @@ def main():
         left, right, up, down = key_handle()
         walk_count += movement(player, left, right, up, down)
 
-        character_args = (walk_count, facing_left, facing_right, facing_up, facing_down, left, right, up, down, walk_left, walk_right, walk_up, walk_down, char_right, char_left, char_up, char_down)
-        walk_count, facing_left, facing_right, facing_up, facing_down = redraw_window(character_info, screen, player, *character_args)
+        character_args = (
+            walk_count, facing_left, facing_right, facing_up, facing_down, left, right, up, down, walk_left, walk_right,
+            walk_up, walk_down, char_right, char_left, char_up, char_down)
+        walk_count, facing_left, facing_right, facing_up, facing_down = redraw_window(character_info, screen, player,
+                                                                                      *character_args)
 
         for boundary_rect in boundaries:
             check_and_adjust_collision(player, boundary_rect, left, right, up, down)
@@ -92,7 +104,7 @@ def main():
         state_status = state_machine(player, character_info)
 
         if state_status == "boss_state":
-            handle_boss_state(screen, player, character_info)
+            handle_boss_state(screen, player, character_info, facing_left, facing_right, facing_up, facing_down)
         elif state_status == "save_state":
             handle_save_state(screen, player, character_info)
         elif state_status == "encounter_state":
@@ -105,6 +117,7 @@ def main():
         pygame.display.flip()
 
     pygame.quit()
+
 
 if __name__ == '__main__':
     main()
