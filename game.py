@@ -23,7 +23,7 @@ from game_gui.boundaries import (check_and_adjust_collision, boundary_top, bound
 from game_gui.display_prompt import display_prompt
 from game_gui.flee import flee
 from game_gui.battle import battle
-from game_gui.direction_subtract_coordinate import character_direction_facing
+from game_gui.direction_subtract_coordinate import direction_subtract_coordinate
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT, CELL_SIZE
 
 
@@ -34,12 +34,24 @@ def handle_boss_state(screen, player, character_info, facing_left, facing_right,
         "health": 100,
         "attack_power": 110
     }
+
+    directions = {
+        'left': facing_left,
+        'right': facing_right,
+        'up': facing_up,
+        'down': facing_down
+    }
+    direction = next((key for key, value in directions.items() if value), '')
+
     if choice == '1':
 
-        battle(screen, character_info, enemy, facing_left, facing_right, facing_up, facing_down)
-        character_direction_facing(player, facing_left, facing_right, facing_up, facing_down)
+        battle(screen, character_info, enemy)
+
+        direction_subtract_coordinate(player, direction)
     else:
-        flee(screen, player)
+        flee(screen)
+
+        direction_subtract_coordinate(player, direction)
 
 
 def handle_encounter_state(screen):
