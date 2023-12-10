@@ -22,7 +22,8 @@ def handle_encounter_state(screen: Surface, character_info: dict):
     """
     encounter_enemy = create_encounter_enemy()
 
-    choice = display_prompt(screen, f"A {encounter_enemy['name']} is challenging you to a duel. You can choose to fight for flee? Press 1 for fight, 2 for flee", 22)
+    choice = display_prompt(screen, f"A {encounter_enemy['name']} is challenging you to a duel."
+                                    f" You can choose to fight for flee? Press 1 for fight, 2 for flee", 22)
     if choice == "1":
         battle(screen, character_info, encounter_enemy)
     else:
