@@ -28,7 +28,7 @@ class TestHandleBossState(unittest.TestCase):
         screen = pygame.Surface((800, 600))
         player = pygame.Rect(0, 0, 50, 50)
         character_info = {"bosses_beaten": 0}
-        boss_info = {0: {"name": "Trainer Edro Gonzales"}}
+        boss_info = tuple({0: {"name": "Trainer Edro Gonzales"}})
         facing_left = {"left": True}
         facing_right = {"right": False}
         facing_up = {"up": False}
