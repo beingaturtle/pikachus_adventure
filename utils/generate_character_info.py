@@ -12,10 +12,10 @@ def generate_character_info(name: str) -> dict:
     :return: dictionary of character information
 
     >>> generate_character_info("test_user")
-    {'name': 'test_user', 'health': 100, 'coordinates': (2, 1), 'skill': 'tackle', 'attack_power': 10, 'defense': 10, 'keys': 0, 'total_experience': 0}
+    {'name': 'test_user', 'health': 100, 'coordinates': [2, 1], 'skill': 'tackle', 'attack_power': 10, 'agility': 10, 'keys': 0, 'total_experience': 0, 'bosses_beaten': 0, 'level': 0}
 
     >>> generate_character_info("xxxxxxxxxx")
-    {'name': 'xxxxxxxxxx', 'health': 100, 'coordinates': (2, 1), 'skill': 'tackle', 'attack_power': 10, 'defense': 10, 'keys': 0, 'total_experience': 0}
+    {'name': 'xxxxxxxxxx', 'health': 100, 'coordinates': [2, 1], 'skill': 'tackle', 'attack_power': 10, 'agility': 10, 'keys': 0, 'total_experience': 0, 'bosses_beaten': 0, 'level': 0}
     """
     character_info = {
         "name": name,
