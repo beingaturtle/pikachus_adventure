@@ -1,19 +1,12 @@
 # Welcome to Pikachu's Adventure
 
-
-![Pikachu Suprise Face](./pikachu_face.png)
-
+![Game](game.png)
 
 ## Made by:
 
-Ian Chan **A00910012**
+Ian Chan | **A00910012** | beingaturtle 
 
-Edro Gonzales **A01257468**
-
-## Your GitHub username:
-
--   beingaturtle
--   Nog-bs
+Edro Gonzales | **A01257468** | Nog-bs
 
 ## Relevant Links
 
@@ -37,7 +30,5 @@ Once you have entered the game feel free to start roaming around getting encount
 There is a single hospital in the first section of the game. This hospital is important for your sanity as
 you will need to heal your Pikachu often. The hospital acts as a save point with in which will snapshot the stats of your current character. If your health points fall mid-battle below 0, the game will indicate your loss and will close. When you log back on with the same username, the last save state of your character will be loaded.
 
-
-
-
+![Pikachu Suprise Face](./pikachu_face.png)
 
