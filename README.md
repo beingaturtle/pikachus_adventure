@@ -65,15 +65,15 @@ Github: [Pikachu's Adventure on Github](https://github.com/beingaturtle/pikachus
   - Second Gate = 6 Keys
   - Third Gate = 9 Keys
 
-- *To challenge the final boss, you need a total of 12 keys*
+- *To challenge the final boss, you need a total of 12 keys.*
 
 - Acquire keys by battling wild Pokemon; battling them is encouraged.
 
 ### Completing the Game
 
-- To complete the game, level up your character sufficiently to challenge the final boss
+- To complete the game, level up your character sufficiently to challenge the final boss.
 
-- The final boss is formidable, but you can do it! Rumor has it that the last boss sports a magnificent beard :)
+- The final boss is formidable, but you can do it! Rumor has it that the last boss sports a magnificent beard! :)
 
 ### Reflection
 
