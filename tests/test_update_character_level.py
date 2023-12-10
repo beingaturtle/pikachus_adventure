@@ -1,5 +1,11 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 from unittest import TestCase
 from utils.update_character_level import update_character_level
+
 
 class TestUpdateCharacterLevel(TestCase):
     def setUp(self):
