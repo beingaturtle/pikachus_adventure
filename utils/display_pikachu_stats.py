@@ -20,8 +20,6 @@ def display_pikachu_stats(pygame_screen: Surface, player: Rect, character_info: 
     :postcondition: display Pikachu's current stats
     """
     font = pygame.font.Font(None, 25)
-    # text = font.render(f"Pikachu's stats:", True, (0, 0, 0))
-    # pygame_screen.blit(text, (10, 935))
 
     stats = [
         f"Coordinates: {player.x, player.y}",
