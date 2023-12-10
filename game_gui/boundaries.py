@@ -9,6 +9,13 @@ def boundary_top(screen):
     :precondition: screen must be a pygame object representing the game window
     :postcondition: draw the top boundary of the game board
     :return: a pygame object representing the top boundary of the game board
+    >>> boundary_top_screen_first = pygame.display.set_mode((1280, 960))
+    >>> boundary_top(boundary_top_screen_first)
+    <rect(465, -5, 5, 193)>
+
+    >>> boundary_top_screen_second = pygame.display.set_mode((800, 600))
+    >>> boundary_top(boundary_top_screen_second)
+    <rect(465, -5, 5, 193)>
     """
     boundary_x = 465
     boundary_y = -5
@@ -30,6 +37,13 @@ def boundary_middle(screen):
     :precondition: screen must be a pygame object representing the game window
     :postcondition: draw the middle boundary of the game board
     :return: a pygame object representing the middle boundary of the game board
+    >>> boundary_middle_screen_first = pygame.display.set_mode((1280, 960))
+    >>> boundary_middle(boundary_middle_screen_first)
+    <rect(465, 253, 5, 380)>
+
+    >>> boundary_middle_screen_second = pygame.display.set_mode((800, 600))
+    >>> boundary_middle(boundary_middle_screen_second)
+    <rect(465, 253, 5, 380)>
     """
     boundary_x = 465
     boundary_y = 253
@@ -51,6 +65,13 @@ def boundary_bottom(screen):
     :precondition: screen must be a pygame object representing the game window
     :postcondition: draw the bottom boundary of the game board
     :return: a pygame object representing the bottom boundary of the game board
+    >>> boundary_bottom_screen_first = pygame.display.set_mode((1280, 960))
+    >>> boundary_bottom(boundary_bottom_screen_first)
+    <rect(465, 693, 5, 234)>
+
+    >>> boundary_bottom_screen_second = pygame.display.set_mode((800, 600))
+    >>> boundary_bottom(boundary_bottom_screen_second)
+    <rect(465, 693, 5, 234)>
     """
     boundary_x = 465
     boundary_y = 693
@@ -72,6 +93,13 @@ def boundary_left(screen):
     :precondition: screen must be a pygame object representing the game window
     :postcondition: draw the left boundary of the game board
     :return: a pygame object representing the left boundary of the game board
+    >>> boundary_left_screen_first = pygame.display.set_mode((1280, 960))
+    >>> boundary_left(boundary_left_screen_first)
+    <rect(-8, 460, 676, 5)>
+
+    >>> boundary_left_screen_second = pygame.display.set_mode((800, 600))
+    >>> boundary_left(boundary_left_screen_second)
+    <rect(-8, 460, 676, 5)>
     """
     boundary_x = -8
     boundary_y = 460
@@ -93,6 +121,13 @@ def boundary_right(screen):
     :precondition: screen must be a pygame object representing the game window
     :postcondition: draw the right boundary of the game board
     :return: a pygame object representing the right boundary of the game board
+    >>> boundary_right_screen_first = pygame.display.set_mode((1280, 960))
+    >>> boundary_right(boundary_right_screen_first)
+    <rect(728, 460, 616, 5)>
+
+    >>> boundary_right_screen_second = pygame.display.set_mode((800, 600))
+    >>> boundary_right(boundary_right_screen_second)
+    <rect(728, 460, 616, 5)>
     """
     boundary_x = 728
     boundary_y = 460
@@ -124,6 +159,17 @@ def check_and_adjust_collision(player, boundary_rect, left, right, up, down):
     :precondition: down must be a boolean representing if the player is moving down
     :postcondition: check if the player is colliding with a boundary and stop the player's movement from passing the
                     boundary
+    >>> first_player = pygame.Rect(0, 0, 10, 10)
+    >>> boundary_rectangle = pygame.Rect(0, 0, 10, 10)
+    >>> check_and_adjust_collision(first_player, boundary_rectangle, True, False, False, False)
+    >>> first_player
+    <rect(10, 0, 10, 10)>
+
+    >>> second_player = pygame.Rect(100, 100, 10, 10)
+    >>> boundary_rectangle = pygame.Rect(100, 100, 10, 10)
+    >>> check_and_adjust_collision(second_player, boundary_rectangle, False, False, False, True)
+    >>> second_player
+    <rect(100, 90, 10, 10)>
     """
     if player.colliderect(boundary_rect):
         # Adjust the player's position to prevent crossing the boundary
@@ -135,6 +181,7 @@ def check_and_adjust_collision(player, boundary_rect, left, right, up, down):
             player.top = boundary_rect.bottom
         elif down:
             player.bottom = boundary_rect.top
+
 
 # def main():
 #     pass
