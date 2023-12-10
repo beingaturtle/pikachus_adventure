@@ -15,7 +15,7 @@ class TestDisplayPrompt(TestCase):
     @patch('pygame.font.Font')
     @patch('pygame.display.update')
     @patch('pygame.event.get')
-    def test_display_prompt_k1_key(self, mock_event_get, mock_display_update, mock_font):
+    def test_display_prompt_k1_key(self, mock_event_get, _, mock_font):
         mock_screen = Mock()
         mock_render = Mock()
         mock_font.return_value.render = mock_render
@@ -28,7 +28,7 @@ class TestDisplayPrompt(TestCase):
     @patch('pygame.font.Font')
     @patch('pygame.display.update')
     @patch('pygame.event.get')
-    def test_display_prompt_k2_key(self, mock_event_get, mock_display_update, mock_font):
+    def test_display_prompt_k2_key(self, mock_event_get, _, mock_font):
         mock_screen = Mock()
         mock_render = Mock()
         mock_font.return_value.render = mock_render
@@ -41,7 +41,7 @@ class TestDisplayPrompt(TestCase):
     @patch('pygame.font.Font')
     @patch('pygame.display.update')
     @patch('pygame.event.get')
-    def test_display_prompt_quit_event(self, mock_event_get, mock_display_update, mock_font):
+    def test_display_prompt_quit_event(self, mock_event_get, _, mock_font):
         mock_screen = Mock()
         mock_render = Mock()
         mock_font.return_value.render = mock_render
