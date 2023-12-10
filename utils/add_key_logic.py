@@ -16,7 +16,7 @@ def add_key_logic(screen: Surface, character: dict):
     :postcondition: displays message on pygame display for is user got a key or not
     """
     font = pygame.font.Font(None, 36)
-    has_key = random.random() < 0.40
+    has_key = random.random() < 0.6
     key_increment = 1 if has_key else 0
     character["keys"] += key_increment
     key_message = "You have earned a key" if has_key else "You were not able to find a key"
