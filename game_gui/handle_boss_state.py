@@ -13,7 +13,7 @@ from game_gui.flee import flee
 from utils.initialize_bosses import has_enough_keys
 
 
-def handle_boss_state(screen: Surface, player: Rect, character_info: dict, boss_info: dict, facing_left: dict,
+def handle_boss_state(screen: Surface, player: Rect, character_info: dict, boss_info: tuple, facing_left: dict,
                       facing_right: dict, facing_up: dict, facing_down: dict) -> None:
     """
     Control the boss state of the game.
@@ -21,7 +21,7 @@ def handle_boss_state(screen: Surface, player: Rect, character_info: dict, boss_
     :param screen: a pygame Surface
     :param player: a pygame Rect
     :param character_info: a non-empty dictionary
-    :param boss_info: a non-empty dictionary
+    :param boss_info: a non-empty tuple
     :param facing_left: a non-empty dictionary
     :param facing_right: a non-empty dictionary
     :param facing_up: a non-empty dictionary
@@ -60,6 +60,6 @@ def handle_boss_state(screen: Surface, player: Rect, character_info: dict, boss_
 
             direction_subtract_coordinate(player, direction)
     else:
-        boss_speech = f"{current_boss['name']}: You do not have enough keys to fight me. Press Enter to continue."
+        boss_speech = f"{current_boss.get('name')}: You do not have enough keys to fight me. Press Enter to continue."
         display_only_message(screen, boss_speech)
         direction_subtract_coordinate(player, direction)

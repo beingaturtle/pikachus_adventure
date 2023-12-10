@@ -75,7 +75,7 @@ def main():
         if state_status == "end_game_victory":
             handle_end_game_victory_state(screen)
 
-        current_boss_location = tuple(boss_info[character_info["bosses_beaten"]]["coordinates"])
+        current_boss_location = tuple(boss_info[character_info["bosses_beaten"]].get("coordinates"))
 
         walk_count, facing_left, facing_right, facing_up, facing_down = redraw_window(character_info, screen, player,
                                                                                       current_boss_location,
