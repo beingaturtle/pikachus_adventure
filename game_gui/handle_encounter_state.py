@@ -1,3 +1,8 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 from pygame import Surface
 from game_gui.display_prompt import display_prompt
 from game_gui.battle import battle
@@ -5,11 +10,11 @@ from game_gui.flee import flee
 from utils.create_encounter_enemy import create_encounter_enemy
 
 
-def handle_encounter_state(screen: Surface, character_info: dict):
+def handle_encounter_state(screen: Surface, character_info: dict) -> None:
     """
     Handles the encounter logic of the gameplay.
 
-    :param screen: pygame.Surface type representing the view of the game
+    :param screen: a pygame object representing the view of the game
     :param character_info: dictionary representing character information
     :precondition: screen must be passed in during live gameplay
     :precondition: character_info is a dictionary representing the character's health and other info
@@ -28,4 +33,3 @@ def handle_encounter_state(screen: Surface, character_info: dict):
         battle(screen, character_info, encounter_enemy)
     else:
         flee(screen)
-
