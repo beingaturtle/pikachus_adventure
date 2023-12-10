@@ -21,7 +21,7 @@ def create_encounter_enemy():
         "name": format_enemy_name,
         "health": 50,
         "attack_power": power_level[1],
-        "experience_award": 100,
+        "experience_award": 250,
         "skill": skill
     }
     return encounter_enemy

@@ -26,7 +26,8 @@ def generate_character_info(name: str) -> dict:
         "agility": 10,
         "keys": 0,
         "total_experience": 0,
-        "bosses_beaten": 0
+        "bosses_beaten": 0,
+        "level": 0
     }
 
     saved_directory_path = os.path.join(os.path.dirname(__file__), '..', 'saved')
