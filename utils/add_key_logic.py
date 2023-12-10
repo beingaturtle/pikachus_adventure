@@ -1,9 +1,14 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 import random
 import pygame
 from pygame import Surface
 
 
-def add_key_logic(screen: Surface, character: dict):
+def add_key_logic(screen: Surface, character: dict) -> None:
     """
     Add key to character.
 
