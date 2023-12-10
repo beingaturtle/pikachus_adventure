@@ -27,6 +27,7 @@ from game_gui.handle_encounter_state import handle_encounter_state
 from game_gui.handle_boss_state import handle_boss_state
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT
 
+
 def main():
     """Drive the program"""
     pygame.init()
