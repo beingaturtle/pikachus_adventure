@@ -19,13 +19,15 @@ def is_collision(player, area):
     """
     return player.colliderect(pygame.Rect(area[0], area[1], CELL_SIZE, CELL_SIZE))
 
-def state_machine(player: Rect, character_info: dict) -> str:
+def state_machine(player: Rect, character_info: dict, boss_info: tuple) -> str:
     """
     Determines the state of the game.
 
     :param player: pygame.Rect object
     :param character_info: dictionary object containing character information
+    :param boss_info: tuple containing all boss information
     :precondition: player must be a pygame.Rect object that represents the info of the current character
+    :postcondition: boss_info must be a tuple containing all boss information
     :postcondition: if player is moving around and not in any state return live_play
     :postcondition: if player is on a boss location then return boss state
     :postcondition: if player is on a hospital tile then return save state
@@ -34,15 +36,16 @@ def state_machine(player: Rect, character_info: dict) -> str:
     :postcondition: if player has lost all health then return end game loss
     :return: string representing state of user
     """
+    current_boss = boss_info[character_info["bosses_beaten"]]
+    boss_location = current_boss['coordinates']
     areas = {
-        "save_state": [(410, 25)],
-        "boss_state": [(441, 188), (668, 422), (442, 633), (38, 829)],
+        "save_state": (410, 25),
+        "boss_state": boss_location,
     }
 
     for state, area_list in areas.items():
-        for area in area_list:
-            if is_collision(player, area):
-                return state
+        if is_collision(player, area_list):
+            return state
 
     if random.random() < 0.005:
         return "encounter_status"

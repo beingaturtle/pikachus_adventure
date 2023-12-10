@@ -124,9 +124,10 @@ def battle(screen, character, enemy):
                         text = font.render(win_message, True, (255, 255, 255))
                         screen.blit(text, (10, 50))
                         character["total_experience"] = player_experience
-                        character["bosses_beaten"] += 1
                         if enemy_type == "wild":
                             add_key_logic(character, character)
+                        elif enemy_type == "boss":
+                            character["bosses_beaten"] += 1
                         pygame.display.update()
                         pygame.time.delay(3000)
                         return

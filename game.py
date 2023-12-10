@@ -7,7 +7,7 @@ import sys
 import pygame
 
 from utils.get_name import get_name
-from utils.initialize_bosses import has_enough_keys, initialize_bosses
+from utils.initialize_bosses import initialize_bosses
 from utils.user_has_file import user_has_file
 from utils.generate_character_info import generate_character_info
 from utils.state_machine import state_machine
@@ -21,12 +21,7 @@ from game_gui.load_character_images import load_character_images
 from game_gui.handle_save_state import handle_save_state
 from game_gui.boundaries import (check_and_adjust_collision, boundary_top, boundary_middle, boundary_bottom,
                                  boundary_left, boundary_right)
-from game_gui.flee import flee
-from game_gui.battle import battle
-from game_gui.direction_subtract_coordinate import direction_subtract_coordinate
 from game_gui.handle_encounter_state import handle_encounter_state
-from game_gui.display_boss_prompt import display_boss_prompt
-from game_gui.display_prompt import display_only_message
 from game_gui.handle_boss_state import handle_boss_state
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT
 
@@ -90,7 +85,7 @@ def main():
         for boundary_rect in boundaries:
             check_and_adjust_collision(player, boundary_rect, left, right, up, down)
 
-        state_status = state_machine(player, character_info)
+        state_status = state_machine(player, character_info, boss_info)
 
         if state_status == "boss_state":
             handle_boss_state(screen, player, character_info, boss_info, facing_left, facing_right, facing_up,
