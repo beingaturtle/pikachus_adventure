@@ -6,17 +6,19 @@ from game_gui.information_box import information_box
 from game_gui.boundaries import boundary_top, boundary_middle, boundary_bottom, boundary_left, boundary_right
 
 
-def redraw_window(character_info: dict, screen: Surface, player: Rect, *args):
+def redraw_window(character_info: dict, screen: Surface, player: Rect, current_boss_location: (int, int), *args):
     """
     Create a game board and refresh the display with an updated background during gameplay.
 
     :param character_info: a dictionary
     :param screen: a pygame.Surface object representing the game window
     :param player: a pygame.Rect object representing the player
+    :param current_boss_location: tuple of two elements representing boss location
     :param args: positional arguments related to drawing objects on the screen
     :precondition: character_info must be a non-empty dictionary representing the character's information
     :precondition: screen must be a pygame object representing the game window
     :precondition: player must be a pygame object representing the player
+    :precondition: current_boss_location must be a tuple of two x and y coordinates
     :precondition: args must be a series of arguments related to drawing objects on the screen
     :postcondition: create a game board and refresh the display with an updated background during gameplay
     """
@@ -27,6 +29,10 @@ def redraw_window(character_info: dict, screen: Surface, player: Rect, *args):
     screen.blit(background_image, (0, 0))
 
     updated_args = draw_character(screen, player, *args)
+
+    font = pygame.font.SysFont("", 100)
+    hospital_text = font.render('B', True, (255, 255, 255))
+    screen.blit(hospital_text, current_boss_location)
 
     font = pygame.font.SysFont("", 100)
     hospital_text = font.render('H', True, (255, 255, 255))

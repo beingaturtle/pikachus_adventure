@@ -38,6 +38,7 @@ def state_machine(player: Rect, character_info: dict, boss_info: tuple) -> str:
     """
     current_boss = boss_info[character_info["bosses_beaten"]]
     boss_location = current_boss['coordinates']
+    
     areas = {
         "save_state": (410, 25),
         "boss_state": boss_location,

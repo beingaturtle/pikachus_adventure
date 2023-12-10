@@ -79,7 +79,9 @@ def main():
             walk_count, facing_left, facing_right, facing_up, facing_down, left, right, up, down, walk_left, walk_right,
             walk_up, walk_down, char_right, char_left, char_up, char_down)
 
-        walk_count, facing_left, facing_right, facing_up, facing_down = redraw_window(character_info, screen, player,
+        current_boss_location = tuple(boss_info[character_info["bosses_beaten"]]["coordinates"])
+
+        walk_count, facing_left, facing_right, facing_up, facing_down = redraw_window(character_info, screen, player, current_boss_location,
                                                                                       *character_args)
 
         for boundary_rect in boundaries:
