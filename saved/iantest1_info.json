@@ -1,0 +1,15 @@
+{
+    "name": "iantest1",
+    "health": 100,
+    "coordinates": [
+        14,
+        800
+    ],
+    "skill": "tackle",
+    "attack_power": 80,
+    "agility": 10,
+    "keys": 20,
+    "total_experience": 0,
+    "bosses_beaten": 3,
+    "level": 5
+}

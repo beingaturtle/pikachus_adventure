@@ -80,7 +80,7 @@ def main():
         state_status = state_machine(player, character_info, boss_info)
 
         if state_status == "end_game_victory":
-            handle_end_game_victory_state(screen, character_info, screen)
+            handle_end_game_victory_state(screen)
 
         current_boss_location = tuple(boss_info[character_info["bosses_beaten"]]["coordinates"])
 

@@ -49,11 +49,11 @@ def display_only_message(pygame_screen: Surface, message: str):
 
 
 def display_end_win_message(pygame_screen: Surface, message: str):
+    pygame_screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 30)
     text = font.render(message,
                        True, (255, 255, 255))
-    pygame_screen.blit(text, (250, 200))
-    pygame_screen.fill((0, 0, 0))
+    pygame_screen.blit(text, (100, 350))
     pygame.display.update()
 
     while True:
