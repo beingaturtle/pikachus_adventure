@@ -30,6 +30,20 @@ Github: [Pikachu's Adventure on Github](https://github.com/beingaturtle/pikachus
 
 - Move your character using WASD keys or arrow buttons on your keyboard.
 
+## Fighting
+
+- You will encounter wild Pokemon as you explore the game world.
+
+- To fight a wild Pokemon, you will be prompted with an encounter message. You can press 1 to Fight or 2 to Flee.
+
+- If you choose to fight, you will prompt to select a move. You can press 1 to use your Skill or 2 to Flee.
+
+- **During the fight, you can spam the 1 key to use your Skill. Be careful, though, as your Pikachu will lose health a lot faster than you expect.**
+
+- If you choose to flee, you will be taken back to the game world.
+
+- The same applies to boss battles.
+
 ## Key Locations
 
 ### Hospital
