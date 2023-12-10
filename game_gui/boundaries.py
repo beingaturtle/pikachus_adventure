@@ -1,7 +1,8 @@
 import pygame
+from pygame import Surface, Rect
 
 
-def boundary_top(screen):
+def boundary_top(screen: Surface) -> pygame.Rect:
     """
     Draw the top boundary of the game board.
 
@@ -29,7 +30,7 @@ def boundary_top(screen):
     return border
 
 
-def boundary_middle(screen):
+def boundary_middle(screen: Surface) -> pygame.Rect:
     """
     Draw the middle boundary of the game board.
 
@@ -57,7 +58,7 @@ def boundary_middle(screen):
     return border
 
 
-def boundary_bottom(screen):
+def boundary_bottom(screen: Surface) -> pygame.Rect:
     """
     Draw the bottom boundary of the game board.
 
@@ -85,7 +86,7 @@ def boundary_bottom(screen):
     return border
 
 
-def boundary_left(screen):
+def boundary_left(screen: Surface) -> pygame.Rect:
     """
     Draw the left boundary of the game board.
 
@@ -113,7 +114,7 @@ def boundary_left(screen):
     return border
 
 
-def boundary_right(screen):
+def boundary_right(screen: Surface) -> pygame.Rect:
     """
     Draw the right boundary of the game board.
 
@@ -141,7 +142,8 @@ def boundary_right(screen):
     return border
 
 
-def check_and_adjust_collision(player, boundary_rect, left, right, up, down):
+def check_and_adjust_collision(player: Rect, boundary_rect: Rect, left: bool, right: bool, up: bool, down: bool) -> \
+        None:
     """
     Check if the player is colliding with a certain boundary and stop the player's movement from crossing the boundary.
 
@@ -172,7 +174,6 @@ def check_and_adjust_collision(player, boundary_rect, left, right, up, down):
     <rect(100, 90, 10, 10)>
     """
     if player.colliderect(boundary_rect):
-        # Adjust the player's position to prevent crossing the boundary
         if left:
             player.left = boundary_rect.right
         elif right:
@@ -181,11 +182,3 @@ def check_and_adjust_collision(player, boundary_rect, left, right, up, down):
             player.top = boundary_rect.bottom
         elif down:
             player.bottom = boundary_rect.top
-
-
-# def main():
-#     pass
-#
-#
-# if __name__ + "__main__":
-#     main()
