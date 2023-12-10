@@ -17,6 +17,7 @@ def create_encounter_enemy():
     format_enemy_name = power_level[0] + " " + current_enemy_name
     encounter_enemy = {
         "enemy_type": "wild",
+        "pokemon_name": current_enemy_name,
         "name": format_enemy_name,
         "health": 50,
         "attack_power": power_level[1],
