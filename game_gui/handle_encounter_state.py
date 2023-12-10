@@ -1,6 +1,4 @@
-import random
 from pygame import Surface
-from itertools import cycle
 from game_gui.display_prompt import display_prompt
 from game_gui.battle import battle
 from game_gui.flee import flee

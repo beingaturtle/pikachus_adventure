@@ -5,6 +5,8 @@ import random
 import sys
 import pygame
 
+from utils.add_key_logic import add_key_logic
+
 
 def display_fight_or_flee(screen, message):
     pygame.font.init()
@@ -92,12 +94,7 @@ def battle(screen, character, enemy):
                         character["total_experience"] = player_experience
                         character["bosses_beaten"] += 1
                         if enemy_type == "wild":
-                            has_key = random.random() < 0.9
-                            key_increment = 1 if has_key else 0
-                            character["keys"] += key_increment
-                            key_message = "You have earned a key" if has_key else "You were not able to find a key"
-                            text = font.render(key_message, True, (255, 255, 255))
-                            screen.blit(text, (10, 80))
+                            add_key_logic(character, character)
                         pygame.display.update()
                         pygame.time.delay(3000)
                         return
