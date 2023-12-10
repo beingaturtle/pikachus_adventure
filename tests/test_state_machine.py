@@ -1,6 +1,12 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 from unittest import TestCase
 from utils.state_machine import state_machine
 from pygame import Rect
+
 
 class TestStateMachine(TestCase):
     def setUp(self):
