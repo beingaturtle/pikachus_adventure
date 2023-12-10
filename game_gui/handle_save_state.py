@@ -1,3 +1,8 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 from pygame import Surface, Rect
 import pygame
 import os
@@ -8,8 +13,10 @@ def display_save_prompt(pygame_screen: Surface) -> str:
     """
     Display a prompt for saving the current state of character.
 
-    :param pygame_screen: The pygame screen object
-    :return: The user's selection as a string
+    :param pygame_screen: a pygame object representing the screen
+    :precondition: pygame_screen is a pygame object representing the screen
+    :postcondition: display a prompt for saving the current state of character
+    :return: the user's selection as a string
     """
     font = pygame.font.Font(None, 36)
     text = font.render("Save game? Press 1 for Yes, 2 for No", True, (255, 255, 255))
@@ -50,3 +57,4 @@ def handle_save_state(screen: Surface, player: Rect, character_info: dict) -> No
         pygame.time.delay(500)
 
     player.left -= 10
+    player.top += 10
