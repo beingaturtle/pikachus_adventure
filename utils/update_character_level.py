@@ -1,4 +1,11 @@
-def update_character_level(character: dict, experience_reward: int):
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
+
+
+def update_character_level(character: dict, experience_reward: int) -> None:
     """
     Updates the character level based on the experience reward.
 
@@ -7,7 +14,7 @@ def update_character_level(character: dict, experience_reward: int):
     :precondition: character is a dictionary representing character stats
     :precondition: experience_reward is a positive integer representing the experience rewarded
     :postcondition: update character experience and level to reflect stats
-    :postcondition: based on experience of character, will update the attack power and health
+    :postcondition: update the attack power and health based on experience of character
 
     >>> sample_character = {"total_experience": 0, "level": 0, "attack_power": 100, "health": 100}
     >>> update_character_level(sample_character, 1000)
