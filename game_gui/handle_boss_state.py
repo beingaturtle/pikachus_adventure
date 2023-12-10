@@ -1,3 +1,10 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
+from pygame import Surface, Rect
+
 from game_gui.battle import battle
 from game_gui.direction_subtract_coordinate import direction_subtract_coordinate
 from game_gui.display_boss_prompt import display_boss_prompt
@@ -6,7 +13,29 @@ from game_gui.flee import flee
 from utils.initialize_bosses import has_enough_keys
 
 
-def handle_boss_state(screen, player, character_info, boss_info, facing_left, facing_right, facing_up, facing_down):
+def handle_boss_state(screen: Surface, player: Rect, character_info: dict, boss_info: dict, facing_left: dict,
+                      facing_right: dict, facing_up: dict, facing_down: dict) -> None:
+    """
+    Control the boss state of the game.
+
+    :param screen: a pygame Surface
+    :param player: a pygame Rect
+    :param character_info: a non-empty dictionary
+    :param boss_info: a non-empty dictionary
+    :param facing_left: a non-empty dictionary
+    :param facing_right: a non-empty dictionary
+    :param facing_up: a non-empty dictionary
+    :param facing_down: a non-empty dictionary
+    :precondition: screen must be a pygame Surface
+    :precondition: player must be a pygame Rect
+    :precondition: character_info must be a non-empty dictionary
+    :precondition: boss_info must be a non-empty dictionary
+    :precondition: facing_left must be a non-empty dictionary
+    :precondition: facing_right must be a non-empty dictionary
+    :precondition: facing_up must be a non-empty dictionary
+    :precondition: facing_down must be a non-empty dictionary
+    :postcondition: control the boss state of the game
+    """
 
     current_boss = boss_info[character_info["bosses_beaten"]]
 
