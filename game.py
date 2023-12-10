@@ -36,8 +36,11 @@ def handle_end_game_loss_state(_):
     return
 
 
-def handle_end_game_victory_state(_):
-    # TODO: end game victory logic
+def handle_end_game_victory_state(boss_info, character_info, screen):
+    boss_name = boss_info[character_info]['bosses_defeated']
+    if character_info['bosses_defeated'] == 4:
+        display_only_message(screen, f"Congratulations! You beat {boss_info} You Win!")
+
     return
 
 
