@@ -1,11 +1,33 @@
-def has_enough_keys(character_info, current_boss):
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
+
+
+def has_enough_keys(character_info: dict, current_boss: dict) -> bool:
+    """
+    Checks if the character has enough keys to fight the boss.
+
+    :param character_info: a non-empty dictionary containing the character's information
+    :param current_boss: a non-empty dictionary containing the boss' information
+    :precondition: character_info must be a non-empty dictionary containing the character's information
+    :precondition: current_boss must be a non-empty dictionary containing the boss' information
+    :postcondition: checks if the character has enough keys to fight the boss
+    :return: a boolean value True if the character has enough keys to fight the boss
+    >>> has_enough_keys({"keys": 3}, {"keys_required": 3})
+    True
+
+    >>> has_enough_keys({"keys": 2}, {"keys_required": 3})
+    False
+    """
     if character_info["keys"] >= current_boss["keys_required"]:
         return True
 
 
-def initialize_bosses():
+def initialize_bosses() -> tuple:
     """
-    Initializes bosses.
+    Initializes bosses for the game.
 
     :postcondition: initializes a tuple of bosses and their information in dictionaries
     :return: tuple of bosses and their information
