@@ -1,3 +1,8 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 import unittest
 import pygame
 from game_gui.direction_subtract_coordinate import direction_subtract_coordinate
