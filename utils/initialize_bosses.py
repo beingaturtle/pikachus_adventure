@@ -42,7 +42,6 @@ def initialize_bosses() -> tuple:
         "skill": "Splash",
         "pokemon_name": "Magikarp",
         "attack_power": 10,
-        "agility": 10,
         "keys_required": 3,
         "experience_award": 500
     }
@@ -57,7 +56,6 @@ def initialize_bosses() -> tuple:
         "skill": "Quick Attack",
         "pokemon_name": "Rattata",
         "attack_power": 20,
-        "agility": 20,
         "keys_required": 6,
         "experience_award": 500
     }
@@ -72,7 +70,6 @@ def initialize_bosses() -> tuple:
         "skill": "Hyper Beam",
         "pokemon_name": "Dragonite",
         "attack_power": 30,
-        "agility": 30,
         "keys_required": 9,
         "experience_award": 500
     }
@@ -80,15 +77,14 @@ def initialize_bosses() -> tuple:
     fourth_boss = {
         "enemy_type": "boss",
         "name": "Trainer Chris Thompson",
-        "health": 100,
+        "health": 600,
         "coordinates": [
             14, 861
         ],
         "skill": "Beard Beam",
         "pokemon_name": "Raichu",
-        "attack_power": 40,
-        "agility": 40,
-        "keys_required": 9,
+        "attack_power": 60,
+        "keys_required": 12,
         "experience_award": 500
     }
 
