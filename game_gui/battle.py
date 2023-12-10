@@ -99,6 +99,7 @@ def battle(screen, character, enemy):
     enemy_hp = enemy["health"]
     enemy_type = enemy["enemy_type"]
     enemy_experience_award = enemy["experience_award"]
+    enemy_name = enemy["pokemon_name"]
     font = pygame.font.Font(None, 36)
     player_skill = character["skill"]
 
@@ -113,13 +114,13 @@ def battle(screen, character, enemy):
                     player_damage = character["attack_power"]
                     enemy_hp -= player_damage
                     screen.fill((0, 0, 0))
-                    attack_message = f"You used {player_skill} and the enemy lost {player_damage} HP"
+                    attack_message = f"You used {player_skill} and {enemy_name} lost {player_damage} HP"
                     text = font.render(attack_message, True, (255, 255, 255))
                     screen.blit(text, (10, 10))
                     pygame.display.update()
                     screen.fill((0, 0, 0))
 
-                    pygame.time.delay(1000)
+                    pygame.time.delay(1500)
 
                     if enemy_hp <= 0:
                         win_message = f"You won the battle and gained {enemy_experience_award} experience points!"
@@ -137,14 +138,14 @@ def battle(screen, character, enemy):
                     enemy_damage = enemy["attack_power"]
                     player_hp -= enemy_damage
 
-                    enemy_attack_message = (f"The enemy attacked back and did {enemy_damage} damage. You lost "
+                    enemy_attack_message = (f"{enemy_name} attacked back and did {enemy_damage} damage. You lost "
                                             f"{enemy_damage} HP")
                     text = font.render(enemy_attack_message, True, (255, 255, 255))
                     screen.blit(text, (10, 50))
                     pygame.display.update()
                     screen.fill((0, 0, 0))
 
-                    pygame.time.delay(1000)
+                    pygame.time.delay(1500)
 
                     if player_hp <= 0:
                         screen.fill((0, 0, 0))
