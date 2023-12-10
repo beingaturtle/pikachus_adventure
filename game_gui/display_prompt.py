@@ -46,3 +46,17 @@ def display_only_message(pygame_screen: Surface, message: str):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
                 return
+
+
+def display_end_win_message(pygame_screen: Surface, message: str):
+    font = pygame.font.Font(None, 30)
+    text = font.render(message,
+                       True, (255, 255, 255))
+    pygame_screen.blit(text, (250, 200))
+    pygame_screen.fill((0, 0, 0))
+    pygame.display.update()
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+                return
