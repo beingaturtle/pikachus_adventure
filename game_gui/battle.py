@@ -1,15 +1,14 @@
 """
 ADD A DOCSTRING
 """
-import random
 import sys
 import pygame
-
+from pygame import Surface
 from utils.add_key_logic import add_key_logic
 from utils.update_character_level import update_character_level
 
 
-def display_fight_or_flee(screen, message):
+def display_fight_or_flee(screen: Surface, message: str) -> None:
     """
     Display the fight or flee message
 
@@ -26,7 +25,7 @@ def display_fight_or_flee(screen, message):
     pygame.display.update()
 
 
-def display_stats(screen, character, enemy):
+def display_stats(screen: Surface, character: dict, enemy: dict) -> None:
     """
     Display the stats of the player and the enemy
 
@@ -83,7 +82,7 @@ def display_stats(screen, character, enemy):
     pygame.display.update()
 
 
-def battle(screen, character, enemy):
+def battle(screen: Surface, character: dict, enemy: dict) -> None:
     """
     Battle the enemy with a turn based system, giving the player the option to fight or flee.
 
@@ -169,11 +168,3 @@ def battle(screen, character, enemy):
 
         enemy["health"] = enemy_hp
         pygame.display.update()
-
-
-def main():
-    pass
-
-
-if __name__ + "__main__":
-    main()
