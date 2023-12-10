@@ -3,6 +3,7 @@ from unittest.mock import Mock, patch
 import pygame
 from game_gui.display_prompt import display_prompt
 
+
 class TestDisplayPrompt(TestCase):
     def setUp(self):
         pygame.init()
@@ -10,7 +11,6 @@ class TestDisplayPrompt(TestCase):
 
     def tearDown(self):
         pygame.quit()
-
 
     @patch('pygame.font.Font')
     @patch('pygame.display.update')
