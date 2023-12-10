@@ -1,5 +1,11 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 import json
 import os
+
 
 def generate_character_info(name: str) -> dict:
     """
@@ -12,10 +18,12 @@ def generate_character_info(name: str) -> dict:
     :return: dictionary of character information
 
     >>> generate_character_info("test_user")
-    {'name': 'test_user', 'health': 100, 'coordinates': [2, 1], 'skill': 'tackle', 'attack_power': 10, 'agility': 10, 'keys': 0, 'total_experience': 0, 'bosses_beaten': 0, 'level': 0}
+    {'name': 'test_user', 'health': 100, 'coordinates': [2, 1], 'skill': 'tackle', 'attack_power': 10, 'agility': 10,
+    'keys': 0, 'total_experience': 0, 'bosses_beaten': 0, 'level': 0}
 
     >>> generate_character_info("xxxxxxxxxx")
-    {'name': 'xxxxxxxxxx', 'health': 100, 'coordinates': [2, 1], 'skill': 'tackle', 'attack_power': 10, 'agility': 10, 'keys': 0, 'total_experience': 0, 'bosses_beaten': 0, 'level': 0}
+    {'name': 'xxxxxxxxxx', 'health': 100, 'coordinates': [2, 1], 'skill': 'tackle', 'attack_power': 10, 'agility': 10,
+    'keys': 0, 'total_experience': 0, 'bosses_beaten': 0, 'level': 0}
     """
     character_info = {
         "name": name,
@@ -36,4 +44,3 @@ def generate_character_info(name: str) -> dict:
         json.dump(character_info, file, indent=4)
 
     return character_info
-
