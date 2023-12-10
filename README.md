@@ -6,9 +6,9 @@
 
 ## Made by:
 
-Ian Chan A00910012
+Ian Chan **A00910012**
 
-Edro Gonzales A01257468
+Edro Gonzales **A01257468**
 
 ## Your GitHub username:
 
