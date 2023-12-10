@@ -9,6 +9,15 @@ from utils.add_key_logic import add_key_logic
 
 
 def display_fight_or_flee(screen, message):
+    """
+    Display the fight or flee message
+
+    :param screen: a pygame screen representing the game screen
+    :param message: a string representing the message to display
+    :precondition: screen must be a pygame screen representing the game screen
+    :precondition: message must be a string representing the message to display
+    :postcondition: display the fight or flee message
+    """
     pygame.font.init()
     font = pygame.font.Font(None, 36)
     text = font.render(message, True, (255, 255, 255))
@@ -17,6 +26,17 @@ def display_fight_or_flee(screen, message):
 
 
 def display_stats(screen, character, enemy):
+    """
+    Display the stats of the player and the enemy
+
+    :param screen: a screen representing the game screen
+    :param character: a dictionary representing the character
+    :param enemy: a dictionary representing the enemy
+    :precondition: screen must be a screen representing the game screen
+    :precondition: character must be a non-empty dictionary representing the character
+    :precondition: enemy must be a non-empty dictionary representing the enemy
+    :postcondition: display the stats of the player and the enemy
+    """
     font = pygame.font.Font(None, 30)
     player_health = character["health"]
     player_attack_power = character["attack_power"]
@@ -59,7 +79,19 @@ def display_stats(screen, character, enemy):
 
     pygame.display.update()
 
+
 def battle(screen, character, enemy):
+    """
+    Battle the enemy with a turn based system, giving the player the option to fight or flee.
+
+    :param screen: a screen representing the game screen
+    :param character: a dictionary representing the character
+    :param enemy: a dictionary representing the enemy
+    :precondition: screen must be a screen representing the game screen
+    :precondition: character must be a non-empty dictionary representing the character
+    :precondition: enemy must be a non-empty dictionary representing the enemy
+    :postcondition: battle the enemy with the option to fight or flee
+    """
     player_hp = character["health"]
     player_experience = character["total_experience"]
     enemy_hp = enemy["health"]
