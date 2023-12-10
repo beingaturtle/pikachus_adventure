@@ -1,3 +1,8 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 import re
 import pygame
 from pygame import Surface
@@ -8,6 +13,7 @@ def get_name(screen: Surface) -> str:
     Gets the name of the user within a Pygame window.
 
     :param screen: pygame screen object where the name will be inputted and displayed
+    :precondition: screen must be a pygame screen object representing the game window
     :postcondition: user is prompted for username in the Pygame window
     :postcondition: checks if username has anything besides numbers, letters, hyphens, and underscores
     :return: string representing the typed username of user
@@ -40,7 +46,8 @@ def get_name(screen: Surface) -> str:
                     if event.key == pygame.K_RETURN:
                         if not re.match(r'^[a-zA-Z\d_-]+$', text):
                             raise ValueError(
-                                "Name must not have any spaces and contain only letters, numbers, underscores '_', or hyphens '-'")
+                                "Name must not have any spaces and contain only letters, numbers, underscores '_',"
+                                " or hyphens '-'")
                         done = True
                     elif event.key == pygame.K_BACKSPACE:
                         text = text[:-1]
