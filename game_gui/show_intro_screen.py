@@ -1,3 +1,8 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 import pygame
 import sys
 from pygame import Surface
@@ -12,6 +17,8 @@ def show_intro_screen(trainer_name: str, screen: Surface, clock: Clock) -> None:
     :param screen: pygame screen object where the name will be inputted and displayed
     :param clock: pygame clock object
     :precondition: trainer_name a non-empty string containing the user's name
+    :precondition: screen is a pygame screen object representing the game window
+    :precondition: clock is a pygame clock object representing the game clock
     :postcondition: display a welcome message, game rules, and informs user to proceed with the game
     """
     intro_text_font = pygame.font.Font(None, 28)
