@@ -44,21 +44,22 @@ Github: [Pikachu's Adventure on Github](https://github.com/beingaturtle/pikachus
 
 ![bosses.png](bosses.png)
 
-- Look for trainers marked with a "B" symbolizing bosses. Defeat these trainers before advancing through each gate.
+- Look for trainers marked with a "B" symbolizing bosses blocking each gate. Defeat these trainers before advancing through each gate.
 
 - To challenge a boss, you need a specific number of keys:
   - First Gate = 3 Keys
   - Second Gate = 6 Keys
   - Third Gate = 9 Keys
-  - Fourth Gate = 12 Keys
+
+- *To challenge the final boss, you need a total of 12 keys*
 
 - Acquire keys by battling wild Pokemon; battling them is encouraged.
 
 ### Completing the Game
 
-- To complete the game, level up your character sufficiently to challenge bosses.
+- To complete the game, level up your character sufficiently to challenge the final boss
 
-- The final boss is formidable, but you can do it! Rumor has it that the last boss sports a magnificent beard.
+- The final boss is formidable, but you can do it! Rumor has it that the last boss sports a magnificent beard
 
 ### Reflection
 
