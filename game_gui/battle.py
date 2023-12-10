@@ -106,7 +106,7 @@ def battle(screen: Surface, character: dict, enemy: dict) -> None:
 
     screen.fill((0, 0, 0))
     while True:
-        display_fight_or_flee(screen, f"Choose 1 to use {player_skill} or 2 to flee")
+        display_fight_or_flee(screen, f"Choose 1 to use {player_skill} or 2 to Flee.")
         display_stats(screen, character, enemy)
 
         for event in pygame.event.get():
@@ -115,7 +115,7 @@ def battle(screen: Surface, character: dict, enemy: dict) -> None:
                     player_damage = character["attack_power"]
                     enemy_hp -= player_damage
                     screen.fill((0, 0, 0))
-                    attack_message = f"You used {player_skill} and {enemy_name} lost {player_damage} HP"
+                    attack_message = f"You used {player_skill} and {enemy_name} lost {player_damage} HP."
                     text = font.render(attack_message, True, (255, 255, 255))
                     screen.blit(text, (10, 10))
                     pygame.display.update()
@@ -140,7 +140,7 @@ def battle(screen: Surface, character: dict, enemy: dict) -> None:
                     player_hp -= enemy_damage
 
                     enemy_attack_message = (f"{enemy_name} attacked back and did {enemy_damage} damage. You lost "
-                                            f"{enemy_damage} HP")
+                                            f"{enemy_damage} HP.")
                     text = font.render(enemy_attack_message, True, (255, 255, 255))
                     screen.blit(text, (10, 50))
                     pygame.display.update()
