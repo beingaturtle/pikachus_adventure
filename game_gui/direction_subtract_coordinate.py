@@ -1,3 +1,8 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 import pygame
 from pygame import Rect
 
