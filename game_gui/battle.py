@@ -1,6 +1,3 @@
-"""
-ADD A DOCSTRING
-"""
 import sys
 import pygame
 from pygame import Surface
