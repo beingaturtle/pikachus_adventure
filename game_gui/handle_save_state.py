@@ -54,7 +54,7 @@ def handle_save_state(screen: Surface, player: Rect, character_info: dict) -> No
         text = font.render("Your health has been restored and your information saved.", True, (255, 255, 255))
         screen.blit(text, (100, 100))
         pygame.display.update()
-        pygame.time.delay(500)
+        pygame.time.delay(1000)
 
     player.left -= 10
     player.top += 10
