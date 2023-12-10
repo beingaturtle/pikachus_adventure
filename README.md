@@ -77,6 +77,6 @@ Github: [Pikachu's Adventure on Github](https://github.com/beingaturtle/pikachus
 
 ### Reflection
 
-This game was developed in one week, and while Ian and I wish we had more time to create a more extensive game, we enjoyed the process. We gained valuable experience in unit testing and Pythonic programming along the way.
+This game was developed in one week, and while we wish that we had more time to create a more extensive game, we enjoyed the process. We gained valuable experience in unit testing and Pythonic programming along the way.
 
 ![Pikachu Surprise Face](pikachu_face.png)
