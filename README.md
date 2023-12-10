@@ -2,33 +2,66 @@
 
 ![Game](game.png)
 
-## Made by:
+## Creators:
 
 Ian Chan | **A00910012** | beingaturtle 
 
 Edro Gonzales | **A01257468** | Nog-bs
 
-## Relevant Links
+## Useful Links
 
-Figma: https://www.figma.com/file/VlCe4eIoylEsFdCJ6FpZ5H/1510%3A-Pikachu's-Adventure?type=whiteboard&node-id=0%3A1&t=5DEfG8wT9XRF36HS-1
+Figma: [Pikachu's Adventure on Figma](https://www.figma.com/file/VlCe4eIoylEsFdCJ6FpZ5H/1510%3A-Pikachu's-Adventure?type=whiteboard&node-id=0%3A1&t=5DEfG8wT9XRF36HS-1)
 
-Github: https://github.com/beingaturtle/pikachus_adventure
+Github: [Pikachu's Adventure on Github](https://github.com/beingaturtle/pikachus_adventure)
 
-# Documentation
+# Game Guide
 
-## How to play
-Once you have `git clone` the project into a folder please start the game by running the command
-`python3 game.py` and this should bring up the game window. You should be prompted to enter in a username.
-The username must consist of a few letters and/or digits with special exceptions for hyphens or underscores. 
+## Getting Started
 
-Once you have entered the game feel free to start roaming around getting encountered by wild pokemon or challenging trainers to get to the end. You can move around using WASD or arrow buttons on your keyboard.
+1. Clone the project repository using `git clone`.
 
-## Areas of interest
+2. Start the game with the command `python3 game.py`.
+
+3. Enter a username consisting of letters, digits, hyphens, or underscores.
+
+4. Embark on your adventure, exploring the game world and engaging with various elements.
+
+## Controls
+
+- Move your character using WASD keys or arrow buttons on your keyboard.
+
+## Key Locations
+
+### Hospital
 
 ![Hospital](hospital_sample.png)
 
-There is a single hospital in the first section of the game. This hospital is important for your sanity as
-you will need to heal your Pikachu often. The hospital acts as a save point with in which will snapshot the stats of your current character. If your health points fall mid-battle below 0, the game will indicate your loss and will close. When you log back on with the same username, the last save state of your character will be loaded.
+- Find hospitals in the game to heal your Pikachu and save your progress.
 
-![Pikachu Suprise Face](./pikachu_face.png)
+- Hospitals serve as save points, recording your character's stats. If your health drops to zero during a battle, the game will indicate your loss and close. Upon re-entering with the same username, your character's last saved state will be loaded.
 
+### Trainers
+
+![bosses.png](bosses.png)
+
+- Look for trainers marked with a "B" symbolizing bosses. Defeat these trainers before advancing through each gate.
+
+- To challenge a boss, you need a specific number of keys:
+  - First Gate = 3 Keys
+  - Second Gate = 6 Keys
+  - Third Gate = 9 Keys
+  - Fourth Gate = 12 Keys
+
+- Acquire keys by battling wild Pokemon; battling them is encouraged.
+
+### Completing the Game
+
+- To complete the game, level up your character sufficiently to challenge bosses.
+
+- The final boss is formidable, but you can do it! Rumor has it that the last boss sports a magnificent beard.
+
+### Reflection
+
+This game was developed in one week, and while Ian and I wish we had more time to create a more extensive game, we enjoyed the process. We gained valuable experience in unit testing and Pythonic programming along the way.
+
+![Pikachu Surprise Face](pikachu_face.png)
