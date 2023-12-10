@@ -15,7 +15,7 @@ class TestDisplayBossPrompt(unittest.TestCase):
     @patch('pygame.font.Font')
     @patch('pygame.event.get')
     @patch('pygame.display.update')
-    def test_display_boss_prompt_1(self, mock_update, mock_event_get, mock_font):
+    def test_display_boss_prompt_1(self, _, mock_event_get, mock_font):
         mock_screen = Mock()
         mock_render = Mock()
         mock_font.return_value.render = mock_render
@@ -29,7 +29,7 @@ class TestDisplayBossPrompt(unittest.TestCase):
     @patch('pygame.font.Font')
     @patch('pygame.event.get')
     @patch('pygame.display.update')
-    def test_display_boss_prompt_2(self, mock_update, mock_event_get, mock_font):
+    def test_display_boss_prompt_2(self, _, mock_event_get, mock_font):
         mock_screen = Mock()
         mock_render = Mock()
         mock_font.return_value.render = mock_render
@@ -44,7 +44,7 @@ class TestDisplayBossPrompt(unittest.TestCase):
     @patch('pygame.event.get')
     @patch('pygame.display.update')
     @patch('pygame.display.flip')
-    def test_display_boss_prompt_quit_event(self, mock_flip, mock_update, mock_event_get, mock_font):
+    def test_display_boss_prompt_quit_event(self, _, __, mock_event_get, mock_font):
         mock_screen = Mock()
         mock_render = Mock()
         mock_font.return_value.render = mock_render
