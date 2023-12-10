@@ -1,3 +1,8 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 from unittest import TestCase
 from unittest.mock import Mock, patch
 import pygame
