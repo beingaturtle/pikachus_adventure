@@ -1,9 +1,15 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 import json
 import os
 import unittest
 from unittest.mock import patch, MagicMock
 import pygame
 from game_gui.handle_save_state import handle_save_state
+
 
 class TestHandleSaveState(unittest.TestCase):
     @classmethod
@@ -39,6 +45,3 @@ class TestHandleSaveState(unittest.TestCase):
     def tearDownClass(cls):
         pygame.font.quit()
         pygame.quit()
-
-if __name__ == '__main__':
-    unittest.main()
