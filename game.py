@@ -74,16 +74,19 @@ def main():
             walk_count, facing_left, facing_right, facing_up, facing_down, left, right, up, down, walk_left, walk_right,
             walk_up, walk_down, char_right, char_left, char_up, char_down)
 
+        for boundary_rect in boundaries:
+            check_and_adjust_collision(player, boundary_rect, left, right, up, down)
+
+        state_status = state_machine(player, character_info, boss_info)
+
+        if state_status == "end_game_victory":
+            handle_end_game_victory_state(screen, character_info, screen)
+
         current_boss_location = tuple(boss_info[character_info["bosses_beaten"]]["coordinates"])
 
         walk_count, facing_left, facing_right, facing_up, facing_down = redraw_window(character_info, screen, player,
                                                                                       current_boss_location,
                                                                                       *character_args)
-
-        for boundary_rect in boundaries:
-            check_and_adjust_collision(player, boundary_rect, left, right, up, down)
-
-        state_status = state_machine(player, character_info, boss_info)
 
         if state_status == "boss_state":
             handle_boss_state(screen, player, character_info, boss_info, facing_left, facing_right, facing_up,
@@ -92,8 +95,6 @@ def main():
             handle_save_state(screen, player, character_info)
         elif state_status == "encounter_status":
             handle_encounter_state(screen, character_info)
-        elif state_status == "end_game_victory":
-            handle_end_game_victory_state(screen)
 
         pygame.display.flip()
 
