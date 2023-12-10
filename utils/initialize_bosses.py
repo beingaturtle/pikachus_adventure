@@ -15,7 +15,7 @@ def initialize_bosses():
         "name": "Trainer Edro Gonzales",
         "health": 100,
         "coordinates": [
-            446, 253
+            453, 189
         ],
         "skill": "Splash",
         "pokemon_name": "Magikarp",
@@ -30,7 +30,7 @@ def initialize_bosses():
         "name": "Trainer Ian Chan",
         "health": 100,
         "coordinates": [
-            668, 430
+            675, 441
         ],
         "skill": "Quick Attack",
         "pokemon_name": "Rattata",
@@ -45,7 +45,7 @@ def initialize_bosses():
         "name": "Trainer Richard M",
         "health": 100,
         "coordinates": [
-            452, 633
+            434, 633
         ],
         "skill": "Hyper Beam",
         "pokemon_name": "Dragonite",
@@ -60,7 +60,7 @@ def initialize_bosses():
         "name": "Trainer Chris Thompson",
         "health": 100,
         "coordinates": [
-            18, 849
+            14, 861
         ],
         "skill": "Beard Beam",
         "pokemon_name": "Raichu",
