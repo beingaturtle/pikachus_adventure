@@ -42,7 +42,7 @@ Github: [Pikachu's Adventure on Github](https://github.com/beingaturtle/pikachus
 
 ### Trainers
 
-![bosses.png](bosses.png)
+![Bosses](bosses.png)
 
 - Look for trainers marked with a "B" symbolizing bosses blocking each gate. Defeat these trainers before advancing through each gate.
 
