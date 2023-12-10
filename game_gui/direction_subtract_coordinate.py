@@ -1,7 +1,8 @@
 import pygame
+from pygame import Rect
 
 
-def direction_subtract_coordinate(player, direction):
+def direction_subtract_coordinate(player: Rect, direction: str) -> None:
     """
     Subtract the coordinate of the player based on the direction it is facing by 10 pixels.
 
