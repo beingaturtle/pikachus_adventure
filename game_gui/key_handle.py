@@ -1,9 +1,16 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 import pygame
 
-def key_handle():
+
+def key_handle() -> tuple:
     """
     Processes keyboard input to determine movement direction.
 
+    :postcondition: the keyboard inputs are processed to determine the movement direction
     :return: A tuple of booleans left, right, up, down indicating the movement direction
     """
     keys = pygame.key.get_pressed()
