@@ -1,7 +1,13 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 from unittest import TestCase
 from utils.user_has_file import user_has_file
 import os
 import json
+
 
 class TestUserHasFile(TestCase):
     @staticmethod
