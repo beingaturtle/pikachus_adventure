@@ -6,6 +6,9 @@ Ian Chan A00910012
 import sys
 import pygame
 
+from game_gui.display_prompt import display_only_message, display_end_win_message  # will remove soon
+from game_gui.handle_end_game_victory_state import handle_end_game_victory_state
+
 from utils.get_name import get_name
 from utils.initialize_bosses import initialize_bosses
 from utils.user_has_file import user_has_file
@@ -28,14 +31,6 @@ from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT
 
 def handle_end_game_loss_state(_):
     # TODO: end game loss logic
-    return
-
-
-def handle_end_game_victory_state(boss_info, character_info, screen):
-    boss_name = boss_info[character_info]['bosses_defeated']
-    if character_info['bosses_defeated'] == 4:
-        display_only_message(screen, f"Congratulations! You beat {boss_info} You Win!")
-
     return
 
 
@@ -81,7 +76,8 @@ def main():
 
         current_boss_location = tuple(boss_info[character_info["bosses_beaten"]]["coordinates"])
 
-        walk_count, facing_left, facing_right, facing_up, facing_down = redraw_window(character_info, screen, player, current_boss_location,
+        walk_count, facing_left, facing_right, facing_up, facing_down = redraw_window(character_info, screen, player,
+                                                                                      current_boss_location,
                                                                                       *character_args)
 
         for boundary_rect in boundaries:
@@ -96,8 +92,6 @@ def main():
             handle_save_state(screen, player, character_info)
         elif state_status == "encounter_status":
             handle_encounter_state(screen, character_info)
-        elif state_status == "end_game_loss":
-            handle_end_game_victory_state(screen)
         elif state_status == "end_game_victory":
             handle_end_game_victory_state(screen)
 
