@@ -6,7 +6,6 @@ Ian Chan A00910012
 import sys
 import pygame
 
-from game_gui.display_prompt import display_only_message, display_end_win_message  # will remove soon
 from game_gui.handle_end_game_victory_state import handle_end_game_victory_state
 
 from utils.get_name import get_name
@@ -27,12 +26,6 @@ from game_gui.boundaries import (check_and_adjust_collision, boundary_top, bound
 from game_gui.handle_encounter_state import handle_encounter_state
 from game_gui.handle_boss_state import handle_boss_state
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT
-
-
-def handle_end_game_loss_state(_):
-    # TODO: end game loss logic
-    return
-
 
 def main():
     """Drive the program"""
