@@ -1,7 +1,13 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 import random
 from itertools import cycle
 
-def create_encounter_enemy():
+
+def create_encounter_enemy() -> dict:
     """
     Creates the enemy encounter information.
 
