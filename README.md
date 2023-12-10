@@ -2,9 +2,11 @@
 
 ![Game](game.png)
 
-#### Made by:
-#### Ian Chan | **A00910012** | beingaturtle
-#### Edro Gonzales | **A01257468** | Nog-bs
+## Made by:
+
+Ian Chan | **A00910012** | beingaturtle 
+
+Edro Gonzales | **A01257468** | Nog-bs
 
 ## Relevant Links
 
