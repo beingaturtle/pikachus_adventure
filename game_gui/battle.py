@@ -6,6 +6,7 @@ import sys
 import pygame
 
 from utils.add_key_logic import add_key_logic
+from utils.update_character_level import update_character_level
 
 
 def display_fight_or_flee(screen, message):
@@ -39,6 +40,7 @@ def display_stats(screen, character, enemy):
     """
     font = pygame.font.Font(None, 30)
     player_health = character["health"]
+    player_level = character["level"]
     player_attack_power = character["attack_power"]
     player_skill = character["skill"]
     player_experience = character["total_experience"]
@@ -50,6 +52,7 @@ def display_stats(screen, character, enemy):
 
     player_stats_lines = [
         "Pikachu Stats:",
+        f"Level: {player_level}",
         f"Health: {player_health}",
         f"Attack Power: {player_attack_power}",
         f"Skill: {player_skill}",
@@ -93,7 +96,6 @@ def battle(screen, character, enemy):
     :postcondition: battle the enemy with the option to fight or flee
     """
     player_hp = character["health"]
-    player_experience = character["total_experience"]
     enemy_hp = enemy["health"]
     enemy_type = enemy["enemy_type"]
     enemy_experience_award = enemy["experience_award"]
@@ -123,11 +125,11 @@ def battle(screen, character, enemy):
                         win_message = f"You won the battle and gained {enemy_experience_award} experience points!"
                         text = font.render(win_message, True, (255, 255, 255))
                         screen.blit(text, (10, 50))
-                        character["total_experience"] = player_experience
                         if enemy_type == "wild":
                             add_key_logic(screen, character)
                         elif enemy_type == "boss":
                             character["bosses_beaten"] += 1
+                        update_character_level(character, enemy_experience_award)
                         pygame.display.update()
                         pygame.time.delay(3000)
                         return

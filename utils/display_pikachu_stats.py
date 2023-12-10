@@ -18,6 +18,7 @@ def display_pikachu_stats(pygame_screen, player, character_info: dict) -> None:
     stats = [
         f"Coordinates: {player.x, player.y}",
         f"Health: {character_info['health']}",
+        f"Level: {character_info['level']}",
         f"Skill: {character_info['skill']}",
         f"Number of Keys: {character_info['keys']}",
         f"Experience: {character_info['total_experience']}",
