@@ -5,7 +5,6 @@ Ian Chan A00910012
 """
 from unittest import TestCase
 from unittest.mock import patch, Mock
-
 from game_gui.battle import display_fight_or_flee
 
 
