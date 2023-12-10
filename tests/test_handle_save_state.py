@@ -10,6 +10,7 @@ from unittest.mock import patch, MagicMock
 import pygame
 from game_gui.handle_save_state import handle_save_state
 
+
 class TestHandleSaveState(TestCase):
     @classmethod
     def setUpClass(cls):
