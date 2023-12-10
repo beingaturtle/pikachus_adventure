@@ -4,7 +4,6 @@ Edro Gonzales A01257468
 Ian Chan A00910012
 """
 from pygame import Surface, Rect
-
 from game_gui.battle import battle
 from game_gui.direction_subtract_coordinate import direction_subtract_coordinate
 from game_gui.display_boss_prompt import display_boss_prompt
