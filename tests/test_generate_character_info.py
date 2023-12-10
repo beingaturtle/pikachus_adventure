@@ -1,8 +1,14 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 from unittest import TestCase
 import os
 import random
 import json
 from utils.generate_character_info import generate_character_info
+
 
 class TestGenerateCharacterInfo(TestCase):
     def test_valid_input_name(self):
@@ -68,7 +74,7 @@ class TestGenerateCharacterInfo(TestCase):
     def test_file_content_match(self):
         random_number = random.randint(1000, 9999)
         name = f"test_character-{random_number}"
-        expected_file_path = os.path.join(os.path.dirname(__file__), '..', 'saved', f"{name}_info.json")  # Update the expected file path
+        expected_file_path = os.path.join(os.path.dirname(__file__), '..', 'saved', f"{name}_info.json")
 
         expected_output = generate_character_info(name)
 
