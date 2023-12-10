@@ -17,5 +17,12 @@ def update_character_level(character: dict, experience_reward: int):
         character["level"] = new_level
 
         for _ in range(levels_gained):
-            character["attack_power"] *= 1.20
-            character["health"] *= 1.20
+            character["attack_power"] *= 1.50
+            character["health"] *= 1.50
+
+    if character["level"] == 0:
+        character["skill"] = "Tackle"
+    elif character["level"] == 1:
+        character["skill"] = "Quick Attack"
+    elif character["level"] >= 2:
+        character["skill"] = "Thunder"
