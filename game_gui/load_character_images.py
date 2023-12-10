@@ -1,11 +1,18 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 import pygame
 from constants import PLAYER_WIDTH, PLAYER_HEIGHT
 
-def load_character_images():
+
+def load_character_images() -> tuple:
     """
     Load and scale character images for various movements.
 
-    :return: a tuple containing lists of Pygame surfaces for each direction
+    :postcondition: load and scale character images for various movements
+    :return: a tuple containing lists of pygame surfaces for each direction
     """
     walk_left = [
         pygame.transform.scale(pygame.image.load('./images/character/L1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
@@ -23,9 +30,13 @@ def load_character_images():
         pygame.transform.scale(pygame.image.load('./images/character/D1.png'), (PLAYER_WIDTH, PLAYER_HEIGHT)),
         pygame.transform.scale(pygame.image.load('./images/character/D2.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
     ]
-    char_right = pygame.transform.scale(pygame.image.load('./images/character/Rstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
-    char_left = pygame.transform.scale(pygame.image.load('./images/character/Lstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
-    char_up = pygame.transform.scale(pygame.image.load('./images/character/Ustill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
-    char_down = pygame.transform.scale(pygame.image.load('./images/character/Dstill.png'), (PLAYER_WIDTH, PLAYER_HEIGHT))
+    char_right = pygame.transform.scale(pygame.image.load('./images/character/Rstill.png'), (PLAYER_WIDTH,
+                                                                                             PLAYER_HEIGHT))
+    char_left = pygame.transform.scale(pygame.image.load('./images/character/Lstill.png'), (PLAYER_WIDTH,
+                                                                                            PLAYER_HEIGHT))
+    char_up = pygame.transform.scale(pygame.image.load('./images/character/Ustill.png'), (PLAYER_WIDTH,
+                                                                                          PLAYER_HEIGHT))
+    char_down = pygame.transform.scale(pygame.image.load('./images/character/Dstill.png'), (PLAYER_WIDTH,
+                                                                                            PLAYER_HEIGHT))
 
     return walk_left, walk_right, walk_up, walk_down, char_right, char_left, char_up, char_down
