@@ -16,7 +16,7 @@ def create_encounter_enemy() -> dict:
     :return: dictionary with enemy information
     """
     enemy_names = cycle(["Magikarp", "Bidoof", "Zubat"])
-    skill = cycle(["splash", "tackle", "scream"])
+    skill = cycle(["Splash", "Tackle", "Scream"])
     power_level = random.choice([("Weak", 5), ("Strong", 15), ("Decent", 12)])
     current_enemy_name = next(enemy_names)
     skill = next(skill)
