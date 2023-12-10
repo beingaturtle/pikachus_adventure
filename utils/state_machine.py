@@ -34,11 +34,15 @@ def state_machine(player: Rect, character_info: dict, boss_info: tuple) -> str:
     :postcondition: if player is on in a wild encounter then return wild encounter
     :postcondition: if player has beaten all the bosses then return end game victory
     :postcondition: if player has lost all health then return end game loss
-    :return: string representing state of user
+    :return: string representing state of the user
     """
-    current_boss = boss_info[character_info["bosses_beaten"]]
+    if character_info["bosses_beaten"] == 4:
+        return "end_game_victory"
+
+    next_boss = character_info["bosses_beaten"]
+    current_boss = boss_info[next_boss]
     boss_location = current_boss['coordinates']
-    
+
     areas = {
         "save_state": (410, 25),
         "boss_state": boss_location,
@@ -50,9 +54,6 @@ def state_machine(player: Rect, character_info: dict, boss_info: tuple) -> str:
 
     if random.random() < 0.005:
         return "encounter_status"
-
-    elif character_info["bosses_beaten"] == 4:
-        return "end_game_victory"
     elif character_info["health"] <= 0:
         return "end_game_loss"
 
