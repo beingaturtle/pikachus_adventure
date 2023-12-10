@@ -1,7 +1,13 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
+from pygame import Rect
 from constants import SPEED, SCREEN_WIDTH, PLAYER_WIDTH, PLAYER_HEIGHT
 
 
-def movement(player, left, right, up, down):
+def movement(player: Rect, left: bool, right: bool, up: bool, down: bool) -> int:
     """
     Update the character position based on movement keys.
 
@@ -10,7 +16,11 @@ def movement(player, left, right, up, down):
     :param right: boolean indicating movement to the right
     :param up: boolean indicating movement upwards
     :param down: boolean indicating movement downwards
-    :precondition: left right up down should be booleans indicative of player direction
+    :precondition: player must be a pygame object representing the player
+    :precondition: left must be a boolean indicative of player direction
+    :precondition: right must be a boolean indicative of player direction
+    :precondition: up must be a boolean indicative of player direction
+    :precondition: down must be a boolean indicative of player direction
     :postcondition: character position updated based on movement keys
     :return: the walk count as an integer
     """
