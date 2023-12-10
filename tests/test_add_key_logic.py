@@ -19,7 +19,7 @@ class TestAddKeyLogic(TestCase):
         mock_font.return_value.render.return_value = Mock()
 
         character = {"keys": 0}
-        mock_random.return_value = 0.6
+        mock_random.return_value = 0.3
         add_key_logic(mock_screen, character)
 
         self.assertEqual(character["keys"], 1)
