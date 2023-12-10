@@ -125,7 +125,7 @@ def battle(screen, character, enemy):
                         screen.blit(text, (10, 50))
                         character["total_experience"] = player_experience
                         if enemy_type == "wild":
-                            add_key_logic(character, character)
+                            add_key_logic(screen, character)
                         elif enemy_type == "boss":
                             character["bosses_beaten"] += 1
                         pygame.display.update()

@@ -7,7 +7,7 @@ def add_key_logic(screen: Surface, character: dict):
     """
     Add key to character.
 
-    :param screen: pygame.Surface object containing gameplay characterinfo
+    :param screen: pygame.Surface object containing gameplay
     :param character: dictionary containing character stats information
     :precondition: pygame.Surface is provided live gameplay
     :precondition: character dictionary contains character stats information
