@@ -5,13 +5,12 @@ Ian Chan A00910012
 """
 import json
 import os
-import unittest
+from unittest import TestCase
 from unittest.mock import patch, MagicMock
 import pygame
 from game_gui.handle_save_state import handle_save_state
 
-
-class TestHandleSaveState(unittest.TestCase):
+class TestHandleSaveState(TestCase):
     @classmethod
     def setUpClass(cls):
         pygame.init()
