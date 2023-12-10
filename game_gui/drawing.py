@@ -6,7 +6,8 @@ from game_gui.information_box import information_box
 from game_gui.boundaries import boundary_top, boundary_middle, boundary_bottom, boundary_left, boundary_right
 
 
-def redraw_window(character_info: dict, screen: Surface, player: Rect, current_boss_location: (int, int), *args):
+def redraw_window(character_info: dict, screen: Surface, player: Rect, current_boss_location: (int, int), *args: tuple
+                  ) -> tuple:
     """
     Create a game board and refresh the display with an updated background during gameplay.
 
@@ -46,7 +47,7 @@ def redraw_window(character_info: dict, screen: Surface, player: Rect, current_b
     return updated_args
 
 
-def draw_character(screen, player, *args):
+def draw_character(screen: Surface, player: Rect, *args) -> tuple:
     """
     Draw the character on the screen based on the current state and direction it is facing.
 
