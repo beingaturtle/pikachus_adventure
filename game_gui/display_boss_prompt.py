@@ -3,14 +3,14 @@ import pygame
 from pygame import Surface
 
 
-def display_boss_prompt(pygame_screen: Surface, current_boss) -> str:
+def display_boss_prompt(pygame_screen: Surface, current_boss: dict) -> str:
     """
     Displays a message from the boss and prompts the user to fight or not.
 
     :param pygame_screen: a pygame screen object
     :param current_boss: the current boss is the boss that the user is currently facing
     :precondition: pygame_screen must be a pygame screen object
-    :precondition: current_boss must be a dictionary containing information about the current boss
+    :precondition: current_boss must be a non-empty dictionary containing information about the current boss
     :postcondition: displays a message from the boss and prompts the user to fight or not
     :return: a string representing the user's choice
     """
