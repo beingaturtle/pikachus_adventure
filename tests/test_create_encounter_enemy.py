@@ -15,7 +15,7 @@ class TestCreateEncounter(TestCase):
         mock_choice.return_value = ("Weak", 5)
         mock_cycle.side_effect = [
             iter(["Magikarp", "Bidoof", "Zubat"]),
-            iter(["splash", "tackle", "scream"])
+            iter(["Splash", "Tackle", "Scream"])
         ]
 
         encounter = create_encounter_enemy()
@@ -27,7 +27,7 @@ class TestCreateEncounter(TestCase):
         mock_choice.return_value = ("Weak", 5)
         mock_cycle.side_effect = [
             iter(["Magikarp", "Bidoof", "Zubat"]),
-            iter(["splash", "tackle", "scream"])
+            iter(["Splash", "Tackle", "Scream"])
         ]
 
         encounter = create_encounter_enemy()
@@ -40,7 +40,7 @@ class TestCreateEncounter(TestCase):
         mock_choice.return_value = ("Weak", 5)
         mock_cycle.side_effect = [
             iter(["Magikarp", "Bidoof", "Zubat"]),
-            iter(["splash", "tackle", "scream"])
+            iter(["Splash", "Tackle", "Scream"])
         ]
 
         encounter = create_encounter_enemy()
@@ -52,7 +52,7 @@ class TestCreateEncounter(TestCase):
         mock_choice.return_value = ("Weak", 5)
         mock_cycle.side_effect = [
             iter(["Magikarp", "Bidoof", "Zubat"]),
-            iter(["splash", "tackle", "scream"])
+            iter(["Splash", "Tackle", "Scream"])
         ]
 
         encounter = create_encounter_enemy()
@@ -64,7 +64,7 @@ class TestCreateEncounter(TestCase):
         mock_choice.return_value = ("Weak", 5)
         mock_cycle.side_effect = [
             iter(["Magikarp", "Bidoof", "Zubat"]),
-            iter(["splash", "tackle", "scream"])
+            iter(["Splash", "Tackle", "Scream"])
         ]
 
         encounter = create_encounter_enemy()
@@ -76,7 +76,7 @@ class TestCreateEncounter(TestCase):
         mock_choice.return_value = ("Weak", 5)
         mock_cycle.side_effect = [
             iter(["Magikarp", "Bidoof", "Zubat"]),
-            iter(["splash", "tackle", "scream"])
+            iter(["Splash", "Tackle", "Scream"])
         ]
 
         encounter = create_encounter_enemy()
@@ -88,7 +88,7 @@ class TestCreateEncounter(TestCase):
         mock_choice.return_value = ("Weak", 5)
         mock_cycle.side_effect = [
             iter(["Magikarp", "Bidoof", "Zubat"]),
-            iter(["splash", "tackle", "scream"])
+            iter(["Splash", "Tackle", "Scream"])
         ]
 
         encounter = create_encounter_enemy()
@@ -100,7 +100,7 @@ class TestCreateEncounter(TestCase):
         mock_choice.return_value = ("Weak", 5)
         mock_cycle.side_effect = [
             iter(["Magikarp", "Bidoof", "Zubat"]),
-            iter(["splash", "tackle", "scream"])
+            iter(["Splash", "Tackle", "Scream"])
         ]
 
         encounter = create_encounter_enemy()
@@ -112,8 +112,8 @@ class TestCreateEncounter(TestCase):
         mock_choice.return_value = ("Weak", 5)
         mock_cycle.side_effect = [
             iter(["Magikarp", "Bidoof", "Zubat"]),
-            iter(["splash", "tackle", "scream"])
+            iter(["Splash", "Tackle", "Scream"])
         ]
 
         encounter = create_encounter_enemy()
-        self.assertIn(encounter['skill'], ["splash", "tackle", "scream"])
+        self.assertIn(encounter['skill'], ["Splash", "Tackle", "Scream"])
