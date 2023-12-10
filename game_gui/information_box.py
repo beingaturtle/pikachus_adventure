@@ -1,3 +1,8 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 import pygame
 from pygame import Surface, Rect
 from utils.display_pikachu_stats import display_pikachu_stats
