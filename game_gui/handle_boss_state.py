@@ -19,7 +19,7 @@ def handle_boss_state(screen, player, character_info, boss_info, facing_left, fa
     direction = next((key for key, value in directions.items() if value), '')
 
     if has_enough_keys(character_info, current_boss):
-        choice = display_boss_prompt(screen)
+        choice = display_boss_prompt(screen, current_boss)
 
         if choice == '1':
 
