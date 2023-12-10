@@ -59,7 +59,7 @@ Github: [Pikachu's Adventure on Github](https://github.com/beingaturtle/pikachus
 
 - To complete the game, level up your character sufficiently to challenge the final boss
 
-- The final boss is formidable, but you can do it! Rumor has it that the last boss sports a magnificent beard
+- The final boss is formidable, but you can do it! Rumor has it that the last boss sports a magnificent beard :)
 
 ### Reflection
 
