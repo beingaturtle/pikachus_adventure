@@ -1,6 +1,12 @@
+"""
+Pikachu's Adventure
+Edro Gonzales A01257468
+Ian Chan A00910012
+"""
 from unittest import TestCase
 from unittest.mock import patch
 from utils.create_encounter_enemy import create_encounter_enemy
+
 
 class TestCreateEncounter(TestCase):
     @patch('random.choice')
@@ -25,7 +31,8 @@ class TestCreateEncounter(TestCase):
         ]
 
         encounter = create_encounter_enemy()
-        self.assertSetEqual(set(encounter.keys()), {"enemy_type", "pokemon_name", "name", "health", "attack_power", "experience_award", "skill"})
+        self.assertSetEqual(set(encounter.keys()), {"enemy_type", "pokemon_name", "name", "health", "attack_power",
+                                                    "experience_award", "skill"})
 
     @patch('random.choice')
     @patch('itertools.cycle')
